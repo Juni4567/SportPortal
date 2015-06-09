@@ -8,22 +8,39 @@
 	<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-	<header class="main-header">
-		<a class="logo" href="#"><img src="assets/images/Logo.png" alt="Sport portal"></a>
-		<nav>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">LIVE SCORE</a></li>
-				<li><a href="#">DEPARTMENTS</a></li>
-				<li><a href="#">FIXTURES</a></li>
-				<li><a href="#">NEWS</a></li>
+	<header id="main-header">
 
-				<li>LOGIN</li>
-				<li>REGISTER</li>
-			</ul>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-list">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"><img class="img-responsive" src="assets/images/Logo.png" alt="Sport portal"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="navigation-list">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">LIVE SCORE</a></li>
+						<li><a href="#">DEPARTMENTS</a></li>
+						<li><a href="#">FIXTURES</a></li>
+						<li><a href="#">NEWS</a></li>
+					</ul>
+					<div class="yellow-bg">
+						<ul>
+							<li>LOGIN</li>
+							<li>REGISTER</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</nav>
+		
 	</header>
-	<div id="main">
+	<div id="main" class="container">
 		<div class="hero general-section">
 			<h1>USA TEAM <a href="#">BASKETBALL</a> MATCH GET THE HOTEST UPDATES</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo consectetur, in minima, molestiae vero, aut quo est harum fuga aspernatur sit commodi quidem optio incidunt iusto quia similique velit saepe!</p>
@@ -33,39 +50,172 @@
 		<div id="score-board">
 			<div class="row">
 				<div class="col-sm-8">
-					<div class="sport-nav">
-						<ul id="sports-list">
-							<li><a href="#">FOOTBALL</a></li>
-							<li><a href="#">CRICKET</a></li>
-							<li><a href="#">HOCKEY</a></li>
-							<li><a href="#">TENNIS</a></li>
-							<li><a href="#">VOLLEY BALL</a></li>
+
+
+					<div class="sport-nav tabbable">
+						<ul class="nav nav-tabs" role="tablist">
+
+							<li role="presentation" class="active"><a href="#football" aria-controls="football" role="tab" data-toggle="tab">Football</a></li>
+							<li role="presentation"><a href="#cricket" aria-controls="cricket" role="tab" data-toggle="tab">Cricket</a></li>
+							<li role="presentation"><a href="#hockey" aria-controls="hockey" role="tab" data-toggle="tab">Hockey</a></li>
+							<li role="presentation"><a href="#tennis" aria-controls="tennis" role="tab" data-toggle="tab">Tennis</a></li>
+							<li role="presentation"><a href="#vollyball" aria-controls="vollyball" role="tab" data-toggle="tab">Volly Ball</a></li>
+							
 						</ul>
-						<div id="sport-board">
-							<div id="team-1">
-								<img src="team1-img" alt="Team 1">
+						
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="football">
+								<div id="sport-board-content">
+									<div id="team-1">
+										<img src="assets/images/team-1.jpg" alt="Team 1">
+									</div>
+									<div class="vs"><a href="#">VS</a></div>
+									<div id="team-2">
+										<img src="assets/images/team-2.jpg" alt="Team 2">
+									</div>
+									<div class="score">
+										<div class="row">
+											<div class="col-xs-6">BS(IT) TEAM <span class="leading">leading-span</span>
+												<h3 class="team-score">0-3</h3>
+											</div>
+
+											<div class="col-xs-6">BS(PHY) TEAM <span>not-leading</span>
+												<h3 class="team-score">0-2</h3>	
+											</div>
+										</div>
+									</div>
+								</div>
+						</div>
+							<div role="tabpanel" class="tab-pane" id="cricket">
+								<div id="sport-board-content">
+									<div id="team-1">
+										<img src="assets/images/team-1.jpg" alt="Team 1">
+									</div>
+									<div class="vs"><a href="#">VS</a></div>
+									<div id="team-2">
+										<img src="assets/images/team-2.jpg" alt="Team 2">
+									</div>
+									<div class="score">
+										<div class="row">
+											<div class="col-xs-6">BS(IT) TEAM <span class="leading">leading-span</span>
+												<h3 class="team-score">0-3</h3>
+											</div>
+
+											<div class="col-xs-6">BS(PHY) TEAM <span>not-leading</span>
+												<h3 class="team-score">0-2</h3>	
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							VS
-							<div id="team-2">
-								<img src="team2-img" alt="Team 2">
+							<div role="tabpanel" class="tab-pane" id="hockey">
+								<div id="sport-board-content">
+									<div id="team-1">
+										<img src="assets/images/team-1.jpg" alt="Team 1">
+									</div>
+									<div class="vs"><a href="#">VS</a></div>
+									<div id="team-2">
+										<img src="assets/images/team-2.jpg" alt="Team 2">
+									</div>
+									<div class="score">
+										<div class="row">
+											<div class="col-xs-6">BS(IT) TEAM <span class="leading">leading-span</span>
+												<h3 class="team-score">0-3</h3>
+											</div>
+
+											<div class="col-xs-6">BS(PHY) TEAM <span>not-leading</span>
+												<h3 class="team-score">0-2</h3>	
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="score">
-								<div class="row">
-									<col-xs-6>BS(IT) TEAM <span class="leading">leading-span</span>
-										<h3 class="team-score">0-3</h3>
-									</col-xs-6>
-									:
-									<col-xs-6>BS(PHY) TEAM <span>not-leading</span>
-										<h3 class="team-score">0-2</h3>	
-									</col-xs-6>
+							<div role="tabpanel" class="tab-pane" id="tennis">
+								<div id="sport-board-content">
+									<div id="team-1">
+										<img src="assets/images/team-1.jpg" alt="Team 1">
+									</div>
+									<div class="vs"><a href="#">VS</a></div>
+									<div id="team-2">
+										<img src="assets/images/team-2.jpg" alt="Team 2">
+									</div>
+									<div class="score">
+										<div class="row">
+											<div class="col-xs-6">BS(IT) TEAM <span class="leading">leading-span</span>
+												<h3 class="team-score">0-3</h3>
+											</div>
+
+											<div class="col-xs-6">BS(PHY) TEAM <span>not-leading</span>
+												<h3 class="team-score">0-2</h3>	
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="vollyball">
+								<div id="sport-board-content">
+									<div id="team-1">
+										<img src="assets/images/team-1.jpg" alt="Team 1">
+									</div>
+									<div class="vs"><a href="#">VS</a></div>
+									<div id="team-2">
+										<img src="assets/images/team-2.jpg" alt="Team 2">
+									</div>
+									<div class="score">
+										<div class="row">
+											<div class="col-xs-6">BS(IT) TEAM <span class="leading">leading-span</span>
+												<h3 class="team-score">0-3</h3>
+											</div>
+
+											<div class="col-xs-6">BS(PHY) TEAM <span>not-leading</span>
+												<h3 class="team-score">0-2</h3>	
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> <!-- tabbable	-->
 				</div>
 				<div class="col-sm-4">
 					<a class="all-sports">ALL SPORTS <span class="icon-all-sports">span-icon-allsports</span></a>
-				</div>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-2.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-2.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+						</div>
+					</div>
+				</div> <!-- sidebar col end -->
 			</div>
 		</div><!--score board end-->
 
@@ -79,9 +229,10 @@
 					<a href="#">right</a>
 				</div>
 			</div>
-		</div>
+		</div> <!--  latest updates end -->
 	</div><!--main-end -->
 
 	<script src="assets/scripts.js"></script>
+
 </body>
 </html>
