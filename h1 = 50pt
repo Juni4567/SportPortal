@@ -1,0 +1,43 @@
+fonts
+========================
+[BebasNeueRegular Re...
+[BebasNeueBold (replaced with oswald) done Regul...
+
+
+
+
+Font-sizes
+=========================
+h1				= 50pt ==> line-height: 18pt ==> Myriad (replaced with PT sans) Pro Regular
+
+p				= 16pt ==> line-height: 30pt ==> Roboto done Regular
+
+cta				= 30pt ==> [BebasNeueBold (replaced with oswald) done Regul...	==> line-height: 18pt
+
+main Navigation = 25pt ==> [BebasNeueRegular Re...	==> line-height: 18pt
+Sec-Navigation	= 25pt ==> [BebasNeueBold (replaced with oswald) done ... 		==> line-height: 30pt
+
+sec-p			= 15.5pt ==> Roboto done Regular 		==> line-height: 20pt
+
+date-text		= 20pt	==>	[BebasNeueBold (replaced with oswald) done Regul...	==> line-height: 30pt
+
+h2				= 20pt	==>	[BebasNeueBold (replaced with oswald) done Regul...	==> line-height: 30pt
+
+vs-text			= 50pt	==> [BebasNeueBold (replaced with oswald) done Regul...	==>
+
+h3				= 25pt	==>	[BebasNeueBold (replaced with oswald) done Regul... ==> line-height: 18pt
+
+h4				= 25pt	==> [BebasNeueBold (replaced with oswald) done Regul... ==> line-height: 30pt
+
+sub-sec-p		= 13pt	==> [Roboto done Black]			==> line-height: 20pt
+
+big-h3			= 50pt	==> [BebasNeueBold (replaced with oswald) done Regul...	==> line-height: 30pt
+
+sec-cta			= 23.57pt ==>[BebasNeueBold (replaced with oswald) done Regul==> line-height: 14.14pt
+sub-sec-cta		= 15pt	==>	[AvengeanceMightie		==> line-height: 30pt
+
+sub-sec-navigation = 25pt	==> [BebasNeueBold (replaced with oswald) done Regul... ==> line-height: 25pt
+
+h1-post-title	= 30pt	==>	[BebasNeueBold (replaced with oswald) done Regul...	==>	line-height:25pt
+
+footer-h1		= 30pt	==> [BebasNeueRegular Re... ==>	line-height: 25pt
