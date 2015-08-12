@@ -1,0 +1,212 @@
+.oswald-bold {
+    font-weight: 700;
+}
+.roboto {
+    font-family: Roboto;
+}
+#main-header .navbar-default {
+    min-height: 100px;
+    background-color: #442185;
+    border-color: 0;
+    border-radius: 0;
+}
+#main-header .navbar-default .navbar-nav li {
+    position: relative;
+}
+#main-header .navbar-default .navbar-nav li a {
+    line-height: 70px;
+    color: #fff;
+    font-family: oswald;
+}
+#main-header .navbar-default .navbar-nav li.active:before, #main-header .navbar-default .navbar-nav li:hover:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    background-color: #fff;
+    transform: skewX(-20deg);
+}
+#main-header .navbar-default .navbar-nav li.active a, #main-header .navbar-default .navbar-nav li:hover a {
+    position: relative;
+    z-index: 11;
+    display: block;
+    color: #442185;
+    background: 0 0;
+}
+#main-header .navbar-default .navbar-text {
+    color: #fff;
+}
+#main-header .yellow-bg {
+    float: right;
+}
+#main-header .yellow-bg ol, #main-header .yellow-bg ul {
+    margin-bottom: 0;
+}
+#main-header .yellow-bg ol li, #main-header .yellow-bg ul li {
+    position: relative;
+    display: inline-block;
+    background-color: transparent;
+}
+#main-header .yellow-bg ol li a, #main-header .yellow-bg ul li a {
+    position: relative;
+    display: block;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: -2px;
+    line-height: 100px;
+    color: #442185;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: oswald;
+    transition: background-color 200ms ease-in;
+}
+#main-header .yellow-bg ol li:before, #main-header .yellow-bg ul li:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    background-color: #ffca12;
+    transform: skewX(-20deg);
+}
+#main-header .yellow-bg ol li:hover:before, #main-header .yellow-bg ul li:hover:before {
+    background-color: #f4c110;
+}
+.general-section {
+    padding: 30px 0;
+    text-align: center;
+    background-color: transparent;
+}
+.general-section h1, .general-section h2, .general-section h3, .general-section h4, .general-section h5 {
+    text-transform: uppercase;
+    font-family: oswald;
+}
+.general-section p {
+    font-family: Roboto;
+}
+.general-section .cta, .sport-nav ul li a {
+    font-family: oswald;
+}
+.general-section a, .general-section a:hover {
+    color: #f4c110;
+    text-decoration: none;
+}
+.general-section .cta {
+    padding: 10px;
+    color: #442185!important;
+    background-color: #ffca12;
+    border-radius: 50px;
+}
+.general-section .cta:hover {
+    background-color: #f4c110;
+}
+.general-section .btn-primary, .general-section .btn-primary:hover {
+    border: none;
+}
+.sport-nav ul li {
+    position: relative;
+}
+.sport-nav ul li a {
+    line-height: 25px;
+    color: #000;
+}
+.sport-nav ul li.active:before, .sport-nav ul li:hover:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    background-color: #ffca12;
+    transform: skewX(-20deg);
+}
+.sport-nav ul li.active:first-of-type:before, .sport-nav ul li:hover:first-of-type:before {
+    width: 0;
+    height: 0;
+    border-right: 16px solid rgba(86, 208, 129, 0);
+    border-top: 45px solid #FFCA12;
+    border-left: 68px solid #FFCA12;
+    transform: skewX(0);
+    background-color: transparent;
+}
+.sport-nav ul li.active a, .sport-nav ul li:hover a {
+    position: relative;
+    z-index: 11;
+    display: block;
+    color: #442185;
+    background: 0 0;
+}
+.vs, .vs a {
+    color: #fff;
+}
+.sport-nav .nav-tabs .nav-tabs>li>a:hover, .sport-nav .nav-tabs>li.active>a:hover {
+    background-color: transparent;
+    border: 0;
+}
+.sport-nav li>a:hover {
+    border: none;
+}
+.sport-nav .nav li a:focus, .sport-nav .nav li a:hover {
+    background-color: none;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    border: 0;
+    background-color: transparent;
+}
+footer ul li {
+    list-style: none;
+}
+#football {
+    background-color: #f4c110;
+}
+#cricket {
+    background-color: green;
+}
+#hockey {
+    background-color: #00f;
+}
+.vs {
+    position: absolute;
+    display: block;
+    float: none;
+    width: 100%;
+    margin-top: 130px;
+    text-align: center;
+}
+.vs a {
+    display: inline-block;
+    min-width: 100px;
+    padding: 5px;
+    font-size: 25px;
+    font-weight: 700;
+    background: #442185;
+    border-radius: 30px;
+}
+#team-1 {
+    float: left;
+}
+#team-1, #team-2 {
+    max-width: 50%;
+    max-height: 260px;
+    overflow: hidden;
+    background: url(images/team-1.jpg);
+}
+#team-2 {
+    float: right;
+}
+.score .col-xs-6:first-of-type {
+    border-right: 2px dotted;
+}
+.media {
+    max-height: 70px;
+    text-overflow: ellipsis;
+}
+.media img {
+    max-width: 64px;
+    height: 64px;
+}
