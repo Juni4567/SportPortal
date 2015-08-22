@@ -87,6 +87,17 @@
 			cursor: pointer;
 			font-family: oswald;
 			transition: background-color 200ms ease-in;
+			&:after{
+				content: " ";
+				width: 2px;
+				height: 103%;
+				position: absolute;
+				z-index: 100;
+				background-color: #442185;
+				transform: skewX(-20deg);
+				top: -2px;
+				right: -2px;
+			}
 		}
 		&:before{
 			position: absolute;
