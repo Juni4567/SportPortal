@@ -1,6 +1,6 @@
 <?php
 //include header template
-require('layout/header.php'); 
+require('layout/header.php');
 ?>
 
 <div id="lates-updates" class="carousel slide" data-ride="carousel">

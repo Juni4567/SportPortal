@@ -1,0 +1,71 @@
+.page-error, .page-login {
+    background: #fdea5d url(../images/background.png);
+}
+
+.brand-logo {
+    text-align: center;
+}
+
+#logo {
+    display: block;
+
+    background: url(../images/logo.png) no-repeat;
+    width: 213px;
+    height: 30px;
+
+    margin: 0 auto;
+}
+
+.brand-logo {
+    min-height: 32px;
+}
+
+.theme-template-dark .sidebar {
+    background: rgb(47, 28, 82);
+}
+
+
+.navbar .brand-logo,
+.sidebar .brand-logo {
+    margin: 16px 0;
+    min-height: 32px;
+}
+
+.sidebar .user-logged-in {
+    padding: 20px 0;
+}
+
+.theme-template-dark .sidebar .brand-logo,
+.theme-template-dark .sidebar ul a,
+aside.sidebar i {
+    color: #222;
+}
+
+.table-title {
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
+
+.table-full tbody > tr > td:last-child {
+    overflow: visible;
+}
+
+#new-promotion-link {
+    float: left;
+    display: block;
+    width: auto;
+    height: 44px;
+    margin-top: -9px;
+    margin-left: 2px;
+}
+
+#new-promotion-submit {
+    float: left;
+    margin-left: 6px;
+}
+.brand-logo img{
+    max-width: 80%;
+}
+.theme-template-dark .sidebar .brand-logo, .theme-template-dark .sidebar ul a, aside.sidebar i {
+    color: #FFF;
+}
