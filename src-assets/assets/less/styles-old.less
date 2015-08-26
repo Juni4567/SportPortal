@@ -5,36 +5,6 @@
     font-family: Roboto;
 }
 
-.general-section {
-    padding: 30px 0;
-    background-color: transparent;
-}
-.general-section h1, .general-section h2, .general-section h3, .general-section h4, .general-section h5 {
-    text-transform: uppercase;
-    font-family: oswald;
-}
-.general-section p {
-    font-family: Roboto;
-}
-.general-section .cta, .sport-nav ul li a {
-    font-family: oswald;
-}
-.general-section a, .general-section a:hover {
-    color: #f4c110;
-    text-decoration: none;
-}
-.general-section .cta {
-    padding: 10px;
-    color: #442185!important;
-    background-color: #ffca12;
-    border-radius: 50px;
-}
-.general-section .cta:hover {
-    background-color: #f4c110;
-}
-.general-section .btn-primary, .general-section .btn-primary:hover {
-    border: none;
-}
 .sport-nav ul li {
     position: relative;
 }
@@ -137,4 +107,37 @@ footer ul li {
 .media img {
     max-width: 64px;
     height: 64px;
+}
+
+
+
+.sport-nav {
+    .nav-tabs{
+     background-color: #fff; 
+ }
+}
+
+@media only screen and (max-width : 768px){
+   #main-header .navbar-default .navbar-nav li.active:before, #main-header .navbar-default .navbar-nav li:hover:before{
+    transform: skewX(0);
+}
+#main-header .navbar-default .navbar-nav li.active:before, #main-header .navbar-default .navbar-nav li:hover:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    background-color: #fff;
+    transform: skewX(0);
+}
+#main-header .navbar-default #navigation-list, #main-header .navbar-default .navbar-nav li {
+    position: relative;
+    
+    overflow: visible;
+}
+#main-header .navbar-default #navigation-list, #main-header .navbar-default .navbar-nav li:first-of-type {
+    margin-top: 40px;
+}
 }
