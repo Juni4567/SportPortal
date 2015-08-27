@@ -17,5 +17,5 @@
       <link href="assets/css/custom.css" rel="stylesheet" />      
   </head>
 
-  <body scroll-spy="" id="top" class=" theme-template-dark theme-pink alert-open alert-with-mat-grow-top-right">
+  <body class="sp-admin-body">
     <main>

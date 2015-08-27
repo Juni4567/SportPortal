@@ -10,4 +10,5 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus accusamus voluptas possimus totam itaque dolorem fugiat, reprehenderit unde perferendis voluptatibus cumque libero eaque fuga, atque consectetur tempore harum laudantium sint.</p>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>

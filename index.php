@@ -1,6 +1,7 @@
 <?php
 //include header template
 require('layout/header.php');
+include_once('session.php');
 ?>
 
 <div id="lates-updates" class="carousel slide" data-ride="carousel">
@@ -49,7 +50,7 @@ require('layout/header.php');
 </div> <!--  latest updates carousel end -->
 
 
-<div id="score-board general-section">
+<div id="score-board" class="general-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8">

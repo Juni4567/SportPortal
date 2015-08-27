@@ -1,7 +1,7 @@
- <aside class="sidebar fixed" style="width: 260px; left: 0px; ">
+<aside class="sidebar fixed" style="width: 260px; left: 0px; ">
         <div class="brand-logo">
           <!-- <div id="logo"></div> --> 
-          <img src="assets/images/logo.png" alt=""></div>
+          <a href="../index.php"><img src="assets/images/logo.png" alt=""></a></div>
         <div class="user-logged-in">
           <div class="content">
             <div class="user-name">Junaid Anwar <span class="text-muted f9">admin</span></div>
@@ -43,4 +43,4 @@
           <i class="md md-add"></i>Register an Admin</a>
           </li>
         </ul>
-      </aside>
+</aside>

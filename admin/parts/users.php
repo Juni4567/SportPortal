@@ -1,9 +1,9 @@
 <section>
 	<div class="page-header">
-		<h1><i class="md md-security"></i> User Administration </h1>
+		<h1><i class="md md-security"></i> Admins</h1>
 
 		<p class="lead">
-			Manage access to administration panel here.
+			The following Admins already exists in the database
 		</p>
 	</div>
 
@@ -17,8 +17,8 @@
 					<table class="table table-full m-b-60" id="table-area-1" fsm-big-data="data of data take 30">
 						<thead>
 						<tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
-							<th fsm-sort="firstname">Name&nbsp;</th>
-							<th fsm-sort="lastname">Last&nbsp;</th>
+							<th fsm-sort="firstname">Name</th>
+							<th fsm-sort="lastname">role</th>
 							<th>Email</th>
 							<th class="text-right">Actions</th>
 						</tr>
@@ -26,12 +26,12 @@
 						<tbody>
 
 						<?php for ($i = 0;
-						$i < 25;
+						$i < 10;
 						$i ++) : ?>
 						<tr>
-							<td>Test</td>
+							<td>Junaid Anwar</td>
 							<td>Admin</td>
-							<td>test<?php echo $i; ?>@uk.loccitane.com</a></td>
+							<td>Junaid<?php echo $i; ?>@gmail.com</a></td>
 							<td class="text-right">
 
 								<div class="dropdown pull-right">
@@ -40,11 +40,10 @@
 									        data-template="assets/tpl/partials/dropdown-navbar.html" data-toggle="dropdown">
 										<i class="md md-delete f20"></i>
 									</button>
-									<div class="dropdown-menu dropdown-menu-right" role="menu"
-									     aria-labelledby="dropdownListExample">
+									<div class="dropdown-menu dropdown-menu-right" role="menu">
 										<div class="p-10">
 											<div class="w300">
-												Please confirm if you want to delete
+												Please confirm if you want to delete this user
 											</div>
 
 											<div class="form-group">
@@ -64,11 +63,6 @@
 				</table>
 
 
-			</div>
-			<div class="footer-buttons">
-				<a href="users-add.php" class="btn btn-primary btn-round btn-lg" data-title="New Item" data-toggle="tooltip">
-					<i class="md md-add white-text"></i>
-				</a>
 			</div>
 
 

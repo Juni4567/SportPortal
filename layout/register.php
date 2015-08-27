@@ -45,7 +45,7 @@
                                                 <div class="col-sm-6">
                                                     <label class="control-label" for="Age">Age</label>
                                                     <div class="controls">
-                                                        <input id="Age" name="age" type="number" placeholder="Your Age" class="form-control" required="">
+                                                        <input id="Age" name="age" type="number" placeholder="Your Age" class="form-control" required="" min="14" pattern="\d*" step="1" >
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">

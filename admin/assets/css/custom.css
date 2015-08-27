@@ -20,7 +20,7 @@
     min-height: 32px;
 }
 
-.theme-template-dark .sidebar {
+.sp-admin-body .sidebar {
     background: rgb(47, 28, 82);
 }
 
@@ -35,8 +35,8 @@
     padding: 20px 0;
 }
 
-.theme-template-dark .sidebar .brand-logo,
-.theme-template-dark .sidebar ul a,
+.sp-admin-body .sidebar .brand-logo,
+.sp-admin-body .sidebar ul a,
 aside.sidebar i {
     color: #222;
 }
@@ -66,6 +66,9 @@ aside.sidebar i {
 .brand-logo img{
     max-width: 80%;
 }
-.theme-template-dark .sidebar .brand-logo, .theme-template-dark .sidebar ul a, aside.sidebar i {
+.sp-admin-body .sidebar .brand-logo, .sp-admin-body .sidebar ul a, aside.sidebar i {
     color: #FFF;
+}
+main .main-container .main-content{
+    background-color: rgba(47, 28, 82, 0.04);
 }

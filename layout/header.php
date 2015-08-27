@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+include('../session.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,8 +39,10 @@ error_reporting(0);
 					</ul>
 					<div class="yellow-bg">
 						<a class="cta-btn-orange cta-header btn dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-
-                    <?php include_once('layout/login.php'); ?>
+                            LOGIN <span class='caret'></span>
+                        </a>
+                        <div class="dropdown-menu">
+                        <?php include_once('layout/login.php'); ?>
 						</div>
 						<a href="#" data-toggle="modal" data-target="#sp_register">REGISTER</a>
 				</div>

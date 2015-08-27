@@ -1,71 +1,7 @@
 <section class="forms-advanced">
             <div class="page-header">
-              <h1>      <i class="md md-input"></i>      Advanced elements    </h1>
-              <p class="lead"> All form elements we created for you which you can use for your successful web projects! </p>
-            </div>
-            <div class="row m-b-40">
-              <div class="col-md-3 col-md-push-9" id="general-elements-intro">
-                <h5>General form elements used in basic forms</h5>
-                <p>All the elements are just default bootstrap markup in execption of the selection box which is <a target="_blank" href="https://select2.github.io/">Select2</a>.</p>
-              </div>
-              <div class="col-md-8 col-md-pull-3">
-                <div class="well white">
-                  <form class="form-floating placeholder-form">
-                    <fieldset>
-                      <legend>General elements</legend>
-                      <div class="form-group filled">
-                        <label for="inputEmail" class="control-label">Text input</label>
-                        <input type="text" class="form-control" value="Sed enim ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egestas pretium."> </div>
-                      <div class="form-group filled">
-                        <label for="inputPassword" class="control-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" value="nakama?"> </div>
-                      <div class="form-group">
-                        <div class="checkbox">
-                          <label class="filled">
-                            <input type="checkbox" checked="checked"> Checkbox </label>
-                        </div>
-                      </div>
-                      <div class="form-group filled">
-                        <label for="textArea" class="control-label">Textarea with autogrow</label>
-                        <textarea class="form-control vertical " rows="3" id="textArea">Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit. Nibh praesent tristique magna sit amet purus gravida quis blandit turpis cursus in hac habitasse platea dictumst quisque. Bibendum est ultricies integer quis auctor elit sed vulputate mi sit amet mauris commodo quis imperdiet massa. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum, odio eu.</textarea> <span class="help-block">Help.</span> </div>
-                      <div class="form-group">
-                        <div class="radio-inline">
-                          <label class="filled">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Radio option </label>
-                        </div>
-                        <div class="radio-inline">
-                          <label class="filled">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Radio option 2 </label>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label normal">Switch</label>
-                        <div class="switch">
-                          <label class="filled"> Off
-                            <input type="checkbox" checked="checked"> <span class="lever"></span> On </label>
-                        </div>
-                      </div>
-                      <div class="form-group filled">
-                        <label class="control-label">Select</label>
-                        <select class="form-control">
-                          <option value="Monkey D. Luffy">Monkey D. Luffy</option>
-                          <option value="Roronoa Zoro">Roronoa Zoro</option>
-                          <option value="Tony Tony Chopper">Tony Tony Chopper</option>
-                          <option value="Nico Robin">Nico Robin</option>
-                          <option value="Bon Clay">Bon Clay</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <select class="select2 form-control"></select>
-                      </div>
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-default">Cancel</button>
-                      </div>
-                    </fieldset>
-                  </form>
-                </div>
-              </div>
+              <h1><i class="md md-input"></i> SP dashboard</h1>
+              <p class="lead">Sport portal admin dashboard is for updating scores notifying users and scheduling matches</p>
             </div>
             <div class="row m-b-40" id="datepickers">
               <div class="col-md-3 col-md-push-9">

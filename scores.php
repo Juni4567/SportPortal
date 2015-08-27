@@ -1,9 +1,10 @@
 <?php
 //include header template
 require('layout/header.php');
+
 ?>
 
-<div id="score-board general-section">
+<div id="score-board" class="general-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8">

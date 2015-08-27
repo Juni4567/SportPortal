@@ -1,12 +1,5 @@
 <?php
-//                           var_dump($sessionuser); exit;
-if($sessionuser) {
-    echo $sessionuser;
-} else { ?>    LOGIN <span class='caret'></span>
-<?php } ?>
-    </a>
-<div class="dropdown-menu">
-<?php
+include_once('../session.php');
 if (!isset($_POST['submit'])){
     ?>
     <!-- The HTML login form -->
@@ -17,7 +10,7 @@ if (!isset($_POST['submit'])){
         <label for='password'>Password</label>
         <input id='password' type='password' class='form-control form-control' name='password'>
 
-        <input type='submit' name='submit' value='Login' class='btn btn-primary pull-right'>
+        <input type='submit' name='submit' value='Login' class='btn btn-primary pull-right sp-login'>
     </form>
 <?php
 } else {
@@ -28,10 +21,8 @@ if (!isset($_POST['submit'])){
         echo "<p>MySQL error no {$mysqli->connect_errno} : {$mysqli->connect_error}</p>";
         exit();
     }
-
-    $username = $_POST['username'];
+    $username = $_SESSION['username']= $_POST['username'];
     $password = $_POST['password'];
-    $sessionuser = $_SESSION["logged_user"];
     $sql = "SELECT * from users WHERE username LIKE '{$username}' AND password LIKE '{$password}' LIMIT 1";
     $result = $mysqli->query($sql);
     if (!$result->num_rows == 1) {
@@ -48,7 +39,7 @@ if (!isset($_POST['submit'])){
         </form>
     <?php
     } else {
-        echo "<p>Logged in successfully as $sessionuser </p>";
+        echo "<p>Logged in successfully as</p>" . $_SESSION['username'];
         echo "<a href='logout.php'>Logout</a> ";
         // do stuffs
     }

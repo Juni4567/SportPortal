@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="assets/img/favicon/favicon.ico">
 
-    <title>Sport Portal login to your account</title>
+    <title>Login to your account</title>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
