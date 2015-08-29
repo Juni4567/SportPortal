@@ -9,35 +9,35 @@
 								<div class="modal-body">
                                     <?php
                                     require_once("db_connect.php");
-                                    if (!isset($_POST['submit'])) {
+                                    if (!isset($_POST['register'])) {
                                         ?>	<!-- The HTML registration form -->
-                                        <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+                                        <form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="sp-regform">
                                             <!-- Text input-->
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <label class="control-label" for="username">User Name</label>
                                                     <div class="controls">
-                                                        <input id="username" name="username" type="text" placeholder="User name" class="form-control" required="">
+                                                        <input id="username" name="username" type="text" class="form-control" required="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <!-- Text input-->
                                                     <label class="control-label" for="fullname">Full name</label>
                                                     <div class="controls">
-                                                        <input id="fullname" name="Full name" type="text" placeholder="Full name" class="form-control" required="">
+                                                        <input id="fullname" name="fullname" type="text" class="form-control" required="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Password input-->
                                             <label class="control-label" for="email">Email</label>
                                             <div class="controls">
-                                                <input id="email" name="email" type="text" placeholder="Email" class="form-control" required="">
+                                                <input id="email" name="email" type="text" class="form-control" required="">
                                             </div>
 
                                             <!-- Password input-->
                                             <label class="control-label" for="password">Password</label>
                                             <div class="controls">
-                                                <input id="password" name="password" type="password" placeholder="Password" class="form-control" required="">
+                                                <input id="password" name="password" type="password" class="form-control" required="">
 
                                             </div>
 
@@ -45,13 +45,13 @@
                                                 <div class="col-sm-6">
                                                     <label class="control-label" for="Age">Age</label>
                                                     <div class="controls">
-                                                        <input id="Age" name="age" type="number" placeholder="Your Age" class="form-control" required="" min="14" pattern="\d*" step="1" >
+                                                        <input id="Age" name="age" type="number" class="form-control" required="" min="14" pattern="\d*" step="1" >
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <label class="control-label" for="Gender">Gender</label>
                                                     <div class="controls">
-                                                        <select id="Gender" name="Gender" class="form-control">
+                                                        <select id="Gender" name="gender" class="form-control">
                                                             <option value="male">Male</option>
                                                             <option value="female">Female</option>
                                                         </select>
@@ -64,7 +64,7 @@
                                             <!-- Select Basic -->
                                             <label class="control-label" for="Department">Department</label>
                                             <div class="controls">
-                                                <select id="Department" name="department" class="form-control">
+                                                <select id="Department" name="department" placeholder="select" class="form-control">
                                                     <option value="1">IT</option>
                                                     <option value="2">Physics</option>
                                                     <option value="3">Chemistry</option>
@@ -108,7 +108,7 @@
                                             <!-- Button -->
                                             <label class="control-label" for="register"></label>
                                             <div class="controls text-right">
-                                                <button id="register" type="submit" name="submit" class="btn btn-primary btn-lg">Register</button>
+                                                <button id="register" type="submit" name="register" class="btn btn-primary btn-lg">Register</button>
                                             </div>
                                         </form>
                                     <?php
@@ -134,24 +134,15 @@
 
 
                                         # check if username and email exist else insert
-                                        $exists = 0;
                                         $result = $mysqli->query("SELECT username from users WHERE username = '{$username}' LIMIT 1");
-                                        if ($result->num_rows == 1) {
-                                            $exists = 1;
-                                            $result = $mysqli->query("SELECT email from users WHERE email = '{$email}' LIMIT 1");
-                                            if ($result->num_rows == 1) $exists = 2;
-                                        } else {
-                                            $result = $mysqli->query("SELECT email from users WHERE email = '{$email}' LIMIT 1");
-                                            if ($result->num_rows == 1) $exists = 3;
+                                        $email_exist = $mysqli->query("SELECT email from users WHERE email = '{$email}' LIMIT 1");
+                                        if ($result->num_rows == 1 || $email_exist) {
+                                            echo "<p>That User name or email already exist</p>";
                                         }
-
-                                        if ($exists == 1) echo "<p>You are already registered</p>";
-                                        else if ($exists == 2) echo "<p>Username and Email already exists! or you are already logged in <a href=\"logout.php\">logout</a></p>";
-                                        else if ($exists == 3) echo "<p>Email already exists!</p>";
                                         else {
                                             # insert data into mysql database
                                             $sql = "INSERT INTO `sp_db`.`users` (`user_id`, `username`, `fullname`, `email`, `password`, `age`, `gender`, `dept_id`, `user_role`, `c_id`, `g_id`)
-                                        VALUES                              (NULL, '$username', '$fullname', '$email', '$password', '$age', '$gender', '$department', '$role', NULL, '$game')";
+                                                    VALUES                      (NULL, '$username', '$fullname', '$email', '$password', '$age', '$gender', '$department', '$role', NULL, '$game')";
 //                                            $sql = "INSERT  INTO `users` (`user_id`, `username`, 'fullname', `email`, `password`, `age`, `gender`)
 //				                            VALUES (26, '{$username}', '{$fullname}', '{$email}', '{$password}', '{$age}', '{$gender}')";
                                             if ($mysqli->query($sql)) {

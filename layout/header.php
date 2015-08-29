@@ -1,8 +1,3 @@
-<?php
-session_start();
-error_reporting(0);
-include('../session.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +37,7 @@ include('../session.php');
                             LOGIN <span class='caret'></span>
                         </a>
                         <div class="dropdown-menu">
-                        <?php include_once('layout/login.php'); ?>
+                        <?php include('login.php'); ?>
 						</div>
 						<a href="#" data-toggle="modal" data-target="#sp_register">REGISTER</a>
 				</div>

@@ -1,7 +1,6 @@
 <?php
 //include header template
-require('layout/header.php');
-include_once('session.php');
+include('layout/header.php');
 ?>
 
 <div id="lates-updates" class="carousel slide" data-ride="carousel">
@@ -231,5 +230,5 @@ include_once('session.php');
 </div>
 <?php 
 //include header template
-require('layout/footer.php'); 
+include('layout/footer.php');
 ?>

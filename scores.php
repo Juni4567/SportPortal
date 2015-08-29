@@ -1,7 +1,7 @@
 <?php
+session_start();
 //include header template
 require('layout/header.php');
-
 ?>
 
 <div id="score-board" class="general-section">
