@@ -29,7 +29,7 @@
     <div class="card bordered z-depth-2" style="margin:0% auto; max-width:400px;">
         <div class="card-header">
             <div class="brand-logo">
-                <a id="logo" href="http://uk.loccitane.com/"></a>
+                <img src="assets/images/logo.png" alt="">
             </div>
 
             <div class="card-content">

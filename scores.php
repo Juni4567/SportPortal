@@ -1,9 +1,9 @@
 <?php
-session_start();
 //include header template
 require('layout/header.php');
 ?>
 
+<div class="container general-section"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis iure placeat nostrum odio aperiam autem beatae soluta impedit, doloremque quidem! Neque iste deserunt, voluptate aut ipsa necessitatibus mollitia dolorum sequi!</p></div>
 <div id="score-board" class="general-section">
 	<div class="container">
 		<div class="row">
@@ -133,43 +133,43 @@ require('layout/header.php');
 			</div>
 			<div class="col-sm-4">
 				<div class="all-sport-container">
-				<a class="all-sports">ALL SPORTS <span class="icon-all-sports">span-icon-allsports</span></a>
-				<div class="media">
-					<a class="media-left" href="#">
-						<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+					<a class="all-sports">ALL SPORTS <span class="icon-all-sports">span-icon-allsports</span></a>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+						</div>
 					</div>
-				</div>
-				<div class="media">
-					<a class="media-left" href="#">
-						<img src="assets/images/team-2.jpg" class="thumbnail" alt="Test">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-2.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+						</div>
 					</div>
-				</div>
-				<div class="media">
-					<a class="media-left" href="#">
-						<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+						</div>
 					</div>
-				</div>
-				<div class="media">
-					<a class="media-left" href="#">
-						<img src="assets/images/team-2.jpg" class="thumbnail" alt="Test">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-2.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+						</div>
 					</div>
-				</div>
 				</div>
 			</div> <!-- sidebar col end -->
 		</div>
@@ -181,3 +181,8 @@ require('layout/header.php');
 //include header template
 require('layout/footer.php');
 ?>
+<script>
+	$( document ).ready(function() {
+		$('.sp-nav').find('#scores').addClass('active').children('a').removeAttr('href');
+	});
+</script>

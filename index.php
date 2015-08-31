@@ -232,3 +232,8 @@ include('layout/header.php');
 //include header template
 include('layout/footer.php');
 ?>
+<script>
+	$( document ).ready(function() {
+		$('.sp-nav').find('#home').addClass('active').children('a').removeAttr('href');
+	});
+</script>

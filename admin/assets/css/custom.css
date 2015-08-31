@@ -1,9 +1,19 @@
 .page-error, .page-login {
-    background: #fdea5d url(../images/background.png);
+    background: #DBD5E8;
 }
 
 .brand-logo {
     text-align: center;
+    min-height: 32px;
+    background-color: #442185;
+    padding: 10px;
+}
+.sp-admin-body .brand-logo{
+    background-color: transparent;
+    padding: 0;
+}
+.sidebar .user-logged-in{
+    background-color: rgba(241, 240, 242, 0.69);
 }
 
 #logo {
