@@ -13,16 +13,13 @@ if(isset($_POST['submit'])){
             echo "<p>Invalid username/password combination try again</p>";
         } else {
             $_SESSION['logged_user']= $username;
-            $logged_user = $_SESSION['logged_user'];
-            echo "<p>Logged in successfully as</p>" . $logged_user;
+            echo "<p>Logged in successfully as</p>" . $_SESSION['logged_user'];
             echo "<a href='logout.php'>Logout</a> ";
             // do stuffs
             header('location:index.php');
         }
     }
 else{
-    $logged_user= $_SESSION['logged_user'];
-    echo "<p>Logged in successfully as</p>" . $logged_user;
+    echo "<p>Logged in successfully as</p>" . $_SESSION['logged_user'];
     echo "<a href='logout.php'>Logout</a> ";
 }
-?>
