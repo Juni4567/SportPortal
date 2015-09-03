@@ -42,7 +42,7 @@
 			</div>
 		</footer>
 	</div><!--main-end -->
-	<script src="assets/scripts.js"></script>
+
 
 </body>
 </html>

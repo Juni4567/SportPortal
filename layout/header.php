@@ -7,6 +7,7 @@
 	<!-- Google fonts -->
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans|Oswald|Roboto' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/scripts.js"></script>
 </head>
 
 <body class="sp-body">
@@ -26,7 +27,6 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navigation-list">
 					<ul class="nav navbar-nav sp-nav">
-						<li id="home"><a href="index.php">Home</a></li>
 						<li id="scores"><a href="scores.php">LIVE SCORE</a></li>
 						<li id="dept"><a href="departments.php">DEPARTMENTS</a></li>
 						<li id="fixtures"><a href="fixtures.php">FIXTURES</a></li>
@@ -66,7 +66,9 @@
 							}
 							?>
 						</div>
-						<a href="#" data-toggle="modal" data-target="#sp_register">REGISTER</a>
+                        <?php if(!isset($_SESSION['logged_user'])){ ?>
+                            <a href="#" data-toggle="modal" data-target="#sp_register">REGISTER</a>
+                        <?php } ?>
 					</div>
 <!--                        pasting register code-->
                     <!-- Registration Modal -->
@@ -188,11 +190,12 @@
                                     }
                                     if(isset($_POST['register'])){
                                         ?>
-                                        <script>setTimeout(function(){
-                                                $("#sp_register").modal('show');
-                                                console.log("model opened");
-                                            }, 500);
-                                            </script>
+                                        <script>
+                                        $( document ).ready(function() {
+                                            $("#sp_register").modal('show');
+                                            console.log("model opened");
+                                        });
+                                        </script>
                                         <?php
                                         // query database
                                         require_once("db_connect.php");
