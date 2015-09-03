@@ -102,14 +102,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Password input-->
+                                            <!-- Email input-->
                                             <label class="control-label" for="email">Email</label>
                                             <div class="controls">
                                                 <input id="email" name="email" type="text" class="form-control" required="">
                                             </div>
 
                                             <!-- Password input-->
-                                            <label class="control-label" for="password">Password</label>
+                                            <label class="control-label" for="password">Password(We need it once so be careful)</label>
                                             <div class="controls">
                                                 <input id="password" name="password" type="password" class="form-control" required="">
 
@@ -249,7 +249,7 @@
                                                     <div class="col-sm-6">
                                                         <label class="control-label" for="Age">Age</label>
                                                         <div class="controls">
-                                                            <input id="Age" name="age" type="number" class="form-control" required="" min="14" pattern="\d*" step="1" >
+                                                            <input id="Age" name="age" type="number" class="form-control" required="" min="14" max="90" pattern="\d*" step="1" >
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
