@@ -14,7 +14,7 @@
 
 	<header id="main-header">
 
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-list">
