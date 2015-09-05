@@ -31,42 +31,73 @@
             <div class="brand-logo">
                 <img src="assets/images/logo.png" alt="">
             </div>
+            <?php
 
+            if (!isset($_POST['submit'])) {
+            ?>
             <div class="card-content">
 
-                <div class="m-b-30">
-                    <div class="card-title strong">Login</div>
-                    <p class="card-title-desc">To manage scores/teams</p>
-                </div>
-
-                <form class="form-floating">
+                <form class="form-floating" method="post" action="<?php $_SERVER['PHP_SELF']?>">
 
                     <div class="form-group">
                         <label for="inputEmail" class="control-label">Email</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="admin_email" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="inputPassword" class="control-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword">
+                        <input type="password" name="admin_pass" class="form-control" id="inputPassword">
                     </div>
-
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
+                    <div class="card-action clearfix">
+                        <div class="pull-right">
+                            <!--  <a href="password.html" class="btn btn-link"><span class="black-text">Forgot password</span></a>-->
+                            <input type="submit" name="submit" value="Login" class="btn btn-link  black-text">
                         </div>
                     </div>
                 </form>
-            </div>
 
-            <div class="card-action clearfix">
-                <div class="pull-right">
-                    <a href="password.html" class="btn btn-link"><span class="black-text">Forgot password</span></a>
-                    <a href="index.php" class="btn btn-link  black-text">Login</a>
-                </div>
             </div>
+            <?php }
+            if(isset($_POST['submit'])){
+
+                $admin_email = $_POST['admin_email'];
+                $admin_pass  = $_POST['admin_pass'];
+
+                if(!strlen($admin_email) || !strlen($admin_pass)){
+                    echo "<h2>Email or password not entered</h2>";
+                }
+                else{
+                    //connect to database
+                    require_once("includes/db_connect.php");
+
+                    //find if the user exists or return if not
+                    $sql = "SELECT * from users WHERE email LIKE '{$admin_email}' AND password LIKE '{$admin_pass}' AND user_role LIKE 'Admin' LIMIT 1";
+                    $result = $mysqli->query($sql);
+
+
+                    if (!$result->num_rows == 1) {
+                        echo "<h2>Invalid username/password combination try again</h2>";
+                    }
+
+                    //if found start session log user in
+                    else {
+                        $row = $result->fetch_assoc();
+                        session_start();
+                        //store current users information in session
+                        $_SESSION['logged_user']    = $row["username"];
+                        $_SESSION['user_role']      = $row["user_role"];
+                        $_SESSION['user_email']     = $admin_email;
+
+                        echo "<p>Logged in successfully as</p>" . $_SESSION['logged_admin'];
+
+                        //redirect to admin page
+                        header('location: index.php');
+                    }
+                }
+
+                }
+            ?>
+
 
         </div>
     </div>

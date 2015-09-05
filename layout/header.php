@@ -198,7 +198,7 @@
                                         </script>
                                         <?php
                                         // query database
-                                        require_once("db_connect.php");
+                                        require_once("includes/db_connect.php");
                                         // prepare data for insertion
                                         $username	= $_POST["username"];
                                         $fullname	= $_POST["fullname"];

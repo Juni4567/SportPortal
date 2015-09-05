@@ -4,7 +4,7 @@ if(isset($_SESSION['user'])!="")
 {
     header("Location: index.php");
 }
-include_once 'includes/dbconnect.php';
+include_once 'includes/db_connect.php';
 
 if(isset($_POST['btn-signup']))
 {

@@ -82,3 +82,6 @@ aside.sidebar i {
 main .main-container .main-content{
     background-color: rgba(47, 28, 82, 0.04);
 }
+.card.bordered .card-action {
+    border-top: 0;
+}

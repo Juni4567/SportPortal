@@ -2,7 +2,7 @@
 session_start();
 if(isset($_POST['submit'])){
 
-        require_once("db_connect.php");
+        require_once("includes/db_connect.php");
         $username = $_POST['username'];
         $password = $_POST['password'];
 

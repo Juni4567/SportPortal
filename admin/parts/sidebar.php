@@ -4,8 +4,8 @@
           <a href="../index.php"><img src="assets/images/logo.png" alt=""></a></div>
         <div class="user-logged-in">
           <div class="content">
-            <div class="user-name">Junaid Anwar <span class="text-muted f9">admin</span></div>
-            <div class="user-email">junaid4567@gmail.com</div>
+            <div class="user-name"><?php echo $_SESSION['logged_user'];?> <span class="text-muted f9"><?php echo $_SESSION['user_role']; ?></span></div>
+            <div class="user-email"><?php echo $_SESSION['user_email']; ?></div>
             <div class="user-actions"> <a class="m-r-5" href="#">settings</a> <a href="#">logout</a> </div>
           </div>
         </div>

@@ -14,7 +14,7 @@
         <div class="mat-slide-right pull-right">
           <ul class="nav navbar-nav">
             <li>
-              <a href="login.php">logout</a>
+              <a href="logout.php">logout</a>
             </li>
           </ul>
         </div>
