@@ -183,7 +183,7 @@
                                             <!-- Button -->
                                             <label class="control-label" for="register"></label>
                                             <div class="controls text-right">
-                                                <button id="register" type="submit" name="register" class="btn btn-primary btn-lg">Register</button>
+                                                <button id="register" type="submit" name="register" class="btn btn-primary btn-lg sp-cta">Register</button>
                                             </div>
                                         </form>
 
