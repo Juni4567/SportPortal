@@ -15,7 +15,7 @@
 
 	<header id="main-header">
 
-		<nav class="navbar navbar-default" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+		<nav class="navbar navbar-default" data-spy="affix" data-offset-top="100" data-offset-bottom="200">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-list">
@@ -351,7 +351,5 @@
                     <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a><ul class="dropdown-menu" role="menu"><li><a href="#">1. Is there a way..</a></li><li><a href="#">2. Hello, admin. I would..</a></li><li><a href="#"><strong>All messages</strong></a></li></ul></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
-                    <li><a title="Add Widget" data-toggle="modal" href="#addWidgetModal"><span class="glyphicon glyphicon-plus-sign"></span></a></li>
                 </ul>
                 <?php } ?>

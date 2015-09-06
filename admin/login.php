@@ -1,3 +1,8 @@
+<?php session_start();
+        if(isset($_SESSION['logged_user'])){
+            header('location:index.php');
+        }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +87,7 @@
                     //if found start session log user in
                     else {
                         $row = $result->fetch_assoc();
-                        session_start();
+
                         //store current users information in session
                         $_SESSION['logged_user']    = $row["username"];
                         $_SESSION['user_role']      = $row["user_role"];

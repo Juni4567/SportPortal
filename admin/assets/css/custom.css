@@ -12,10 +12,6 @@
     background-color: transparent;
     padding: 0;
 }
-.sidebar .user-logged-in{
-    background-color: rgba(241, 240, 242, 0.69);
-}
-
 #logo {
     display: block;
 
@@ -90,4 +86,7 @@ main .main-container .main-content{
 }
 i.md.md-36 {
     font-size: 36px;
+}
+.content{
+    color:#fff;
 }
