@@ -85,3 +85,9 @@ main .main-container .main-content{
 .card.bordered .card-action {
     border-top: 0;
 }
+.navbar .navbar-right-no-collapse{
+    margin:0;
+}
+i.md.md-36 {
+    font-size: 36px;
+}

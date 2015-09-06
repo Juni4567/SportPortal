@@ -76,7 +76,7 @@
 
 
                     if (!$result->num_rows == 1) {
-                        echo "<h2>Invalid username/password combination try again</h2>";
+                        echo "<h2>Invalid email/password try again!</h2>";
                     }
 
                     //if found start session log user in

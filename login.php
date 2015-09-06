@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_POST['submit'])){
+    header('location: index.php');
+}
 if(isset($_POST['submit'])){
 
         require_once("includes/db_connect.php");
@@ -19,7 +22,3 @@ if(isset($_POST['submit'])){
             header('location:index.php');
         }
     }
-else{
-    echo "<p>Logged in successfully as</p>" . $_SESSION['logged_user'];
-    echo "<a href='logout.php'>Logout</a> ";
-}

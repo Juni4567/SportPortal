@@ -14,7 +14,7 @@
         <div class="mat-slide-right pull-right">
           <ul class="nav navbar-nav">
             <li>
-              <a href="logout.php">logout</a>
+              <a href="logout.php"><i class="md md-settings-power md-36"></i></a>
             </li>
           </ul>
         </div>
