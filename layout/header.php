@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sport Portal</title>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css"/>
 	<!-- Google fonts -->
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans|Oswald|Roboto' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="assets/styles.css">

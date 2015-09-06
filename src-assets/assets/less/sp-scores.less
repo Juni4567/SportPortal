@@ -1,5 +1,6 @@
 .scorecard-container{
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 .match-card{
   padding:25px !important;
@@ -42,15 +43,21 @@ span.live:after {
     color:#fff;
   }
 }
-
 #football {
   .match-card {
     background-color: lighten(@football, 10%);
     color: @sp-color;
   }
 }
-
-
 #hockey {
-  background-color: #00f;
+  .match-card {
+    background-color: @hockey;
+
+  }
+}
+#tennis {
+  .match-card {
+    background-color: @tennis;
+    color:#fff;
+  }
 }
