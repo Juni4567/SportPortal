@@ -16,7 +16,7 @@
 				<ul>
 					<li><a href="#home">Home</a></li>
 					<li><a href="#livescore">Live scores</a></li>
-					<li><a href="#depart">Departments</a></li>
+					<li><a href="#depart">Teams</a></li>
 					<li><a href="#Fixtures">Fixtures</a></li>
 					<li><a href="#news">News</a></li>
 				</ul>
