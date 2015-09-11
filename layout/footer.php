@@ -33,7 +33,5 @@
 			</div>
 		</footer>
 	</div><!--main-end -->
-
-
 </body>
 </html>

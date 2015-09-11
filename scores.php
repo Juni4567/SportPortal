@@ -123,22 +123,22 @@ require('layout/header.php');
 	</div>
 </div><!--score board end-->
 <?php
-require 'includes/db_connect.php'
-    $query = "SELECT 'team1_id','team2_id','match_date_time','location','match status'" ;
-    // if ($query_run = mysql_query($query)) {
-      //  while ($query_row = mysql_fetch_assoc($query_run)) {
-        //        $team1_id = $query_row['team1_id'];
-          //      $team2_id = $query_row['team2_id'];
-            //    $match_date_time = $query_row['match_date_time'];
-              //  $location = ['location'];
-                //$matchstatus = ['match status'];  
-                //echo $team1_id. 'VS' $team2_id. 'AT' $match_date_time 'LIVE FROM' $location;
-                  }
-    //} else {
-       //echo "mysql_error()";
-    //}
-
-?>
+//require 'includes/db_connect.php'
+//    $query = "SELECT 'team1_id','team2_id','match_date_time','location','match status'" ;
+//    // if ($query_run = mysql_query($query)) {
+//      //  while ($query_row = mysql_fetch_assoc($query_run)) {
+//        //        $team1_id = $query_row['team1_id'];
+//          //      $team2_id = $query_row['team2_id'];
+//            //    $match_date_time = $query_row['match_date_time'];
+//              //  $location = ['location'];
+//                //$matchstatus = ['match status'];
+//                //echo $team1_id. 'VS' $team2_id. 'AT' $match_date_time 'LIVE FROM' $location;
+//                  }
+//    //} else {
+//       //echo "mysql_error()";
+//    //}
+//
+//?>
 
 
 

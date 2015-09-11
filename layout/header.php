@@ -9,6 +9,33 @@
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans|Oswald|Roboto' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="assets/styles.css">
     <script src="assets/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#user_name').focusout(function(){
+                var user_name = $('#user_name').val();
+                if(user_name.length > 2) {
+                    $('#username_availability_result').html('Loading..');
+                    var post_string = 'username='+user_name;
+                    $.ajax({
+                        type : 'POST',
+                        data : post_string,
+                        url  : 'username-check.php',
+                        success: function(responseText){
+                            if(responseText == 0){
+                                $('#username_availability_result').html('<span class="success">Congratulatios! username available :)</span>');
+                            }else if(responseText > 0){
+                                $('#username_availability_result').html('<span class="error">:( Username already taken</span>');
+                            }else{
+                                alert('Problem with mysql query');
+                            }
+                        }
+                    });
+                }else{
+                    $('#username_availability_result').html('');
+                }
+            });
+        });
+    </script>
 </head>
 
 <body class="sp-body">
@@ -92,7 +119,8 @@
                                                 <div class="col-sm-6">
                                                     <label class="control-label" for="username">User Name</label>
                                                     <div class="controls">
-                                                        <input id="username" name="username" type="text" class="form-control" required="">
+                                                        <input id="user_name" name="username" type="text" class="form-control" required="">
+                                                        <div class="username_availability_result" id="username_availability_result"></div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
