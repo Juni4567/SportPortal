@@ -29,18 +29,7 @@
 				<div class="collapse navbar-collapse" id="navigation-list">
 					<ul class="nav navbar-nav sp-nav">
 						<li id="scores"><a href="scores.php">LIVE SCORE</a></li>
-						<li id="dept" class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="departments.php">
-                                TEAMS
-                            <span class="caret"></span>
-                            </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="departments.php">Cricket</a></li>
-                                <li><a href="departments.php">Football</a></li>
-                                <li><a href="departments.php">Hockey</a></li>
-                                <li><a href="departments.php">Tennis</a></li>  
-                              </ul>
-                        </li>
+						<li id="dept"><a href="departments.php">TEAMS</a></li>
 				        <li id="fixtures"><a href="fixtures.php">FIXTURES</a></li>
 						<li id="news"><a href="news.php">NEWS</a></li>
 					</ul>

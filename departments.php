@@ -3,25 +3,31 @@
 require('layout/header.php');
 ?>
 <div id="score-board" class="general-section">
+  <div class="sport-nav tabbable">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#cricket" aria-controls="cricket" role="tab" data-toggle="tab">Cricket</a></li>
+            <li role="presentation"><a href="#football" aria-controls="football" role="tab" data-toggle="tab">Football</a></li>
+            <li role="presentation"><a href="#hockey" aria-controls="hockey" role="tab" data-toggle="tab">Hockey</a></li>
+            <li role="presentation"><a href="#tennis" aria-controls="tennis" role="tab" data-toggle="tab">Tennis</a></li>
+            <li role="presentation"><a href="#vollyball" aria-controls="vollyball" role="tab" data-toggle="tab">Volly Ball</a></li>
+          </ul>
+  </div>
 	<div class="container">
        <div class="team general-section">
-         <h4>Cheetas 11 from department of Information Technology</h4>
             <div class="teams">
-              <h3>Cheetas captan Junaid</h3>
-               <img src="assets\images\logos\r.jpg" class="img-thumbnail" width="120" height="120">
+              <div class="imageAndText">
+                <a href="teaminfo.php"></a>
+                <img src="assets\images\logos\r.jpg" class="align-center img-responsive" class="img-thumbnail" width="150" height="120">
+                  <div class="col">
+                    <div class="col-sm-4">
+                      <a href="teaminfo.php">Click to view team</a>
+                    </div>
+                  </div>
+              </div>
             </div>
-            <a class="btn btn-primary sp-cta" href="teaminfo.php">See junaid companions/team</a>
-        </div>
-        <div class="team general-section">
-         <h4>Skyhour 11 from department of Physics</h4>
-            <div class="teams">
-              <h3>Skyhour captan Imran</h3>
-            </div>
-            <a class="btn btn-primary sp-cta" href="teaminfo.php">See imran companions/team</a>
         </div>
 	</div><!--container end-->
 </div><!--score board end-->
-
 
 <?php
 //include header template
