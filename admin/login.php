@@ -82,6 +82,26 @@
 
                     if (!$result->num_rows == 1) {
                         echo "<h2>Invalid email/password try again!</h2>";
+                    ?>
+                        <form class="form-floating" method="post" action="<?php $_SERVER['PHP_SELF']?>">
+
+                            <div class="form-group">
+                                <label for="inputEmail" class="control-label">Email</label>
+                                <input type="text" name="admin_email" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword" class="control-label">Password</label>
+                                <input type="password" name="admin_pass" class="form-control" id="inputPassword">
+                            </div>
+                            <div class="card-action clearfix">
+                                <div class="pull-right">
+                                    <!--  <a href="password.html" class="btn btn-link"><span class="black-text">Forgot password</span></a>-->
+                                    <input type="submit" name="submit" value="Login" class="btn btn-link  black-text">
+                                </div>
+                            </div>
+                        </form>
+                <?php
                     }
 
                     //if found start session log user in
