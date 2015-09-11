@@ -34,7 +34,7 @@
 						<li id="news"><a href="news.php">NEWS</a></li>
 					</ul>
 					<div class="yellow-bg">
-						<a class="cta-btn-orange cta-header btn dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+						<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
 							<?php
 							session_start();
 								if(isset($_SESSION['logged_user']))
