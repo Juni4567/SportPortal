@@ -31,7 +31,7 @@
 				?>
 				<div class="scorecard-header">
 					<h2>Live Now</h2>
-					<h4>Total <?php echo $query_run->num_rows; ?> Cricket matches are live now</h4>
+					<h4>Total <?php echo $query_run->num_rows; ?> <?php echo $tab_name; ?> matches are live now</h4>
 				</div>
 				<?php
 				while ( $query_row = mysqli_fetch_assoc( $query_run ) ) {
