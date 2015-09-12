@@ -1,0 +1,92 @@
+.page-error, .page-login {
+    background: #DBD5E8;
+}
+
+.brand-logo {
+    text-align: center;
+    min-height: 32px;
+    background-color: #442185;
+    padding: 10px;
+}
+.sp-admin-body .brand-logo{
+    background-color: transparent;
+    padding: 0;
+}
+#logo {
+    display: block;
+
+    background: url(../images/logo.png) no-repeat;
+    width: 213px;
+    height: 30px;
+
+    margin: 0 auto;
+}
+
+.brand-logo {
+    min-height: 32px;
+}
+
+.sp-admin-body .sidebar {
+    background: rgb(47, 28, 82);
+}
+
+
+.navbar .brand-logo,
+.sidebar .brand-logo {
+    margin: 16px 0;
+    min-height: 32px;
+}
+
+.sidebar .user-logged-in {
+    padding: 20px 0;
+}
+
+.sp-admin-body .sidebar .brand-logo,
+.sp-admin-body .sidebar ul a,
+aside.sidebar i {
+    color: #222;
+}
+
+.table-title {
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
+
+.table-full tbody > tr > td:last-child {
+    overflow: visible;
+}
+
+#new-promotion-link {
+    float: left;
+    display: block;
+    width: auto;
+    height: 44px;
+    margin-top: -9px;
+    margin-left: 2px;
+}
+
+#new-promotion-submit {
+    float: left;
+    margin-left: 6px;
+}
+.brand-logo img{
+    max-width: 80%;
+}
+.sp-admin-body .sidebar .brand-logo, .sp-admin-body .sidebar ul a, aside.sidebar i {
+    color: #FFF;
+}
+main .main-container .main-content{
+    background-color: rgba(47, 28, 82, 0.04);
+}
+.card.bordered .card-action {
+    border-top: 0;
+}
+.navbar .navbar-right-no-collapse{
+    margin:0;
+}
+i.md.md-36 {
+    font-size: 36px;
+}
+.content{
+    color:#fff;
+}

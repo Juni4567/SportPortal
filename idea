@@ -1,0 +1,57 @@
+there are following super tabs in the admin:
+
+	=> teams
+		cricket{
+				phy
+				bio
+				chem
+				math
+				engli
+			}
+		footbal{
+				phy
+				bio
+				chem
+				math
+				engli
+			}
+		Tennis{
+				phy
+				bio
+				chem
+				math
+				engli
+			}
+		Vollyball{
+				phy
+				bio
+				chem
+				math
+				engli
+			}
+	
+	=> Schedule
+		Cricket{
+			Phy
+			chem
+			bio
+			math
+			engli
+		}
+		Football{
+			Phy
+			chem
+			bio
+			math
+			engli
+		}
+		Tennis{
+			Phy
+			chem
+			bio
+			math
+			engli
+		}
+
+	Score UPdates
+	Messages

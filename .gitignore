@@ -1,4 +1,2 @@
-src-assets/
-*.psd
-PSD/Pakistan Sports Portal.jpg
-SportPortal.rar
+src-assets/node_modules
+.idea

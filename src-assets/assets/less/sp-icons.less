@@ -1,0 +1,53 @@
+.carousel-navigator{
+	text-align:center;
+	a:hover{
+		opacity: .6;
+	}
+	a.next{
+		background-image:url('assets/images/icons/next.png');
+		display: inline-block;
+		height: 40px;
+		width: 60px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		position: relative;
+		z-index: 1;
+		margin-left: -35px;
+
+		&:after{
+			content: "";
+			border-top: 28px solid #E1B109;
+			position: absolute;
+			z-index: 1;
+			border-left: 30px solid transparent;
+			margin-top: 0;
+			left: 0;
+		}
+	}
+	a.prev{
+		background-image:url('assets/images/icons/prev.png');
+		display: inline-block;
+		height: 40px;
+		width: 60px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		position: relative;
+		z-index: 2;
+		&:before{
+			content: "";
+			width: 0;
+			height: 0;
+			border-bottom: 28px solid #E1B109;
+			position: absolute;
+			z-index: 2;
+			border-right: 30px solid transparent;
+			margin-top: 10px;
+			right:0;
+		}
+
+	}
+}
+
+.logo{
+	max-width: 200px;
+}
