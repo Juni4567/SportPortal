@@ -54,6 +54,10 @@
 					content: " ";
 					background-color: #fff;
 					transform: skewX(-20deg);
+                  @media (max-width: 768px) {
+                    background-color: #fff;
+                    color:#000;
+                  }
 				}
 				a{
 					line-height: 70px;
@@ -91,19 +95,19 @@
 		display: inline-block;
 		background-color: transparent;
 		right:0;
+      @media (max-width: 768px) {
+        position: absolute;
+        top: 2px;
+      }
 		> a{
-			position: relative;
-			text-transform: uppercase;
 			display: inline-block;
-			padding-right: 10px;
-			padding-left: 10px;
-			margin-right: -2px;
-			line-height: 86px;
+          padding:40px 10px;
+          position: relative;
 			color: #442185;
 			text-decoration: none;
 			cursor: pointer;
 			font-family: oswald;
-			transition: background-color 200ms ease-in;
+
 			&:focus {
 				outline: dotted thin;
 				outline: 0;
