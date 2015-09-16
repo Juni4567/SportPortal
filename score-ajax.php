@@ -1,5 +1,5 @@
 <div class="tab-content">
-	<!--Cricket container-->
+	<!--match container-->
 
 	<?php
 	$tabs = array(
