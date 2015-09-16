@@ -175,17 +175,22 @@
                                             <label class="control-label" for="Department">Department</label>
                                             <div class="controls">
                                                 <select id="Department" name="department" placeholder="select" class="form-control">
-                                                    <option value="1">IT</option>
-                                                    <option value="2">Physics</option>
-                                                    <option value="3">Chemistry</option>
-                                                    <option value="4">Biology</option>
-                                                    <option value="5">Zoology</option>
-                                                    <option value="6">Botony</option>
-                                                    <option value="7">Geology</option>
-                                                    <option value="8">CS</option>
-                                                    <option value="9">Mathematics</option>
-                                                    <option value="10">English</option>
-                                                    <!--                                                <option value="urdu">Urdu</option>-->
+                                                    <?php
+                                                        require_once 'includes/db_connect.php';
+                                                        $query = "SELECT * FROM departments";
+                                                        $query_run = mysqli_query($mysqli, $query);
+                                                        while ($query_row = mysqli_fetch_assoc($query_run))
+                                                            {
+                                                    ?>
+                                                    <option value="<?php 
+                                                                        echo $query_row['dept_id'];
+                                                                    ?>">
+                                                                    <?php 
+                                                                        echo $query_row['dept_name'];
+                                                                    ?>
+                                                    </option>
+                                                    <?php } 
+                                                    ?>
                                                 </select>
                                             </div>
 
