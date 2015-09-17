@@ -182,12 +182,8 @@
                                                         while ($query_row = mysqli_fetch_assoc($query_run))
                                                             {
                                                     ?>
-                                                    <option value="<?php 
-                                                                        echo $query_row['dept_id'];
-                                                                    ?>">
-                                                                    <?php 
-                                                                        echo $query_row['dept_name'];
-                                                                    ?>
+                                                    <option value="<?php echo $query_row['dept_id']; ?>">
+                                                        <?php echo $query_row['dept_name']; ?>
                                                     </option>
                                                     <?php } 
                                                     ?>
@@ -208,15 +204,18 @@
                                             <label class="control-label" for="Game">Game</label>
                                             <div class="controls">
                                                 <select id="Game" name="game" class="form-control">
-                                                    <option value="1">Cricket</option>
-                                                    <option value="2">Hockey</option>
-                                                    <option value="3">Football</option>
-                                                    <option value="4">Basketball</option>
-                                                    <option value="5">Snooker</option>
-                                                    <option value="6">Table tennis</option>
-                                                    <option value="7">Squash</option>
-                                                    <option value="8">Chess</option>
-                                                    <option value="9">Volleyball</option>
+                                                    <?php
+                                                    require_once 'includes/db_connect.php';
+                                                    $query = "SELECT * FROM games";
+                                                    $query_run = mysqli_query($mysqli, $query);
+                                                    while ($query_row = mysqli_fetch_assoc($query_run))
+                                                    {
+                                                        ?>
+                                                        <option value="<?php echo $query_row['g_id']; ?>">
+                                                            <?php echo $query_row['g_name']; ?>
+                                                        </option>
+                                                    <?php }
+                                                    ?>
                                                 </select>
                                             </div>
 
