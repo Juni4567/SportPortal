@@ -21,16 +21,16 @@ require( 'layout/header.php' );
 			</ul>
 
 			<div id="ajax-score-card">
-				<?php require_once 'score-ajax.php'; ?>
+				<?php require_once ('score-ajax.php'); ?>
 			</div>
 		</div>
-		<!-- tabbable	-->
-
-	</div>
+        </div>
+		<!-- end tabbable	-->
 </div><!--score board end-->
+</div> <!--some tag that needs to be closed, taking footer into container if not closed-->
 <?php
-//include header template
-require( 'layout/footer.php' );
+//include footer template
+require_once('layout/footer.php');
 ?>
 <script>
 	$(document).ready(function () {
@@ -48,10 +48,9 @@ require( 'layout/footer.php' );
 			});
 		};
 
-
 		$('#ajax-score-card').on('click', '.sp-cta', function(e) {
 			e.preventDefault();
-			alert('hello world');
+//			alert('hello world');
 			return false;
 		});
 
