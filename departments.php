@@ -16,8 +16,7 @@ require('layout/header.php');
        <div class="team general-section">
             <div class="teams">
               <div class="imageAndText">
-                <a href="teaminfo.php"></a>
-                <img src="assets\images\logos\r.jpg" class="align-center img-responsive" class="img-thumbnail" width="150" height="120">
+                <a href="teaminfo.php"></a>                
                   <div class="col">
                     <div class="col-sm-4">
                       <a href="teaminfo.php">Click to view team</a>
