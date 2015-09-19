@@ -35,12 +35,12 @@
 				</div>
 				<?php
 				while ( $query_row = mysqli_fetch_assoc( $query_run ) ) {
-					$team1_id        = $query_row['team_1_name'];
-					$team2_id        = $query_row['team_2_name'];
+					$team1_name        = $query_row['team_1_name'];
+					$team2_name        = $query_row['team_2_name'];
 					$match_date_time = $query_row['match_date_time'];
 					$location        = $query_row['location'];
 					$matchstatus     = $query_row['matchstatus'];
-//                                        echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
+//             echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
 
 					?>
 					<div class="scorecard-container">
@@ -49,11 +49,11 @@
 							<h4>At <?php echo $location; ?></h4>
 
 							<div class="teams">
-								<h3><?php echo $team1_id; ?></h3>
+								<h3><?php echo $team1_name; ?></h3>
 
 								<h2>VS</h2>
 
-								<h3><?php echo $team2_id; ?></h3>
+								<h3><?php echo $team2_name; ?></h3>
 							</div>
 							<div class="match-time">
 								<h4>Scheduled <?php echo $match_date_time; ?> </h4>

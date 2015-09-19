@@ -262,7 +262,8 @@
                                                     <div class="col-sm-6">
                                                         <label class="control-label" for="username">User Name</label>
                                                         <div class="controls">
-                                                            <input id="username" name="username" type="text" class="form-control" required="">
+                                                            <input id="user_name" name="username" type="text" class="form-control" required="" min="3">
+                                                            <div class="username_availability_result" id="username_availability_result"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -273,14 +274,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- Password input-->
+                                                <!-- Email input-->
                                                 <label class="control-label" for="email">Email</label>
                                                 <div class="controls">
-                                                    <input id="email" name="email" type="text" class="form-control" required="">
+                                                    <input id="email" name="email" type="email" class="form-control" required="">
                                                 </div>
 
                                                 <!-- Password input-->
-                                                <label class="control-label" for="password">Password</label>
+                                                <label class="control-label" for="password">Password(We need it once so be careful)</label>
                                                 <div class="controls">
                                                     <input id="password" name="password" type="password" class="form-control" required="">
 
@@ -290,7 +291,7 @@
                                                     <div class="col-sm-6">
                                                         <label class="control-label" for="Age">Age</label>
                                                         <div class="controls">
-                                                            <input id="Age" name="age" type="number" class="form-control" required="" min="14" max="90" pattern="\d*" step="1" >
+                                                            <input id="Age" name="age" type="number" class="form-control" required="" min="14" pattern="\d*" step="1" >
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -310,17 +311,18 @@
                                                 <label class="control-label" for="Department">Department</label>
                                                 <div class="controls">
                                                     <select id="Department" name="department" placeholder="select" class="form-control">
-                                                        <option value="1">IT</option>
-                                                        <option value="2">Physics</option>
-                                                        <option value="3">Chemistry</option>
-                                                        <option value="4">Biology</option>
-                                                        <option value="5">Zoology</option>
-                                                        <option value="6">Botony</option>
-                                                        <option value="7">Geology</option>
-                                                        <option value="8">CS</option>
-                                                        <option value="9">Mathematics</option>
-                                                        <option value="10">English</option>
-                                                        <!--                                                <option value="urdu">Urdu</option>-->
+                                                        <?php
+                                                        require_once 'includes/db_connect.php';
+                                                        $query = "SELECT * FROM departments";
+                                                        $query_run = mysqli_query($mysqli, $query);
+                                                        while ($query_row = mysqli_fetch_assoc($query_run))
+                                                        {
+                                                            ?>
+                                                            <option value="<?php echo $query_row['dept_id']; ?>">
+                                                                <?php echo $query_row['dept_name']; ?>
+                                                            </option>
+                                                        <?php }
+                                                        ?>
                                                     </select>
                                                 </div>
 
@@ -338,22 +340,25 @@
                                                 <label class="control-label" for="Game">Game</label>
                                                 <div class="controls">
                                                     <select id="Game" name="game" class="form-control">
-                                                        <option value="1">Cricket</option>
-                                                        <option value="2">Hockey</option>
-                                                        <option value="3">Football</option>
-                                                        <option value="4">Basketball</option>
-                                                        <option value="5">Snooker</option>
-                                                        <option value="6">Table tennis</option>
-                                                        <option value="7">Squash</option>
-                                                        <option value="8">Chess</option>
-                                                        <option value="9">Volleyball</option>
+                                                        <?php
+                                                        require_once 'includes/db_connect.php';
+                                                        $query = "SELECT * FROM games";
+                                                        $query_run = mysqli_query($mysqli, $query);
+                                                        while ($query_row = mysqli_fetch_assoc($query_run))
+                                                        {
+                                                            ?>
+                                                            <option value="<?php echo $query_row['g_id']; ?>">
+                                                                <?php echo $query_row['g_name']; ?>
+                                                            </option>
+                                                        <?php }
+                                                        ?>
                                                     </select>
                                                 </div>
 
                                                 <!-- Button -->
                                                 <label class="control-label" for="register"></label>
                                                 <div class="controls text-right">
-                                                    <button id="register" type="submit" name="register" class="btn btn-primary btn-lg">Register</button>
+                                                    <button id="register" type="submit" name="register" class="btn btn-primary btn-lg sp-cta">Register</button>
                                                 </div>
                                             </form>
                                     <?php

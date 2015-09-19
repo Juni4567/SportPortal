@@ -1,0 +1,21 @@
+.sp-left-bar-fixed {
+  width: auto;
+  position: fixed;
+  left: 0;
+  z-index: 100;
+  height: auto;
+  background-color: #FFCA12;
+  top: 30%;
+  & > li {
+    display: table-cell;
+    width: 100%;
+    clear: both;
+    float: left;
+    & > a {
+      &:hover, &:focus {
+        transform: translateX(10px);
+        transition: transform 300ms ease;
+      }
+    }
+  }
+}

@@ -1,117 +1,132 @@
 .oswald-bold {
-    font-weight: 700;
+  font-weight: 700;
 }
+
 .roboto {
-    font-family: Roboto;
+  font-family: Roboto;
 }
 
 .sport-nav ul li {
-    position: relative;
-}
-.sport-nav ul li a {
-    line-height: 25px;
-    color: #000;
-}
-.sport-nav ul li.active:before, .sport-nav ul li:hover:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    content: " ";
-    background-color: #ffca12;
-    transform: skewX(-20deg);
-}
-.sport-nav ul li.active:first-of-type:before, .sport-nav ul li:hover:first-of-type:before {
-    width: 0;
-    height: 0;
-    border-right: 16px solid rgba(86, 208, 129, 0);
-    border-top: 45px solid #FFCA12;
-    border-left: 68px solid #FFCA12;
-    transform: skewX(0);
-    background-color: transparent;
-}
-.sport-nav ul li.active a, .sport-nav ul li:hover a {
-    position: relative;
-    z-index: 11;
-    display: block;
-    color: #442185;
-    background: 0 0;
+  position: relative;
 }
 
-.sport-nav .nav-tabs .nav-tabs>li>a:hover, .sport-nav .nav-tabs>li.active>a:hover {
-    background-color: transparent;
-    border: 0;
+.sport-nav ul li a {
+  line-height: 25px;
+  color: #000;
 }
-.sport-nav li>a:hover {
-    border: none;
+
+.sport-nav ul li.active:before, .sport-nav ul li:hover:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  content: " ";
+  background-color: #ffca12;
+  transform: skewX(-20deg);
 }
+
+.sport-nav ul li.active:first-of-type:before, .sport-nav ul li:hover:first-of-type:before {
+  width: 0;
+  height: 0;
+  border-right: 16px solid rgba(86, 208, 129, 0);
+  border-top: 45px solid #FFCA12;
+  border-left: 68px solid #FFCA12;
+  transform: skewX(0);
+  background-color: transparent;
+}
+
+.sport-nav ul li.active a, .sport-nav ul li:hover a {
+  position: relative;
+  z-index: 11;
+  display: block;
+  color: #442185;
+  background: 0 0;
+}
+
+.sport-nav .nav-tabs .nav-tabs > li > a:hover, .sport-nav .nav-tabs > li.active > a:hover {
+  background-color: transparent;
+  border: 0;
+}
+
+.sport-nav li > a:hover {
+  border: none;
+}
+
 .sport-nav .nav li a:focus, .sport-nav .nav li a:hover {
-    background-color: none;
+  background-color: none;
 }
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    border: 0;
-    background-color: transparent;
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  border: 0;
+  background-color: transparent;
 }
+
 footer ul li {
-    list-style: none;
+  list-style: none;
 }
 
 .vs {
-    position: absolute;
-    display: block;
-    float: none;
-    width: 100%;
-    margin-top: 130px;
-    text-align: center;
+  position: absolute;
+  display: block;
+  float: none;
+  width: 100%;
+  margin-top: 130px;
+  text-align: center;
 }
+
 .vs a {
-    display: inline-block;
-    min-width: 100px;
-    padding: 5px;
-    font-size: 25px;
-    font-weight: 700;
-    background: #442185;
-    border-radius: 30px;
+  display: inline-block;
+  min-width: 100px;
+  padding: 5px;
+  font-size: 25px;
+  font-weight: 700;
+  background: #442185;
+  border-radius: 30px;
 }
+
 #team-1 {
-    float: left;
+  float: left;
 }
+
 #team-1, #team-2 {
-    max-width: 50%;
-    max-height: 260px;
-    overflow: hidden;
-    background: url(images/team-1.jpg);
+  max-width: 50%;
+  max-height: 260px;
+  overflow: hidden;
+  background: url(images/team-1.jpg);
 }
+
 #team-2 {
-    float: right;
+  float: right;
 }
+
 .score .col-xs-6:first-of-type {
-    border-right: 1px dotted;
+  border-right: 1px dotted;
 }
+
 .media {
-    max-height: 70px;
-    text-overflow: ellipsis;
+  max-height: 70px;
+  text-overflow: ellipsis;
 }
+
 .media img {
-    max-width: 64px;
-    height: 64px;
+  max-width: 64px;
+  height: 64px;
 }
-
-
 
 .sport-nav {
-    .nav-tabs{
-     background-color: #fff; 
- }
+  .nav-tabs {
+    background-color: #fff;
+  }
 }
 
-@media only screen and (max-width : 768px){
-   #main-header .navbar-default .navbar-nav li.active:before, #main-header .navbar-default .navbar-nav li:hover:before{
+@media only screen and (max-width: 768px) {
+  #main-header .navbar-default .navbar-nav li.active:before, #main-header .navbar-default .navbar-nav li:hover:before {
     transform: skewX(0);
-}
-#main-header .navbar-default .navbar-nav li.active:before, #main-header .navbar-default .navbar-nav li:hover:before {
+  }
+
+  #main-header .navbar-default .navbar-nav li.active:before, #main-header .navbar-default .navbar-nav li:hover:before {
     position: absolute;
     top: 0;
     left: 0;
@@ -121,36 +136,25 @@ footer ul li {
     content: " ";
     background-color: #fff;
     transform: skewX(0);
-}
-#main-header .navbar-default #navigation-list, #main-header .navbar-default .navbar-nav li {
+  }
+
+  #main-header .navbar-default #navigation-list, #main-header .navbar-default .navbar-nav li {
     position: relative;
-    
+
     overflow: visible;
-}
-#main-header .navbar-default #navigation-list, #main-header .navbar-default .navbar-nav li:first-of-type {
+  }
+
+  #main-header .navbar-default #navigation-list, #main-header .navbar-default .navbar-nav li:first-of-type {
     margin-top: 40px;
+  }
 }
-}
-.sp-login{
-    margin: 10px 0;
-    margin-bottom: 0;
-    width: 100%;
-}
-.sp-left-bar-fixed {
-  width: auto;
-  position: fixed;
-  left: 0;
-  z-index: 1111111111111111111;
-  height: auto;
-  background-color: #FFCA12;
-  top: 30%;
-}
-.sp-left-bar-fixed>li {
-  display: table-cell;
+
+.sp-login {
+  margin: 10px 0;
+  margin-bottom: 0;
   width: 100%;
-  clear: both;
-  float: left;
 }
+
 #main-header .navbar-default .navbar-brand {
   min-height: 75px;
   z-index: 15;

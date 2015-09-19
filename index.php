@@ -222,12 +222,6 @@ include('layout/header.php');
 </div><!--score board end-->
 
 
-
-<div class="general-section" id="partners-section">
-	<div class="container">
-		<img src="assets/images/partners.jpg" class="img-responsive" alt="Partners logos">
-	</div>
-</div>
 <?php 
 //include header template
 include('layout/footer.php');
