@@ -13,18 +13,13 @@ require('layout/header.php');
           </ul>
   </div>
 	<div class="container">
-       <div class="team general-section">
-            <div class="teams">
-              <div class="imageAndText">
-                <a href="teaminfo.php"></a>                
-                  <div class="col">
-                    <div class="col-sm-4">
-                      <a href="teaminfo.php">Click to view team</a>
-                    </div>
-                  </div>
-              </div>
-            </div>
+      <div class="team general-section">
+        <div role="tabpanel" class="tab-pane fade in" id="cricket">
+          <div class="imageAndText">
+            <a href="teaminfo.php"><img src="assets/images/logo/1.jpg"></a>
+          </div>
         </div>
+      </div>
 	</div><!--container end-->
 </div><!--score board end-->
 
