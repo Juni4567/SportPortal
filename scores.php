@@ -8,7 +8,7 @@ require( 'layout/header.php' );
 		<div class="sport-nav tabbable">
 			<ul class="nav nav-tabs" role="tablist">
 
-				<li role="presentation" class="active"><a href="#cricket" aria-controls="cricket" role="tab"
+				<li role="presentation" class=""><a href="#cricket" aria-controls="cricket" role="tab"
 				                                          data-toggle="tab">Cricket</a></li>
 				<li role="presentation"><a href="#football" aria-controls="football" role="tab" data-toggle="tab">Football</a>
 				</li>
