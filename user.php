@@ -60,7 +60,113 @@ include('layout/header.php');
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur exercitationem hic itaque quasi quia similique sunt voluptate! Architecto esse et inventore magnam porro quae? Ad delectus enim hic voluptatum?</p>
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="messages">sdfsdfa</div>
-                                        <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
+                                        <div role="tabpanel" class="tab-pane fade" id="settings">
+                                            <form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="">
+                                                <!-- Text input-->
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="username">User Name</label>
+                                                        <div class="controls">
+                                                            <input id="user_name" name="username" type="text" class="form-control" required="" min="3">
+                                                            <div class="username_availability_result" id="username_availability_result"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <!-- Text input-->
+                                                        <label class="control-label" for="fullname">Full name</label>
+                                                        <div class="controls">
+                                                            <input id="fullname" name="fullname" type="text" class="form-control" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Email input-->
+                                                <label class="control-label" for="email">Email</label>
+                                                <div class="controls">
+                                                    <input id="email" name="email" type="email" class="form-control" required="">
+                                                </div>
+
+                                                <!-- Password input-->
+                                                <label class="control-label" for="password">Password(We need it once so be careful)</label>
+                                                <div class="controls">
+                                                    <input id="password" name="password" type="password" class="form-control" required="">
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="Age">Age</label>
+                                                        <div class="controls">
+                                                            <input id="Age" name="age" type="number" class="form-control" required="" min="14" pattern="\d*" step="1" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="Gender">Gender</label>
+                                                        <div class="controls">
+                                                            <select id="Gender" name="gender" class="form-control">
+                                                                <option value="male">Male</option>
+                                                                <option value="female">Female</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- Select Basic -->
+                                                <label class="control-label" for="Department">Department</label>
+                                                <div class="controls">
+                                                    <select id="Department" name="department" placeholder="select" class="form-control">
+                                                        <?php
+                                                        require_once 'includes/db_connect.php';
+                                                        $query = "SELECT * FROM departments";
+                                                        $query_run = mysqli_query($mysqli, $query);
+                                                        while ($query_row = mysqli_fetch_assoc($query_run))
+                                                        {
+                                                            ?>
+                                                            <option value="<?php echo $query_row['dept_id']; ?>">
+                                                                <?php echo $query_row['dept_name']; ?>
+                                                            </option>
+                                                        <?php }
+                                                        ?>
+                                                    </select>
+                                                </div>
+
+                                                <!-- Select Basic -->
+                                                <label class="control-label" for="User role">User Role</label>
+                                                <div class="controls">
+                                                    <select id="User role" name="role" class="form-control">
+                                                        <option value="Co-ordinator">Coordinator</option>
+                                                        <option value="Sub-coordinator">Sub-coordinator</option>
+                                                        <option value="Player">Player</option>
+                                                    </select>
+                                                </div>
+
+                                                <!-- Select Basic -->
+                                                <label class="control-label" for="Game">Game</label>
+                                                <div class="controls">
+                                                    <select id="Game" name="game" class="form-control">
+                                                        <?php
+                                                        require_once 'includes/db_connect.php';
+                                                        $query = "SELECT * FROM games";
+                                                        $query_run = mysqli_query($mysqli, $query);
+                                                        while ($query_row = mysqli_fetch_assoc($query_run))
+                                                        {
+                                                            ?>
+                                                            <option value="<?php echo $query_row['g_id']; ?>">
+                                                                <?php echo $query_row['g_name']; ?>
+                                                            </option>
+                                                        <?php }
+                                                        ?>
+                                                    </select>
+                                                </div>
+
+                                                <!-- Button -->
+                                                <label class="control-label" for="register"></label>
+                                                <div class="controls text-right">
+                                                    <button id="register" type="submit" name="register" class="btn btn-primary btn-lg sp-cta">Register</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
 
                                 </div>

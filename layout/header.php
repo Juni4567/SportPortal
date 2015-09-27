@@ -87,9 +87,11 @@ if (!isset($_SESSION)) session_start();
 							if(isset($_SESSION['logged_user']))
 							{
 								$logged_user= $_SESSION['logged_user'];
-                                echo "<p><a href='index.php'>HOME</a></p>";
-								echo "<p><a href='user.php'>". $logged_user. "</a></p>";
-								echo "<p><a href='logout.php'> Logout</a></p> ";
+                                echo "<ul class='nav nav-pils'>";
+                                echo "<li><a href='index.php'>HOME</a></li>";
+								echo "<li><a href='user.php'>". $logged_user. "</a></li>";
+								echo "<li><a href='logout.php'> Logout</a></li>";
+                                echo "</ul>";
 							} else{
 								?>
 								<form action='login.php' method='post' class="sp-form">
