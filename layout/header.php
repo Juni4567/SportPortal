@@ -393,7 +393,7 @@
 		<div id="main">
             <?php if(isset($_SESSION['logged_user'])){ ?>
                 <ul class="nav nav-justified sp-left-bar-fixed">
-                    <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>
+                    <li><a href="user-panel.php"><i class="glyphicon glyphicon-cog"></i></a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a><ul class="dropdown-menu" role="menu"><li><a href="#">1. Is there a way..</a></li><li><a href="#">2. Hello, admin. I would..</a></li><li><a href="#"><strong>All messages</strong></a></li></ul></li>
                 </ul>

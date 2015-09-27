@@ -19,3 +19,73 @@
     }
   }
 }
+.sp-profile{
+  box-shadow: 1px 3px 20px;
+}
+.profile-body{
+  background-color: #fff;
+}
+.profile-inner{
+  h2,.h2{
+  &:first-of-type{
+    margin-top:0;
+  }
+  }
+}
+.user-bio{
+  span{
+    margin-right: 5px;
+  }
+}
+.profile-header{
+  background-color: #13DAB5;
+  padding: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+
+  .profile-status{
+    color: rgb(15, 212, 32);
+    font-size: 22px;
+  }
+  .h2, h2{
+    margin-top: 0;
+  }
+}
+.sp-userimg{
+  position:absolute;
+  margin-top: -10px;
+  img{
+    max-width: 160px;
+    max-height: 160px;
+  }
+}
+.sp-profile-nav{
+  margin-top: 75px;
+  li 
+  {
+    a
+    {
+      color: black;
+      &:hover{
+        color:black;
+      }
+    }
+    &.active{
+      background-color: #EEE;
+    }
+  }
+
+  li:after{
+    content: " ";
+    width: 70%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+    margin-left: -35%;
+  }
+  li:last-of-type:after{
+    height: 0;
+  }
+}
