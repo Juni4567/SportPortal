@@ -15,7 +15,8 @@ if ( isset( $_POST['submit'] ) ) {
 	$row    = $result->fetch_assoc();
 
 	if ( ! $result->num_rows == 1 ) {
-		echo "<p>Invalid username/password combination try again</p>";
+		echo "<div class='alert alert-danger'>Invalid username/password combination try again</div>";
+        include_once('index.php');
 	} else {
 		$_SESSION['logged_user'] = $row['username'];
 		$_SESSION['user_role']   = $row['user_role'];

@@ -1,5 +1,5 @@
 <?php
-    session_start();
+if (!isset($_SESSION)) session_start();
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -87,8 +87,9 @@
 							if(isset($_SESSION['logged_user']))
 							{
 								$logged_user= $_SESSION['logged_user'];
-								echo "<p>Welcome ". $logged_user. "</p>";
-								echo "<a href='logout.php'>Logout</a> ";
+                                echo "<p><a href='index.php'>HOME</a></p>";
+								echo "<p><a href='user.php'>". $logged_user. "</a></p>";
+								echo "<p><a href='logout.php'> Logout</a></p> ";
 							} else{
 								?>
 								<form action='login.php' method='post' class="sp-form">
@@ -391,10 +392,3 @@
 
 		</header>
 		<div id="main">
-            <?php if(isset($_SESSION['logged_user'])){ ?>
-                <ul class="nav nav-justified sp-left-bar-fixed">
-                    <li><a href="user-panel.php"><i class="glyphicon glyphicon-cog"></i></a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a><ul class="dropdown-menu" role="menu"><li><a href="#">1. Is there a way..</a></li><li><a href="#">2. Hello, admin. I would..</a></li><li><a href="#"><strong>All messages</strong></a></li></ul></li>
-                </ul>
-            <?php } ?>
