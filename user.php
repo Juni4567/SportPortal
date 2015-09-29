@@ -1,6 +1,12 @@
 <?php
 //include header template
 include('layout/header.php');
+if(isset($_SESSION['logged_user']))
+{
+    require_once 'includes/db_connect.php';
+    $query = "SELECT * FROM users WHERE username = '$logged_user'";
+    $query_run = mysqli_query($mysqli, $query);
+    $query_row = mysqli_fetch_assoc($query_run);
 ?>
     <div class="general-section">
         <div class="container">
@@ -9,20 +15,35 @@ include('layout/header.php');
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="sp-userimg">
-                                <img src="assets/images/user.png" alt="Junaid Anwar"/>
+                                <img src="assets/images/user.png" alt="<?php echo $query_row['username'];?>"/>
                             </div>
                         </div>
                         <div class="col-sm-9">
                             <div class="userinfo">
-                                <h2>Junaid Anwar &#9670; <span class="user-age">23</span>
+                                <h2><?php echo $query_row['fullname']; ?> &#9670; <span class="user-age"><?php echo $query_row['age']; ?></span>
                                     <span class="profile-status">
+                                        <?php
+                                            if($query_row['user_role']=='Coordinator'){
+                                        ?>
                                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </span>
+                                        <?php  } ?>
+                                        <?php
+                                         if($query_row['user_role']=='Player'){
+                                        ?>
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    <?php  } ?>
+                                        <?php
+                                        if($query_row['user_role']=='sub-Coordinator'){
+                                            ?>
+                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                        <?php  } ?>
+
                                 </h2>
 
-                                <div class="user-bio"><span class="teamname glyphicon glyphicon-globe">BS(IT) </span>
+                                <div class="user-bio"><span class="teamname glyphicon glyphicon-globe"><?php echo $query_row['dept_id']; ?> </span>
                                     <span
                                         class="languages glyphicon glyphicon-comment">English, Urdu, Punjabi, Pushto</span>
                                 </div>
@@ -61,6 +82,11 @@ include('layout/header.php');
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="messages">sdfsdfa</div>
                                         <div role="tabpanel" class="tab-pane fade" id="settings">
+                                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                                Select image to upload:
+                                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                                <input type="submit" value="Upload Image" name="submit">
+                                            </form>
                                             <form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="">
                                                 <!-- Text input-->
                                                 <div class="row">
@@ -180,6 +206,7 @@ include('layout/header.php');
         </div>
     </div>
 <?php
+}
 //include header template
 include('layout/footer.php');
 ?>
