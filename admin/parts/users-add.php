@@ -9,7 +9,7 @@
 	<div class="row  m-b-40">
 		<div class="col-md-8">
 			<div class="well white" id="forms-validation-container">
-				<form class="form-floating" action="<?php $_SERVER['PHP_SELF']?>">
+				<form class="form-floating" action="<?php $_SERVER['PHP_SELF']?>" method="post">
 					<fieldset>
 
 						<div class="form-group">
@@ -39,7 +39,7 @@
 						</div>
 
 						<div class="form-group">
-							<button name="btn-signup" type="submit" class="btn btn-primary">Submit</button>
+							<button name="adminsignup" type="submit" class="btn btn-primary">Submit</button>
 							<a href="index.php" class="btn btn-link">Cancel</a>
 						</div>
 
