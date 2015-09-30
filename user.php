@@ -15,7 +15,7 @@ if(isset($_SESSION['logged_user']))
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="sp-userimg">
-                                <img src="assets/images/user.png" alt="<?php echo $query_row['username'];?>"/>
+                                <img src="<?php echo $query_row['images'];?>" alt="<?php echo $query_row['username'];?>"/>
                             </div>
                         </div>
                         <div class="col-sm-9">
@@ -44,8 +44,7 @@ if(isset($_SESSION['logged_user']))
                                 </h2>
 
                                 <div class="user-bio"><span class="teamname glyphicon glyphicon-globe"><?php echo $query_row['dept_id']; ?> </span>
-                                    <span
-                                        class="languages glyphicon glyphicon-comment">English, Urdu, Punjabi, Pushto</span>
+                                    <span class="languages glyphicon glyphicon-comment"><?php echo $query_row['languages']; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +69,7 @@ if(isset($_SESSION['logged_user']))
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane fade in active" id="profile">
                                             <h2>Tagline</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cum dolor, ea fuga fugit libero nam nobis obcaecati optio quaerat reiciendis sint suscipit tenetur totam unde vel voluptate. Cupiditate, id?</p>
+                                            <p><?php echo $query_row['introduction']; ?></p>
                                             <h2>Sports History</h2>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur exercitationem hic itaque quasi quia similique sunt voluptate! Architecto esse et inventore magnam porro quae? Ad delectus enim hic voluptatum?</p>
 

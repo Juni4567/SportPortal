@@ -1,4 +1,6 @@
 <?php
+session_start();
+$logged_user = $_SESSION['logged_user'];
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -37,6 +39,12 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        //Upload link to current user's row
+        require_once 'includes/db_connect.php';
+        $query = "UPDATE users set images='$target_file' WHERE username = '$logged_user'";
+        if(mysqli_query($mysqli, $query)){
+            header("location: user.php");
+        };
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
