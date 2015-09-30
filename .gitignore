@@ -1,2 +1,4 @@
 src-assets/node_modules
+admin/includes/db_connect.php
+includes/db_connect.php
 .idea
