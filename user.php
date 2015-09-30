@@ -83,9 +83,9 @@ if(isset($_SESSION['logged_user']))
                                         <div role="tabpanel" class="tab-pane fade" id="messages">sdfsdfa</div>
                                         <div role="tabpanel" class="tab-pane fade" id="settings">
                                             <form action="upload.php" method="post" enctype="multipart/form-data">
-                                                Select image to upload:
+                                                Select profile picture:
                                                 <input type="file" name="fileToUpload" id="fileToUpload">
-                                                <input type="submit" value="Upload Image" name="submit">
+                                                <input type="submit" value="Upload Image" name="submit" class="btn sp-cta">
                                             </form>
                                             <form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="">
                                                 <!-- Text input-->

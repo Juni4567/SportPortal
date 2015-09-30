@@ -2,9 +2,7 @@
 	<div class="page-header">
 		<h1><i class="md md-security"></i> Admins</h1>
 
-		<p class="lead">
-			The following Admins already exists in the database
-		</p>
+		<p class="lead">List of Registered Admins</p>
 	</div>
 
 
@@ -17,21 +15,27 @@
 					<table class="table table-full m-b-60" id="table-area-1" fsm-big-data="data of data take 30">
 						<thead>
 						<tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
-							<th fsm-sort="firstname">Name</th>
-							<th fsm-sort="lastname">role</th>
+                            <th>ID</th>
+							<th>Name</th>
+							<th>role</th>
 							<th>Email</th>
 							<th class="text-right">Actions</th>
 						</tr>
 						</thead>
 						<tbody>
-
-						<?php for ($i = 0;
-						$i < 10;
-						$i ++) : ?>
+<?php
+require_once 'includes/db_connect.php';
+$i =1;
+$query = "SELECT * FROM users WHERE user_role = 'Admin'";
+$query_run = mysqli_query($mysqli, $query);
+?>
+						<?php while ($query_row = mysqli_fetch_assoc($query_run)){
+						 ?>
 						<tr>
-							<td>Junaid Anwar</td>
-							<td>Admin</td>
-							<td>Junaid<?php echo $i; ?>@gmail.com</a></td>
+                            <th><?php echo $i; ?></th>
+							<td><?php echo $query_row['fullname']; ?></td>
+							<td><?php echo $query_row['user_role']; ?></td>
+							<td><?php echo $query_row['email']; ?></a></td>
 							<td class="text-right">
 
 								<div class="dropdown pull-right">
@@ -57,7 +61,7 @@
 
 				</td>
 				</tr>
-				<?php endfor; ?>
+				<?php $i++;} ?>
 
 				</tbody>
 				</table>
