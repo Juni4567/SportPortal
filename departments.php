@@ -3,6 +3,7 @@
 require('layout/header.php');
 ?>
 <div id="score-board" class="general-section">
+    <div class="container">
   <div class="sport-nav tabbable">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#cricket" aria-controls="cricket" role="tab" data-toggle="tab">Cricket</a></li>
@@ -12,6 +13,7 @@ require('layout/header.php');
             <li role="presentation"><a href="#vollyball" aria-controls="vollyball" role="tab" data-toggle="tab">Volly Ball</a></li>
           </ul>
   </div>
+    </div>
 	<div class="container">
       <div class="team general-section">
         <div role="tabpanel" class="tab-pane fade in" id="cricket">
