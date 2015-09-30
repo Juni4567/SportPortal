@@ -3,6 +3,7 @@
 include('layout/header.php');
 if(isset($_SESSION['logged_user']))
 {
+//    Ftploy test
     require_once 'includes/db_connect.php';
     $query = "SELECT * FROM users WHERE username = '$logged_user'";
     $query_run = mysqli_query($mysqli, $query);
