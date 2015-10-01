@@ -4,9 +4,9 @@ In every field or department that’s working on modern rules, they work on web 
 
 #Main Modules
 Followings are the main modules of proposed system
-   Logins
-   Reminders
-   chedule Generation
-   Real time scoring
-   Result generation
-   Ranking
+   -Logins
+   -Reminders
+   -Schedule Generation
+   -Real time scoring
+   -Result generation
+   -Ranking
