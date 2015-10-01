@@ -11,5 +11,5 @@ In every field or department that’s working on modern rules, they work on web 
    * Ranking
 
 #Efficiency 
-Efficiency of any system is concerned with the minimum processing time as well as the optimal use of system resources in designing the proposed system; the efficiency factor has been taken well into consideration as COMSATS SPORTS PORTAL provides efficient inputs with less resources.
+Efficiency of any system is concerned with the minimum processing time as well as the optimal use of system resources in designing the proposed system; the efficiency factor has been taken well into consideration as SPORTS PORTAL provides efficient inputs with less resources.
    
