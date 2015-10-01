@@ -59,7 +59,7 @@ if(isset($_SESSION['logged_user']))
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-pils" role="tablist">
                                         <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Notifications</a></li>
                                         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
                                     </ul>
                                 </div>
