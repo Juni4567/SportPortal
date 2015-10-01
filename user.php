@@ -72,7 +72,7 @@ if(isset($_SESSION['logged_user']))
                                             <h2>Tagline</h2>
                                             <p><?php echo $query_row['introduction']; ?></p>
                                             <h2>Sports History</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur exercitationem hic itaque quasi quia similique sunt voluptate! Architecto esse et inventore magnam porro quae? Ad delectus enim hic voluptatum?</p>
+                                            <p>Please describe your sports history here. What sports did you played in the past and what are the most interesting sports that you want to play. why did you register for this sport?</p>
 
                                             <h2>Life Events</h2>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur exercitationem hic itaque quasi quia similique sunt voluptate! Architecto esse et inventore magnam porro quae? Ad delectus enim hic voluptatum?</p>
