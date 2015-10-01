@@ -78,7 +78,7 @@ if(isset($_SESSION['logged_user']))
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur exercitationem hic itaque quasi quia similique sunt voluptate! Architecto esse et inventore magnam porro quae? Ad delectus enim hic voluptatum?</p>
 
                                             <h2>Awards</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur exercitationem hic itaque quasi quia similique sunt voluptate! Architecto esse et inventore magnam porro quae? Ad delectus enim hic voluptatum?</p>
+                                            <p>Any awards you have received. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur exercitationem hic itaque quasi quia similique sunt voluptate! Architecto esse et inventore magnam porro quae? Ad delectus enim hic voluptatum?</p>
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="messages">sdfsdfa</div>
                                         <div role="tabpanel" class="tab-pane fade" id="settings">
