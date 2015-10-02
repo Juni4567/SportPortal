@@ -26,10 +26,10 @@
       </li>
     </ul>
    <ul class="nav navbar-nav navbar-right">
-    
-    <li>
-      <a href="login.php">Logout</a>
-    </li>
+
+       <li>
+           <a href="logout.php"><i class="md md-settings-power md-36"></i></a>
+       </li>
   </ul>
 </div>
 </nav>

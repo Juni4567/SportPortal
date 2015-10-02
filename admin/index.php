@@ -6,8 +6,6 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
         <?php include('parts/navigation.php'); ?>
         <div class="main-content">
             <?php include('parts/dashboard.php'); ?>
-            <?php include('parts/users-add.php'); ?>
-
         </div>
     </div>
     <?php include('parts/footer.php'); ?>
