@@ -7,14 +7,19 @@ if ( isset( $_POST['submit'] ) ) {
 
 	require_once( "includes/db_connect.php" );
 	$username = $_POST['username'];
-	$email    = $_POST['email'];
 	$password = $_POST['password'];
+    $findme   = '@';
 
+    if(strpos($username, $findme)){
+    $sql    = "SELECT * from users WHERE email = '$username' AND password = '$password' LIMIT 1";
+    $result = $mysqli->query( $sql );
+    $row    = $result->fetch_assoc();
+    }
+    else{
 	$sql    = "SELECT * from users WHERE username = '$username' AND password = '$password' LIMIT 1";
-//	var_dump($sql);exit;
     $result = $mysqli->query( $sql );
 	$row    = $result->fetch_assoc();
-
+    }
 	if ( $result->num_rows == 0 ) {
 		echo "<div class='alert alert-danger'>Invalid username/password combination try again</div>";
         include_once('index.php');

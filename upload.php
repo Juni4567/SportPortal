@@ -2,17 +2,21 @@
 session_start();
 $logged_user = $_SESSION['logged_user'];
 $target_dir = "uploads/";
+
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+//echo $target_file;exit;
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    var_dump($_FILES["fileToUpload"]["tmp_name"]);
+    print_r($_FILES["fileToUpload"]["tmp_name"]); exit;
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+        echo "Please upload an image.";
         $uploadOk = 0;
     }
 }
