@@ -17,7 +17,7 @@
 						<tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
                             <th>ID</th>
 							<th>Name</th>
-							<th>role</th>
+							<th>username</th>
 							<th>Email</th>
 							<th class="text-right">Actions</th>
 						</tr>
@@ -34,7 +34,7 @@ $query_run = mysqli_query($mysqli, $query);
 						<tr>
                             <th><?php echo $i; ?></th>
 							<td><?php echo $query_row['fullname']; ?></td>
-							<td><?php echo $query_row['user_role']; ?></td>
+							<td><?php echo $query_row['username']; ?></td>
 							<td><?php echo $query_row['email']; ?></a></td>
 							<td class="text-right">
 
@@ -51,7 +51,8 @@ $query_run = mysqli_query($mysqli, $query);
 											</div>
 
 											<div class="form-group">
-												<button type="submit" class="btn btn-primary" onclick="alert('Done'); return false;">Confirm</button>
+												<button type="submit" class="btn btn-primary" onclick="alert('Done'); return false;">Confirm
+												</button>
 												<a href="#" class="btn btn-link">Cancel</a>
 											</div>
 										</div>
