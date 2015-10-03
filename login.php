@@ -35,7 +35,7 @@ if ( isset( $_POST['submit'] ) ) {
 			echo "<p>Logged in successfully as</p>" . $_SESSION['logged_user'];
 			echo "<a href='logout.php'>Logout</a> ";
 			// do stuffs
-			header( 'location:index.php' );
+			header( 'location:user.php' );
 		}
 	}
 }
