@@ -35,6 +35,11 @@
 						</div>
 
 						<div class="form-group">
+							<label class="control-label">Age</label>
+							<input class="form-control" required="" type="integer" name="age">
+						</div>
+
+						<div class="form-group">
 							<button name="adminsignup" type="submit" class="btn btn-primary">Submit</button>
 							<a href="index.php" class="btn btn-link">Cancel</a>
 						</div>

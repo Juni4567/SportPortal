@@ -14,6 +14,7 @@ if(isset($_POST['adminsignup'])){
     $email		= $_POST["email"];
     $password	= $_POST["password1"];
     $password2	= $_POST["password2"];
+    $age = $_POST["age"];
     // check if username and email exist else insert
     $result = $mysqli->query("SELECT username from users WHERE username = '{$username}' LIMIT 1");
     $email_exist = $mysqli->query("SELECT email from users WHERE email = '{$email}' LIMIT 1");
@@ -23,7 +24,7 @@ if(isset($_POST['adminsignup'])){
     else {
         // insert data into mysql database
         $sql = "INSERT INTO users (`user_id`, `username`, `fullname`, `email`, `password`, `age`, `gender`, `dept_id`, `user_role`, `g_id`)
-      VALUES                      ('$', '$username', '$fullname', '$email', '$password', null , null , 2 , 'Admin' , 1)";
+      VALUES                      ('$', '$username', '$fullname', '$email', '$password', $age , null , null , 'Admin' , null)";
         //$sql = "INSERT  INTO `users` (`user_id`, `username`, 'fullname', `email`, `password`, `age`, `gender`)
         //VALUES (26, '{$username}', '{$fullname}', '{$email}', '{$password}', '{$age}', '{$gender}')";
         if ($mysqli->query($sql)) {
