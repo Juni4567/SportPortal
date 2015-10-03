@@ -22,30 +22,30 @@ require('layout/header.php');
 
                     <?php
                     require_once 'includes/db_connect.php';
-                    
-                    $query1 = "SELECT * FROM matches WHERE matchstatus='completed' AND g_id='1'";
-                    $query1_run = mysqli_query($mysqli, $query1);
-                    if(!$query1_run->num_rows){
+
+                    $query     = "SELECT m.*, t1.team_name as `team_1_name`, t2.team_name as `team_2_name` FROM matches AS m INNER JOIN teams AS t1 ON (t1.team_id = m.team1_id) INNER JOIN teams AS t2 ON (t2.team_id = m.team2_id) WHERE m.matchstatus='completed'";
+                    $query_run = mysqli_query($mysqli, $query);
+                    if(!$query_run->num_rows){
                     ?> <h4 class="alert alert-danger">No matches are completed for this game right now</h4>
                      <?php
                     }
-                    if ($query1_run){
+                    if ($query_run){
                         ?>
                         <div class="scorecard-header">
                             <h2>Completed</h2>
-                            <h4>Total <?php echo $query1_run->num_rows; ?> Cricket matches are Completed</h4>
+                            <h4>Total <?php echo $query_run->num_rows; ?> Cricket matches are Completed</h4>
                         </div>
                         <?php
-                        while ($query1_row = mysqli_fetch_assoc($query1_run)) {
-                            $team1_id = $query1_row['team1_id'];
-                            $team2_id = $query1_row['team2_id'];
-                            $match_id = $query1_row['match_id'];
+                        while ($query_row = mysqli_fetch_assoc($query_run)) {
+                            $team1_id = $query_row['team_1_name'];
+                            $team2_id = $query_row['team_2_name'];
+                            $match_id = $query_row['match_id'];
                             $query = "SELECT * FROM results WHERE match_id='$match_id' limit 1";
                             $query_run = mysqli_query($mysqli, $query);
                             $query_row = mysqli_fetch_assoc($query_run);
                             $team_id = $query_row['team_id'];
                             $match_score = $query_row['match_score'];
-//                                        echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
+//                           echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
 
                             ?>
                             <div class="scorecard-container">
