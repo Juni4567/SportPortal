@@ -96,3 +96,7 @@ i.md.md-36 {
     padding: 0;
     margin: 0;
 }
+.navbar-default .navbar-nav>li>a{
+    background-color: #E91E63;
+    color: #fff;
+}
