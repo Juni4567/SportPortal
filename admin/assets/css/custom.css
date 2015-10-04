@@ -78,7 +78,7 @@ aside.sidebar i {
 main .main-container .main-content{
     background-color: rgba(47, 28, 82, 0.04);
     padding-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 64px;
 }
 .card.bordered .card-action {
     border-top: 0;
@@ -98,10 +98,34 @@ i.md.md-36 {
     padding: 0;
     margin: 0;
 }
+.half a{
+    text-transform: uppercase;
+}
+.half .h1, .half .h2, .half .h3, .half h1, .half h2, .half h3{
+    margin-top:10px;
+}
 .navbar-default .navbar-nav>li>a{
     background-color: #E91E63;
     color: #fff;
 }
 .form-floating{
     margin-bottom: 0;
+}
+.dashboard-content ul{
+    list-style: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.dashboard-content ul li h5{
+    margin-bottom: 4px;
+
+}
+.dashboard-content ul li{
+    margin:10px auto;
+    border-bottom: 1px solid #d3d3d3;
+    background-color: #EBEBEB;
+}
+.dashboard-content h1,.dashboard-content h2,.dashboard-content h3,.dashboard-content h4,.dashboard-content h5 {
+    margin-top: 0;
 }

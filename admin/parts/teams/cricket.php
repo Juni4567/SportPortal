@@ -2,7 +2,6 @@
 
 	<div class="row m-b-40">
 		<div class="col-md-3 col-md-push-9" id="general-elements-intro">
-			
 		</div>
 		<div class="col-md-8 col-md-pull-3">
 			<div class="well white">
