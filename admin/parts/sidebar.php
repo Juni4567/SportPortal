@@ -9,7 +9,6 @@
                 <span class="text-muted f9"><?php echo $_SESSION['user_role']; ?></span>
             </div>
             <div class="user-email"><?php echo $_SESSION['user_email']; ?></div>
-            <div class="user-actions"><a class="m-r-5" href="#">settings</a> <a href="#">logout</a></div>
         </div>
     </div>
     <ul class="menu-links">
@@ -21,26 +20,26 @@
                     <a href="cricket.php">Cricket</a>
                 </li>
                 <li name="football">
-                    <a href="#">Football</a>
+                    <a href="football.php">Football</a>
                 </li>
                 <li name="hockey">
-                    <a href="#">Hockey</a>
+                    <a href="hockey.php">Hockey</a>
                 </li>
                 <li name="tennis">
-                    <a href="#">Tennis</a>
+                    <a href="tennis.php">Tennis</a>
                 </li>
                 <li name="vollyball">
-                    <a href="#">Volly Ball</a>
+                    <a href="vollyball.php">Volly Ball</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="#"><i class="md md-list"></i>Schedule</a>
+            <a href="schedule.php"><i class="md md-list"></i>Schedule</a>
         </li>
         <li>
-            <a href="#"><i class="md md-refresh"></i>Score Update</a>
+            <a href="live-update.php"><i class="md md-refresh"></i>Score Update</a>
         </li>
-        <li><a href="#">
+        <li><a href="messages.php">
                 <i class="md md-chat"></i>Messages</a>
         </li>
         <li><a href="add-new.php">

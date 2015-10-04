@@ -79,6 +79,7 @@ main .main-container .main-content{
     background-color: rgba(47, 28, 82, 0.04);
     padding-bottom: 20px;
     padding-top: 64px;
+    min-height: 100vh;
 }
 .card.bordered .card-action {
     border-top: 0;
