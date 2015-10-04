@@ -49,7 +49,27 @@
                                             <div class="w300">
                                                 Please confirm if you want to delete this user
                                             </div>
-
+							<th>Name</th>
+							<th>username</th>
+							<th>Email</th>
+							<th class="text-right">Actions</th>
+						</tr>
+						</thead>
+						<tbody>
+<?php
+require_once 'includes/db_connect.php';
+$i =1;
+$query = "SELECT * FROM users WHERE user_role = 'Admin'";
+$query_run = mysqli_query($mysqli, $query);
+?>
+						<?php while ($query_row = mysqli_fetch_assoc($query_run)){
+						 ?>
+						<tr>
+                            <th><?php echo $i; ?></th>
+							<td><?php echo $query_row['fullname']; ?></td>
+							<td><?php echo $query_row['username']; ?></td>
+							<td><?php echo $query_row['email']; ?></a></td>
+							<td class="text-right">
                                             <div class="form-group">
                                                 <button type="submit" id="<?php echo $query_row['user_id']; ?>"
                                                         class="btn btn-primary delbutton">Confirm
@@ -65,6 +85,15 @@
                 </tr>
                 <?php $i++;
                 } ?>
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary" onclick="alert('Done'); return false;">Confirm
+												</button>
+												<a href="#" class="btn btn-link">Cancel</a>
+											</div>
+										</div>
+									</div>
+								</div>
+				</div>
 
                 </tbody>
                 </table>
