@@ -2,7 +2,6 @@
 //include header template
 require('layout/header.php');
 ?>
-
 <div id="score-board" class="general-section">
     <div class="container">
         <div class="sport-nav tabbable">
@@ -74,7 +73,7 @@ require('layout/header.php');
                     $query_run = mysqli_query($mysqli, $query);
                     if(!$query_run->num_rows){
                         ?> <h4 class="alert alert-danger">No matches are completed for this sport</h4>
-                        <?php return;
+                        <?php
                     }
                     if ($query_run){
                         ?>

@@ -1,10 +1,13 @@
 <?php
+include('layout/header.php');
+?>
+<div class="container">
+<?php
 session_start();
 $logged_user = $_SESSION['logged_user'];
 $target_dir = "uploads/";
 
 //$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-
 $temp = explode(".", $_FILES["fileToUpload"]["name"]);
 $target_file = round(microtime(true)) . '.' . end($temp);
 
@@ -18,31 +21,33 @@ if(isset($_POST["submit"])) {
 //    print_r($_FILES["fileToUpload"]["tmp_name"]); exit;
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            echo "<div class='alert alert-danger' role='alert'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</div>";
+            $uploadOk = 0;
+            return;
+        }
         $uploadOk = 1;
     } else {
-        echo "Please upload an image.";
+        echo "<div class='alert alert-danger' role='alert'>Please upload an image.</div>";
         $uploadOk = 0;
     }
 }
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
+//// Check if file already exists
+//if (file_exists($target_file)) {
+//    echo "<div class='alert alert-danger' role='alert'>Sorry, file already exists.</div>";
+//    $uploadOk = 0;
+//}
 //// Check file size
 //if ($_FILES["fileToUpload"]["size"] > 500000) {
 //    echo "Sorry, your file is too large.";
 //    $uploadOk = 0;
 //}
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
+
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
+    echo "<div class='alert alert-danger' role='alert'>Sorry, your file was not uploaded.</div>";
 // if everything is ok, try to upload file
 } else {
 
@@ -55,7 +60,9 @@ if ($uploadOk == 0) {
             header("location: user.php");
         };
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo "<div class='alert alert-danger' role='alert'>Sorry, there was an error uploading your file.</div>";
     }
+
 }
 ?>
+</div>

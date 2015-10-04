@@ -12,8 +12,8 @@
                         <thead>
                         <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>role</th>
+                            <th>User name</th>
+                            <th>Full Name</th>
                             <th>Email</th>
                             <th class="text-right">Actions</th>
                         </tr>
@@ -29,8 +29,8 @@
                         ?>
                         <tr>
                             <td><?php echo $i; ?></td>
+                            <td><?php echo $query_row['username']; ?></td>
                             <td><?php echo $query_row['fullname']; ?></td>
-                            <td><?php echo $query_row['user_role']; ?></td>
                             <td><?php echo $query_row['email']; ?></a></td>
                             <td class="text-right">
                                 <div class="dropdown pull-right">
