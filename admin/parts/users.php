@@ -1,14 +1,10 @@
 <section>
     <div class="page-header">
         <h1><i class="md md-security"></i> Admins</h1>
-
         <p class="lead">List of Registered Admins</p>
     </div>
-
-
     <div class="row">
         <div class="col-md-8">
-
             <div>
                 <div class="table-responsive well no-padding white no-margin">
 
