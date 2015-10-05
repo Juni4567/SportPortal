@@ -82,8 +82,8 @@ if (!isset($_SESSION)) session_start();
 							?><span class='caret'></span>
 						</a>
 						<div class="dropdown-menu">
-							<?php 
-							
+							<?php
+
 							if(isset($_SESSION['logged_user']))
 							{
 								$logged_user= $_SESSION['logged_user'];
@@ -109,7 +109,7 @@ if (!isset($_SESSION)) session_start();
                             <a href="#" data-toggle="modal" data-target="#sp_register">REGISTER</a>
                         <?php } ?>
 					</div>
-<!--                        pasting register code-->
+<!-- register code-->
                     <!-- Registration Modal -->
                     <div class="modal fade sp-modal" id="sp_register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
@@ -119,10 +119,7 @@ if (!isset($_SESSION)) session_start();
                                     <h4 class="modal-title" id="myModalLabel">Registration Form</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <?php
-
-                                    if (!isset($_POST['register'])) {
-                                        ?>
+                                    <?php if (!isset($_POST['register'])) { ?>
                                         <!-- The HTML registration form -->
                                         <form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="sp-form">
                                             <!-- Text input-->
@@ -189,7 +186,7 @@ if (!isset($_SESSION)) session_start();
                                                     <option value="<?php echo $query_row['dept_id']; ?>">
                                                         <?php echo $query_row['dept_name']; ?>
                                                     </option>
-                                                    <?php } 
+                                                    <?php }
                                                     ?>
                                                 </select>
                                             </div>
