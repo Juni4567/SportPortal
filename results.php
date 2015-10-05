@@ -165,6 +165,6 @@ require('layout/footer.php');
 ?>
 <script>
     $( document ).ready(function() {
-        $('.sp-nav').find('#fixtures').addClass('active').children('a').removeAttr('href');
+        $('.sp-nav').find('#results').addClass('active').children('a').removeAttr('href');
     });
 </script>

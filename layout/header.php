@@ -66,7 +66,7 @@ if (!isset($_SESSION)) session_start();
 						<li id="scores"><a href="scores.php">LIVE SCORE</a></li>
                         <li id="fixtures"><a href="fixtures.php">FIXTURES</a></li>
                         <li id="results"><a href="results.php">RESULTS</a></li>
-                        <li id="dept"><a href="departments.php">TEAMS</a></li>
+                        <li id="dept"><a href="teams.php">TEAMS</a></li>
 						<li id="news"><a href="news.php">NEWS</a></li>
 					</ul>
 					<div class="yellow-bg">
