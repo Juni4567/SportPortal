@@ -39,7 +39,7 @@ require('layout/header.php');
                   </div>
                   <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                       <a class="thumbnail" href="teaminfo.php">
-                          <img src="assets/images/logo/1.jpg">
+                          <img src="assets/images/logo/2.png">
                       </a>
                   </div>
                   <div class="col-lg-3 col-md-4 col-xs-6 thumb">
@@ -59,7 +59,7 @@ require('layout/header.php');
                   </div>
                   <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                       <a class="thumbnail" href="teaminfo.php">
-                          <img src="assets/images/logo/1.jpg">
+                          <img src="assets/images/logo/2.png">
                       </a>
                   </div>
                   <div class="col-lg-3 col-md-4 col-xs-6 thumb">
