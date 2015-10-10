@@ -7,16 +7,15 @@ if (!isset($_SESSION)) session_start();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sport Portal</title>
-    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css"/>
 	<!-- Google fonts -->
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans|Oswald|Roboto' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="assets/styles.css">
     <script src="assets/scripts.js"></script>
     <script type="text/javascript">
+//        Real Time user check from database
         $(document).ready(function(){
             $('#user_name').focusout(function(){
                 var user_name = $('#user_name').val();
-
 
                 if(user_name.length > 2) {
                     $('#username_availability_result').html('Loading..');

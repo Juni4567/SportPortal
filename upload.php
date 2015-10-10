@@ -33,7 +33,11 @@
             require_once 'includes/db_connect.php';
             $query = "UPDATE users set images='$target_file' WHERE username = '$logged_user'";
             if (mysqli_query($mysqli, $query)) {
-                header("location: user.php");
+                ?>
+    <script>
+        window.location.replace("user.php");
+    </script>
+    <?php
             }
         } else {
             echo "<div class='alert alert-danger' role='alert'>Sorry, there was an error uploading your file.</div>";

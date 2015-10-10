@@ -83,9 +83,12 @@ if(isset($_SESSION['logged_user']))
                                         <div role="tabpanel" class="tab-pane fade" id="messages">sdfsdfa</div>
                                         <div role="tabpanel" class="tab-pane fade" id="settings">
                                             <form action="upload.php" method="post" enctype="multipart/form-data">
-                                                Select profile picture:
+
+                                                <label class="control-label" for="fileToUpload">Select profile picture:</label>
+                                                <div class="controls">
                                                 <input type="file" name="fileToUpload" id="fileToUpload">
-                                                <input type="submit" value="Upload Image" name="submit" class="btn sp-cta">
+                                                <input type="submit" value="Upload Image" name="submit" class="btn btn-default" style="margin: 5px 0;">
+                                                </div>
                                             </form>
                                             <form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="">
                                                 <!-- Text input-->
@@ -93,7 +96,7 @@ if(isset($_SESSION['logged_user']))
                                                     <div class="col-sm-6">
                                                         <label class="control-label" for="username">User Name</label>
                                                         <div class="controls">
-                                                            <input id="user_name" name="username" type="text" class="form-control" required="" min="3">
+                                                            <input placeholder="<?php echo $query_row['username']; ?>" type="text" class="form-control" required="" min="3" disabled>
                                                             <div class="username_availability_result" id="username_availability_result"></div>
                                                         </div>
                                                     </div>
@@ -101,37 +104,33 @@ if(isset($_SESSION['logged_user']))
                                                         <!-- Text input-->
                                                         <label class="control-label" for="fullname">Full name</label>
                                                         <div class="controls">
-                                                            <input id="fullname" name="fullname" type="text" class="form-control" required="">
+                                                            <input id="fullname" placeholder="<?php echo $query_row['fullname']; ?>" name="fullname" type="text" class="form-control" required="">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- Email input-->
                                                 <label class="control-label" for="email">Email</label>
                                                 <div class="controls">
-                                                    <input id="email" name="email" type="email" class="form-control" required="">
+                                                    <input id="email" placeholder="<?php echo $query_row['email']; ?>" name="email" type="email" class="form-control" required="">
                                                 </div>
 
                                                 <!-- Password input-->
-                                                <label class="control-label" for="password">Password(We need it once so be careful)</label>
+                                                <label class="control-label" for="password">Password</label>
                                                 <div class="controls">
                                                     <input id="password" name="password" type="password" class="form-control" required="">
-
                                                 </div>
 
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <label class="control-label" for="Age">Age</label>
                                                         <div class="controls">
-                                                            <input id="Age" name="age" type="number" class="form-control" required="" min="14" pattern="\d*" step="1" >
+                                                            <input id="Age" placeholder="<?php echo $query_row['age']; ?>" name="age" type="number" class="form-control" required="" min="14" pattern="\d*" step="1" >
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <label class="control-label" for="Gender">Gender</label>
                                                         <div class="controls">
-                                                            <select id="Gender" name="gender" class="form-control">
-                                                                <option value="male">Male</option>
-                                                                <option value="female">Female</option>
-                                                            </select>
+                                                            <input id="gender" placeholder="<?php echo $query_row['gender']; ?>"class="form-control" disabled>
                                                         </div>
 
                                                     </div>
@@ -141,55 +140,26 @@ if(isset($_SESSION['logged_user']))
                                                 <!-- Select Basic -->
                                                 <label class="control-label" for="Department">Department</label>
                                                 <div class="controls">
-                                                    <select id="Department" name="department" placeholder="select" class="form-control">
-                                                        <?php
-                                                        require_once 'includes/db_connect.php';
-                                                        $query = "SELECT * FROM departments";
-                                                        $query_run = mysqli_query($mysqli, $query);
-                                                        while ($query_row = mysqli_fetch_assoc($query_run))
-                                                        {
-                                                            ?>
-                                                            <option value="<?php echo $query_row['dept_id']; ?>">
-                                                                <?php echo $query_row['dept_name']; ?>
-                                                            </option>
-                                                        <?php }
-                                                        ?>
-                                                    </select>
+                                                    <input id="department" placeholder="<?php echo $query_row['dept_id']; ?>"class="form-control">
                                                 </div>
 
                                                 <!-- Select Basic -->
                                                 <label class="control-label" for="User role">User Role</label>
                                                 <div class="controls">
-                                                    <select id="User role" name="role" class="form-control">
-                                                        <option value="Co-ordinator">Coordinator</option>
-                                                        <option value="Sub-coordinator">Sub-coordinator</option>
-                                                        <option value="Player">Player</option>
-                                                    </select>
+                                                    <input id="department" placeholder="<?php echo $query_row['user_role']; ?>" class="form-control" disabled>
                                                 </div>
 
                                                 <!-- Select Basic -->
                                                 <label class="control-label" for="Game">Game</label>
                                                 <div class="controls">
-                                                    <select id="Game" name="game" class="form-control">
-                                                        <?php
-                                                        require_once 'includes/db_connect.php';
-                                                        $query = "SELECT * FROM games";
-                                                        $query_run = mysqli_query($mysqli, $query);
-                                                        while ($query_row = mysqli_fetch_assoc($query_run))
-                                                        {
-                                                            ?>
-                                                            <option value="<?php echo $query_row['g_id']; ?>">
-                                                                <?php echo $query_row['g_name']; ?>
-                                                            </option>
-                                                        <?php }
-                                                        ?>
-                                                    </select>
+                                                    <input id="department" placeholder="<?php echo $query_row['g_id']; ?>"class="form-control">
                                                 </div>
 
                                                 <!-- Button -->
                                                 <label class="control-label" for="register"></label>
                                                 <div class="controls text-right">
-                                                    <button id="register" type="submit" name="register" class="btn btn-primary btn-lg sp-cta">Register</button>
+                                                    <button id="register" type="submit" name="register" class="btn btn-primary">Update</button>
+                                                    <button id="register" type="reset" name="register" class="btn btn-primary">Cancel</button>
                                                 </div>
                                             </form>
                                         </div>
