@@ -37,7 +37,24 @@
             <a href="schedule.php"><i class="md md-list"></i>Schedule</a>
         </li>
         <li>
-            <a href="live-update.php"><i class="md md-refresh"></i>Score Update</a>
+            <a href="#" data-toggle="collapse" data-target="#list1" aria-expanded="false" aria-controls="list" class="collapsible-header waves-effect"><i class="md md-group"></i>score updates</a>
+            <ul id="list1" class="collapse">
+                <li name="cricket">
+                    <a href="livegames.php">Cricket</a>
+                </li>
+                <li name="football">
+                    <a href="football.php">Football</a>
+                </li>
+                <li name="hockey">
+                    <a href="hockey.php">Hockey</a>
+                </li>
+                <li name="tennis">
+                    <a href="tennis.php">Tennis</a>
+                </li>
+                <li name="vollyball">
+                    <a href="vollyball.php">Volly Ball</a>
+                </li>
+            </ul>
         </li>
         <li><a href="messages.php">
                 <i class="md md-chat"></i>Messages</a>

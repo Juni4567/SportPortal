@@ -5,7 +5,6 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
     <div class="main-container">
         <?php include('parts/navigation.php'); ?>
         <div class="main-content">
-            <h1>Update Scores here</h1>
         </div>
     </div>
     <?php include('parts/footer.php'); ?>
