@@ -40,6 +40,13 @@
 					$match_date_time = $query_row['match_date_time'];
 					$location        = $query_row['location'];
 					$matchstatus     = $query_row['matchstatus'];
+                    $match_id        = $query_row['match_id'];
+                    $se_ls = "SELECT * from livescores where match_id='$match_id'";
+                    $se_run = mysqli_query($mysqli, $se_ls);
+                    $se_row = mysqli_fetch_assoc($se_run);
+                    $runs = $se_row['runs'];
+                    $overs = $se_row['over'];
+                    $wickets = $se_row['wicket'];
 //             echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
 
 					?>
@@ -55,13 +62,12 @@
 
 								<h3><?php echo $team2_name; ?></h3>
 							</div>
-							<div class="match-time">
-								<h4>Scheduled <?php echo $match_date_time; ?> </h4>
-							</div>
-							<a class="btn btn-primary sp-cta">
-								Live Scorecard
-								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
+<!--							<div class="match-time">-->
+<!--								<h4>Scheduled --><?php //echo $match_date_time; ?><!-- </h4>-->
+<!--							</div>-->
+                            <div class="match-time">
+                                <h4><?php echo $runs.'/'.$wickets. '   Overs: '.$overs; ?> </h4>
+                            </div>
 						</div>
 					</div>
 				<?php
