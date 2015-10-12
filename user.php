@@ -61,6 +61,7 @@ if(isset($_SESSION['logged_user']))
                                         <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
                                         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Notifications</a></li>
                                         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                                        <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab" data-toggle="tab">Player Requests</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -160,15 +161,48 @@ if(isset($_SESSION['logged_user']))
                                                 <div class="controls text-right">
                                                     <button id="register" type="submit" name="register" class="btn btn-primary">Update</button>
                                                     <button id="register" type="reset" name="register" class="btn btn-primary">Cancel</button>
-                                                </div>
                                             </form>
                                         </div>
                                     </div>
-
+                                    <div role="tabpanel" class="tab-pane fade" id="playerrequest">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <th class="text-center">s.no</th>
+                                                    <th class="text-center">Name</th>
+                                                    <th class="text-center">Email</th>
+                                                    <th colspan="2" class="text-center">Status</th>
+                                                </thead>
+                                                <tbody>
+                                            <?php
+                                            require_once 'includes/db_connect.php';
+                                            $i = 1;
+                                            $game_id = $query_row['g_id'];
+                                            $dept_id = $query_row['dept_id'];
+                                            $user_id = $query_row['user_id'];
+                                            $query1 = "SELECT * FROM users WHERE g_id='$game_id' and dept_id = '$dept_id' and user_id!='$user_id'";
+                                            $query1_run = mysqli_query($mysqli, $query1);
+                                            while($query1_row = mysqli_fetch_assoc($query1_run))
+                                            {
+                                                $user_id = $query1_row['user_id'];
+                                                $name = $query1_row['username'];
+                                                $email = $query1_row['email'];
+                                                $status = $query1_row['status_id'];?>
+                                                <tr>
+                                                    <td><input type="hidden" name="id" value="<?php echo $user_id;?>" /><?php echo $i;?></td>
+                                                    <td ><?php echo $name;?></td>
+                                                    <td><?php echo $email;?></td>
+                                                    <td><button type="submit" name="accepted">Accepted</button></td>
+                                                    <td><button type="submit" name="rejected">Rejected</button></td>
+                            
+                                                </tr>
+                                            <?php
+                                              }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                    </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
