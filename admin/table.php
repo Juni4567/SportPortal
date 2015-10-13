@@ -21,7 +21,7 @@
         $over = $_POST["over"];
         $score = $_POST["score"];
         $wickets = $_POST["wicket"];
-         $query ="UPDATE livescores set over = '$over', runs = '$score', wicket = '$wickets' where match_id = '$match_id'";
+        $query ="UPDATE livescores set over = '$over', runs = '$score', wicket = '$wickets' where match_id = '$match_id'";
         $query_run = mysqli_query($mysqli, $query);
              
       }
@@ -38,7 +38,7 @@
     <h2><?php 
     require_once 'includes/db_connect.php';
     $match_id = $_GET['match_id'];
-    $se_match = "select * from matches where match_id = '$match_id'";
+    $se_match = "SELECT * from matches where match_id = '$match_id'";
     $se_run = mysqli_query($mysqli, $se_match);
     $se_row = mysqli_fetch_assoc($se_run);
     $team1 = $se_row['team1_id'];
@@ -54,8 +54,14 @@
     </h2>
     </center>
   <CENTER><form>
-    Date:<input type="date" name="date">
-    Ground Name:<input type="text" name="groundname">
+    Date:<input type="date" name="date"><br>
+    Ground Name:<?php 
+    require_once 'includes/db_connect.php';
+    $se_match = "select * from matches where match_id = '$match_id'";
+    $se_run = mysqli_query($mysqli, $se_match);
+    $se_row = mysqli_fetch_assoc($se_run);
+    $g_name = $se_row['location'];?>
+    <?php echo "$g_name";?><br>
     Team Innings:
       <select>
       <option value="text">BS 11</option>
@@ -78,12 +84,13 @@
       <CENTER><button type="submit" name="submit">Submit over</button></CENTER>
       </form>
   <br>
-  <form>
-    <CENTER>Winning team:<select>
+  <form class="text-center">
+      Winning team:<select>
       <option value="text">BS 11</option>
       <option value="text">CS 11</option>
-      </select></CENTER><br>
-    <CENTER><button type="button">End match</button></CENTER>
+      </select><br></br>
+      RESULT: <input class="text-center"type="text" name="result" required="required"><br></br>
+      <button type="button">End match</button>
   </form><br>
 </div>
 </body>
