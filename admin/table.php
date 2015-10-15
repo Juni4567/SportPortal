@@ -61,12 +61,23 @@
     $se_run = mysqli_query($mysqli, $se_match);
     $se_row = mysqli_fetch_assoc($se_run);
     $g_name = $se_row['location'];?>
-    <?php echo "$g_name";?><br>
+    <?php echo "$g_name"; $i=1;?><br>
     Team Innings:
-      <select>
-      <option value="text">BS 11</option>
-      <option value="text">CS 11</option>
-      </select>
+    <select>
+     <option value="" name=>Select one</option>
+     <?php
+     require_once 'includes/db_connect.php';
+     $qu ="select * from matches where match_id = '$match_id'";
+     $run = mysqli_query($mysqli,$qu);
+     while ($row=mysqli_fetch_array($run))
+     {
+       $team1 = $se_row_team1['team_name'];
+       $team2 = $se_row_team2['team_name'];
+       ?>
+       <option><?php echo "$team1"; ?></option>
+       <option><?php echo "$team2"; ?></option>
+     <?php } ?>
+   </select>  
   </form></CENTER><br>
    <table name="over" class="table table-bordered">
       <tr>
@@ -86,12 +97,41 @@
   <br>
   <form class="text-center">
       Winning team:<select>
-      <option value="text">BS 11</option>
-      <option value="text">CS 11</option>
-      </select><br></br>
+     <option value="" name="winning team">Select one</option>
+     <?php
+     require_once 'includes/db_connect.php';
+     $qu ="select * from matches where match_id = '$match_id'";
+     $run = mysqli_query($mysqli,$qu);
+     while ($row=mysqli_fetch_array($run))
+     {
+       $team1 = $se_row_team1['team_name'];
+       $team2 = $se_row_team2['team_name'];
+       ?>
+       <option><?php echo "$team1"; ?></option>
+       <option><?php echo "$team2"; ?></option>
+     <?php } ?>
+   </select><br></br>
       RESULT: <input class="text-center"type="text" name="result" required="required"><br></br>
-      <button type="button">End match</button>
+      <button name="End"type="button">End match</button>
   </form><br>
 </div>
 </body>
 </html>
+   <?php
+//     require_once 'includes/db_connect.php';
+//     if(isset($_POST['End'])){
+//       $match_id = $_GET['match_id'];
+//       $winning_team_id = $_POST['winning_team'];
+//       $matchstatus = $_POST['result'];
+//       }
+//       else
+//       {
+//       $query = "SELECT m.*, t1.team_name as `team_1_name`, t2.team_name as `team_2_name` 
+//       FROM matches AS m INNER JOIN teams AS t1 ON (t1.team_id = m.team1_id) 
+//       INNER JOIN teams AS t2 ON (t2.team_id = m.team2_id) WHERE m.matchstatus='live'";
+
+//       $query = "INSERT INTO results (result_id,match_id,team_id,g_id,match_score,status)
+//       VALUES ('".$_GET['match_id']."','".$_POST["winning_team"]."','".$_POST["g_id"]."','".$_POST["match_score"]."','".$_POST["status"]."')";
+//       $query_run = mysqli_query($mysqli, $query);
+//       } 
+// ?>
