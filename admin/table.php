@@ -111,7 +111,7 @@
        <option><?php echo "$team2"; ?></option>
      <?php } ?>
    </select><br></br>
-      RESULT: <input class="text-center"type="text" name="result" required="required"><br></br>
+      Comments: <input class="text-center"type="text" name="result" required="required"><br></br>
       <button name="End"type="button">End match</button>
   </form><br>
 </div>
