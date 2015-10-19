@@ -15,6 +15,7 @@ require('layout/header.php');
             $query_run2 = mysqli_query($mysqli, $query2);
             $query_row = mysqli_fetch_assoc($query_run);
             $query_row2 = mysqli_fetch_assoc($query_run2);
+            //$query2, $query_run2 and $query_row2 are to get dept name
             ?>
             <div class="col-lg-12">
                 <h1 class="page-header"><?php echo $query_row2['dept_name']; ?> - <?php echo $query_row['g_name']; ?> PLayers</h1>
@@ -28,11 +29,21 @@ require('layout/header.php');
             {
             while ($se_row = mysqli_fetch_assoc($se_run))
             {
+                //get userid from players table and find in users table and get their picture link
+                $user_id = $se_row['user_id'];
+                $query3 = "SELECT * FROM users WHERE user_id = '$user_id'";
+                $query_run3 = mysqli_query($mysqli, $query3);
+                $query_row3 = mysqli_fetch_assoc($query_run3);
             ?>
+
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a class="thumbnail" href="#">
-                    <img src="assets/images/logo/1.jpg">
+                    <img src="uploads/profile/<?php echo $query_row3['images']; ?>">
                 </a>
+                <div class = "caption">
+                    <h3><?php echo $query_row3['fullname']; ?></h3>
+                    <p><?php echo $query_row3['introduction']; ?></p>
+                </div>
             </div>
             <?php }}?>
         </div> <!-- row end -->

@@ -20,14 +20,43 @@ require('layout/header.php');
         </div>
     </div>
     <div class="container">
-        <div class="team general-section">
-            <div role="tabpanel" class="tab-pane fade in" id="cricket">
+        <div class="team general-section tab-content">
+
+            <div role="tabpanel" class="active tab-pane fade in" id="cricket">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Teams Gallery</h1>
                     </div>
                     <?php
                     $se_team = "SELECT * from teams where g_id = '1'";
+                    $se_run = mysqli_query($mysqli,$se_team);
+                    $se_re = mysqli_num_rows($se_run);
+                    if($se_re >0)
+                    {
+                        while ($se_row = mysqli_fetch_assoc($se_run))
+                        {
+                            ?>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <a class="thumbnail" href="teaminfo.php?did=<?php echo $se_row['dept_id'];?>&gid=<?php echo $se_row['g_id'];?>">
+                                    <img src="assets/images/logo/1.jpg">
+                                </a>
+                            </div>
+                        <?php }}?>
+
+                </div>
+                <!-- row end -->
+            </div>
+            <!-- cricket end -->
+
+
+
+            <div role="tabpanel" class="tab-pane fade in" id="football">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Teams Gallery</h1>
+                    </div>
+                    <?php
+                    $se_team = "SELECT * from teams where g_id = '2'";
                     $se_run = mysqli_query($mysqli,$se_team);
                     $se_re = mysqli_num_rows($se_run);
                     if($se_re >0)
@@ -45,7 +74,7 @@ require('layout/header.php');
                 </div>
                 <!-- row end -->
             </div>
-            <!-- cricket end -->
+            <!-- football end -->
         </div>
     </div>
     <!--container end-->
