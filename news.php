@@ -5,13 +5,17 @@ require('layout/header.php');
 <div id="score-board" class="general-section">
 	<div class="container">
 		<div>
-            <?php for($i=1; $i<4; $i++){ ?>
+            <?php
+            require_once 'includes/db_connect.php';
+            $query = "SELECT * FROM news";
+            $query_run = mysqli_query($mysqli, $query);
+                while ($query_row = mysqli_fetch_assoc($query_run))
+                { ?>
                 <div class="scorecard-container">
                     <div class="news-card general-section">
-                        <a href="#" class="h2">The match has been canceled</a>
-                        <p>The match scheduled at Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid, aperiam at cum delectus dicta
-                            doloremque eaque, excepturi expedita minima molestiae, odio praesentium quod reprehenderit soluta suscipit velit vero voluptatum!</p>
-                        <a class="btn btn-primary sp-cta">Readmore...</a>
+                        <a href="news_page.php?n_id=<?php echo $query_row['news_id'];?>" class="h2"><?php echo $query_row['news_heading']; ?></a>
+                        <p><?php echo $query_row['newsdescription']; ?></p>
+                        <a class="btn btn-primary sp-cta" href="news_page.php?n_id=<?php echo $query_row['news_id'];?>">Readmore...</a>
                     </div>
                 </div>
             <?php } ?>
