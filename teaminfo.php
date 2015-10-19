@@ -6,13 +6,21 @@ require('layout/header.php');
 <div id="score-board" class="general-section">
 	<div class="container">
         <div class="row">
-
-            <div class="col-lg-12">
-                <h1 class="page-header">BS(IT) - Cricket PLayers</h1>
-            </div>
             <?php
             $gid = $_GET['gid'];
             $did = $_GET['did'];
+            $query = "SELECT * FROM games WHERE g_id = '$gid'";
+            $query2 = "SELECT * FROM departments WHERE dept_id = '$did'";
+            $query_run  = mysqli_query($mysqli, $query);
+            $query_run2 = mysqli_query($mysqli, $query2);
+            $query_row = mysqli_fetch_assoc($query_run);
+            $query_row2 = mysqli_fetch_assoc($query_run2);
+            ?>
+            <div class="col-lg-12">
+                <h1 class="page-header"><?php echo $query_row2['dept_name']; ?> - <?php echo $query_row['g_name']; ?> PLayers</h1>
+            </div>
+            <?php
+
             $se_team = "SELECT * from player where g_id = '$gid' and dept_id = '$did'";
             $se_run = mysqli_query($mysqli,$se_team);
             $se_re = mysqli_num_rows($se_run);
@@ -22,7 +30,7 @@ require('layout/header.php');
             {
             ?>
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="teaminfo.php">
+                <a class="thumbnail" href="#">
                     <img src="assets/images/logo/1.jpg">
                 </a>
             </div>
