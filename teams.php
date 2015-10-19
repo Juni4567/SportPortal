@@ -38,7 +38,7 @@ require('layout/header.php');
                             ?>
                             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                                 <a class="thumbnail" href="teaminfo.php?did=<?php echo $se_row['dept_id'];?>&gid=<?php echo $se_row['g_id'];?>">
-                                    <img src="assets/images/logo/1.jpg">
+                                    <img src="uploads/teamlogos/<?php echo $se_row['teamlogo'];?>">
                                 </a>
                             </div>
                         <?php }}?>
