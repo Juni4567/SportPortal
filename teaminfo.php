@@ -2,7 +2,6 @@
 //include header template
 require('layout/header.php');
 ?>
-<div class="container general-section"></div>
 <div id="score-board" class="general-section">
 	<div class="container">
         <div class="row">
