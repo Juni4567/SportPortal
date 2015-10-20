@@ -37,7 +37,7 @@ if (isset($_SESSION['logged_user'])) {
                                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                         <?php } ?>
                                         <?php
-                                        if ($query_row['user_role'] == 'sub-Coordinator') {
+                                        if ($query_row['user_role'] == 'Sub-coordinator') {
                                             ?>
                                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
@@ -67,13 +67,14 @@ if (isset($_SESSION['logged_user'])) {
         <div class="sp-profile-nav">
             <!-- Nav tabs -->
             <ul class="nav nav-pils" role="tablist">
-                <li role="presentation" class="active"><a href="#profile" aria-controls="profile"
-                                                          role="tab" data-toggle="tab">Profile</a>
-                </li>
-                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab"
-                                           data-toggle="tab">Settings</a></li>
-                <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest"
-                                           role="tab" data-toggle="tab">Player Requests</a></li>
+                <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+    <?php if( $query_row['user_role']== 'Sub-coordinator'){ ?>
+        <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab" data-toggle="tab">Player Requests</a></li>
+    <?php } ?>
+    <?php if( $query_row['user_role']== 'Coordinator'){ ?>
+        <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab" data-toggle="tab">Sub-Coordinators Request</a></li>
+    <?php } ?>
             </ul>
         </div>
     </div>
@@ -223,7 +224,8 @@ if (isset($_SESSION['logged_user'])) {
                     </form>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="playerrequest">
+            <?php if( $query_row['user_role']== 'Sub-coordinator'){ ?>
+                <div role="tabpanel" class="tab-pane fade" id="playerrequest">
                 <table class="table table-bordered">
                     <thead>
                     <th class="text-center">s.no</th>
@@ -235,10 +237,11 @@ if (isset($_SESSION['logged_user'])) {
                     <?php
                     require_once 'includes/db_connect.php';
                     $i = 1;
-                    $game_id = $query_row['g_id'];
-                    $dept_id = $query_row['dept_id'];
-                    $user_id = $query_row['user_id'];
-                    $query1 = "SELECT * FROM users WHERE g_id='$game_id' and dept_id = '$dept_id' and user_id!='$user_id'";
+                   $game_id = $query_row['g_id'];
+                   $dept_id = $query_row['dept_id'];
+                   $user_id = $query_row['user_id'];
+
+                    $query1 = "SELECT * FROM users WHERE g_id='$game_id' and dept_id = '$dept_id' and user_role= 'Player' and user_id!='$user_id'";
                     $query1_run = mysqli_query($mysqli, $query1);
                     while ($query1_row = mysqli_fetch_assoc($query1_run)) {
                         $user_id = $query1_row['user_id'];
@@ -247,7 +250,7 @@ if (isset($_SESSION['logged_user'])) {
                         $status = $query1_row['status_id'];?>
                         <tr>
                             <td><input type="hidden" name="id"
-                                       value="<?php echo $user_id; ?>"/><?php echo $i; ?></td>
+                                       value="<?php echo $user_id; ?>"/><?php echo $i++; ?></td>
                             <td><?php echo $name; ?></td>
                             <td><?php echo $email; ?></td>
                             <td>
@@ -264,6 +267,53 @@ if (isset($_SESSION['logged_user'])) {
                     </tbody>
                 </table>
             </div>
+            <?php } ?>
+
+
+            <?php if( $query_row['user_role']== 'Coordinator'){ ?>
+                <div role="tabpanel" class="tab-pane fade" id="playerrequest">
+                    <table class="table table-bordered">
+                        <thead>
+                        <th class="text-center">s.no</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Email</th>
+                        <th colspan="2" class="text-center">Status</th>
+                        </thead>
+                        <tbody>
+                        <?php
+                        require_once 'includes/db_connect.php';
+                        $i = 1;
+                        $game_id = $query_row['g_id'];
+                        $dept_id = $query_row['dept_id'];
+                        $user_id = $query_row['user_id'];
+
+                        $query1 = "SELECT * FROM users WHERE dept_id = '$dept_id' and user_role= 'Sub-coordinator' and user_id!='$user_id'";
+                        $query1_run = mysqli_query($mysqli, $query1);
+                        while ($query1_row = mysqli_fetch_assoc($query1_run)) {
+                            $user_id = $query1_row['user_id'];
+                            $name = $query1_row['username'];
+                            $email = $query1_row['email'];
+                            $status = $query1_row['status_id'];?>
+                            <tr>
+                                <td><input type="hidden" name="id"
+                                           value="<?php echo $user_id; ?>"/><?php echo $i++; ?></td>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $email; ?></td>
+                                <td>
+                                    <button type="submit" name="accepted">Accept</button>
+                                </td>
+                                <td>
+                                    <button type="submit" name="rejected">Reject</button>
+                                </td>
+
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php } ?>
         </div>
     </div>
     </div>

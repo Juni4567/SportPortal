@@ -18,7 +18,6 @@ require('layout/header.php');
                 <!--Cricket container-->
                 <div role="tabpanel" class="tab-pane active fade in" id="cricket">
 
-
                     <?php
                     require_once 'includes/db_connect.php';
 
@@ -56,7 +55,6 @@ require('layout/header.php');
                                     <div class="match-time">
                                         <h4><?php echo $match_score; ?> </h4>
                                     </div>
-                                    <a class="btn btn-primary sp-cta"> View Scorecard  <span class="glyphicon glyphicon-new-window"></span></a>
                                 </div>
                             </div>
                         <?php
@@ -101,7 +99,7 @@ require('layout/header.php');
                                     <div class="match-time">
                                         <h4>Scheduled <?php echo $match_date_time; ?> </h4>
                                     </div>
-                                    <a class="btn btn-primary sp-cta">Live Scorecard  <span class="glyphicon glyphicon-new-window"></span></a>
+
                                 </div>
                             </div>
                         <?php
@@ -124,7 +122,7 @@ require('layout/header.php');
                                 <div class="match-time">
                                     <h4>Scheduled at 16:00</h4>
                                 </div>
-                                <a class="btn btn-primary sp-cta">Live Scorecard  <span class="glyphicon glyphicon-new-window"></span></a>
+
                             </div>
                         </div>
                     <?php } ?>

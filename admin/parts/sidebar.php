@@ -57,7 +57,7 @@
             </ul>
         </li>
         <li><a href="messages.php">
-                <i class="md md-chat"></i>Messages</a>
+                <i class="md md-chat"></i>Notifications</a>
         </li>
         <li><a href="add-new.php">
                 <i class="md md-add"></i>Register an Admin</a>

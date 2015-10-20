@@ -5,36 +5,25 @@ include('layout/header.php');
 
 <div id="lates-updates" class="carousel slide" data-ride="carousel">
 	<div class="carousel-inner latest-updates general-section jumbotron text-center">
-		<div class="item active"> 
+        <?php
+        require_once 'includes/db_connect.php';
+        $query = "SELECT * FROM news";
+        $query_run = mysqli_query($mysqli, $query);
+        while($query_row = mysqli_fetch_assoc($query_run)){
+            ?>
+
+        <div class="item">
 			<div class="container">
-				<h3>LATEST NEWS</h3>
 				<div class="carousel-news">
-					<h1>THE MATCH BETWEEN BS(IT) & BS(PHY) HAS BEEN CANCELED</h1>
-					<p>Due to heavy rain Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui eveniet amet, est hic! Quibusdam officia debitis incidunt velit, quisquam expedita quaerat inventore animi reiciendis modi, libero repellendus sequi! Quasi, recusandae.</p>
+					<h1><?php echo $query_row['news_heading']; ?></h1>
+					<p><?php echo $query_row['newsdescription']; ?></p>
 				</div>
 			</div>
 		</div>
-		<div class="item"> 
+        <?php } ?>
+		<div class="item active">
 			<div class="container">
-				<h3>LATEST NEWS first slide</h3>
-				<div class="carousel-news">
-					<h1>THE MATCH BETWEEN BS(IT) & BS(PHY) HAS BEEN CANCELED</h1>
-					<p>Due to heavy rain Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui eveniet amet, est hic! Quibusdam officia debitis incidunt velit, quisquam expedita quaerat inventore animi reiciendis modi, libero repellendus sequi! Quasi, recusandae.</p>
-				</div>
-			</div>
-		</div>
-		<div class="item"> 
-			<div class="container">
-				<h3>LATEST NEWS second slide</h3>
-				<div class="carousel-news">
-					<h1>THE MATCH BETWEEN BS(IT) & BS(PHY) HAS BEEN CANCELED</h1>
-					<p>Due to heavy rain Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui eveniet amet, est hic! Quibusdam officia debitis incidunt velit, quisquam expedita quaerat inventore animi reiciendis modi, libero repellendus sequi! Quasi, recusandae.</p>
-				</div>
-			</div>
-		</div>
-		<div class="item"> 
-			<div class="container">
-				<h3>LATEST NEWS third slide</h3>
+				<h3>LATEST NEWS first slide Peepaapa djfklj sdalkfj asdlkfj asdklfj sdlakfjg g</h3>
 				<div class="carousel-news">
 					<h1>THE MATCH BETWEEN BS(IT) & BS(PHY) HAS BEEN CANCELED</h1>
 					<p>Due to heavy rain Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui eveniet amet, est hic! Quibusdam officia debitis incidunt velit, quisquam expedita quaerat inventore animi reiciendis modi, libero repellendus sequi! Quasi, recusandae.</p>
