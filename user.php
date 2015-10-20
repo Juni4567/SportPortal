@@ -119,20 +119,17 @@ if (isset($_SESSION['logged_user'])) {
                                    class="btn btn-default" style="margin: 5px 0;">
                         </div>
                     </form>
-                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" class="">
+                    <form action="updateprofile.php?u_id=<?php echo $query_row['user_id']; ?>" method="POST">
                         <!-- Text input-->
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="control-label" for="username">User Name</label>
 
                                 <div class="controls">
-                                    <input placeholder="<?php echo $query_row['username']; ?>"
-                                           type="text" class="form-control" required="" min="3"
-                                           disabled>
-
-                                    <div class="username_availability_result"
-                                         id="username_availability_result"></div>
+                                    <input placeholder="<?php echo $query_row['username']; ?>" type="text" class="form-control" required="" min="3" disabled>
+                                    <div class="username_availability_result" id="username_availability_result"></div>
                                 </div>
+
                             </div>
                             <div class="col-sm-6">
                                 <!-- Text input-->
@@ -186,6 +183,7 @@ if (isset($_SESSION['logged_user'])) {
 
 
                         <!-- Select Basic -->
+                       <?php if(!$query_row['user_role']== 'Admin'){ ?>
                         <label class="control-label" for="Department">Department</label>
 
                         <div class="controls">
@@ -193,7 +191,7 @@ if (isset($_SESSION['logged_user'])) {
                                    placeholder="<?php echo $query_row['dept_id']; ?>"
                                    class="form-control">
                         </div>
-
+                       <?php } ?>
                         <!-- Select Basic -->
                         <label class="control-label" for="User role">User Role</label>
 
@@ -202,7 +200,7 @@ if (isset($_SESSION['logged_user'])) {
                                    placeholder="<?php echo $query_row['user_role']; ?>"
                                    class="form-control" disabled>
                         </div>
-
+                <?php if(!$query_row['user_role']== 'Admin'){ ?>
                         <!-- Select Basic -->
                         <label class="control-label" for="Game">Game</label>
 
@@ -210,17 +208,13 @@ if (isset($_SESSION['logged_user'])) {
                             <input id="department" placeholder="<?php echo $query_row['g_id']; ?>"
                                    class="form-control">
                         </div>
-
+                <?php } ?>
                         <!-- Button -->
                         <label class="control-label" for="register"></label>
 
                         <div class="controls text-right">
-                            <button id="register" type="submit" name="register"
-                                    class="btn btn-primary">Update
-                            </button>
-                            <button id="register" type="reset" name="register"
-                                    class="btn btn-primary">Cancel
-                            </button>
+                            <button id="register" type="submit" name="update" class="btn btn-primary">Update</button>
+                            <button id="register" type="reset" class="btn btn-primary">Cancel</button>
                     </form>
                 </div>
             </div>
