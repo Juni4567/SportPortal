@@ -16,7 +16,6 @@ require('layout/header.php');
             </ul>
 
             <div class="tab-content">
-                <!--Cricket container-->
                 <div role="tabpanel" class="tab-pane active fade in" id="cricket">
                     <?php
                     require_once 'includes/db_connect.php';
@@ -65,7 +64,6 @@ require('layout/header.php');
                     ?>
                 </div>
                 <!--Cricket container end-->
-                <!--Football Container-->
                 <div role="tabpanel" class="tab-pane fade in" id="football">
                     <?php
                     require_once 'includes/db_connect.php';
@@ -146,13 +144,14 @@ require('layout/header.php');
                         </div>
                     <?php } ?>
                 </div>
-                <!--Hockey container end-->
+                <!--Tennis container end-->
                 <div role="tabpanel" class="tab-pane fade" id="vollyball">
                     <div class="scorecard-header">
                         <h2>Live Now</h2>
                         <h4 class="alert alert-danger">No matches are being played for this sport</h4>
                     </div>
                 </div>
+                <!-- Vollyball conainer end -->
             </div>
         </div> <!-- tabbable	-->
 

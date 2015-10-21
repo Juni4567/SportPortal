@@ -1,33 +1,25 @@
-<?php
-//include header template
-require( 'layout/header.php' );
-?>
-
+<?php require( 'layout/header.php' ); ?>
 <div id="score-board" class="general-section">
 	<div class="container">
 		<div class="sport-nav tabbable">
 			<ul class="nav nav-tabs" role="tablist">
 
-				<li role="presentation" class=""><a href="#cricket" aria-controls="cricket" role="tab"
-				                                          data-toggle="tab">Cricket</a></li>
-				<li role="presentation"><a href="#football" aria-controls="football" role="tab" data-toggle="tab">Football</a>
-				</li>
-				<li role="presentation"><a href="#hockey" aria-controls="hockey" role="tab" data-toggle="tab">Hockey</a>
-				</li>
-				<li role="presentation"><a href="#tennis" aria-controls="tennis" role="tab" data-toggle="tab">Tennis</a>
-				</li>
-				<li role="presentation"><a href="#vollyball" aria-controls="vollyball" role="tab" data-toggle="tab">Volly
-						Ball</a></li>
+				<li role="presentation" class="active"><a href="#cricket" aria-controls="cricket" role="tab" data-toggle="tab">Cricket</a></li>
+				<li role="presentation"><a href="#football" aria-controls="football" role="tab" data-toggle="tab">Football</a></li>
+				<li role="presentation"><a href="#hockey" aria-controls="hockey" role="tab" data-toggle="tab">Hockey</a></li>
+				<li role="presentation"><a href="#tennis" aria-controls="tennis" role="tab" data-toggle="tab">Tennis</a></li>
+				<li role="presentation"><a href="#vollyball" aria-controls="vollyball" role="tab" data-toggle="tab">VollyBall</a></li>
 			</ul>
 
-			<div id="ajax-score-card">
-				<?php require_once ('score-ajax.php'); ?>
-			</div>
+            <div id="ajax-score-card">
+                <div class="tab-content">
+                    <?php require_once ('score-ajax.php'); ?>
+                </div>
+            </div>
 		</div>
-        </div>
-		<!-- end tabbable	-->
+    </div><!-- end tabbable	-->
 </div><!--score board end-->
-</div> <!--some tag that needs to be closed, taking footer into container if not closed-->
+</div><!--Added to manipulate footer extra margin comming from generalsection(closed general section before footer start) -->
 <?php
 //include footer template
 require_once('layout/footer.php');
@@ -48,11 +40,12 @@ require_once('layout/footer.php');
 			});
 		};
 
-		$('#ajax-score-card').on('click', '.sp-cta', function(e) {
-			e.preventDefault();
-//			alert('hello world');
-			return false;
-		});
+//        REmoved CTA
+//		$('#ajax-score-card').on('click', '.sp-cta', function(e) {
+//			e.preventDefault();
+////			alert('hello world');
+//			return false;
+//		});
 
 		//window.refreshScores = refreshScores;
 		setInterval(refreshScores, 5000);

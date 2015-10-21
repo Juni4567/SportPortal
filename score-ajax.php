@@ -1,4 +1,3 @@
-<div class="tab-content">
 	<!--match container-->
 
 	<?php
@@ -11,8 +10,8 @@
 	);
 
 	foreach ( $tabs as $tab_name => $tab_id ) :
-		?>
-		<div role="tabpanel" class="tab-pane active fade in" id="<?php echo $tab_name; ?>">
+        ?>
+		<div role="tabpanel" class="tab-pane fade in <?php if($tab_id == 1){echo "active";} ?>" id="<?php echo $tab_name; ?>">
 
 
 			<?php
@@ -47,8 +46,7 @@
                     $runs = $se_row['runs'];
                     $overs = $se_row['over'];
                     $wickets = $se_row['wicket'];
-//             echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
-
+                    // echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
 					?>
 					<div class="scorecard-container">
 						<div class="match-card general-section">
@@ -62,9 +60,6 @@
 
 								<h3><?php echo $team2_name; ?></h3>
 							</div>
-<!--							<div class="match-time">-->
-<!--								<h4>Scheduled --><?php //echo $match_date_time; ?><!-- </h4>-->
-<!--							</div>-->
                             <div class="match-time">
                                 <h4><?php echo $runs.'/'.$wickets. '   Overs: '.$overs; ?> </h4>
                             </div>
@@ -79,5 +74,3 @@
 
 		</div>
 	<?php endforeach; ?>
-
-</div>

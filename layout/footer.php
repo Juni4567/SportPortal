@@ -22,14 +22,13 @@
 				</ul>
 			</div>
             <div class="col-sm-4">
-                <h3>Shor intro of us!</h3>
+                <h3>Short intro of us!</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quibusdam <a href="#">molestias</a> cum sed dignissimos ab architecto nisi. Dolores facilis ut</p>
-                <p><a href="#">molestias</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quibusdam cum sed dignissimos ab architecto <a href="#">Read more...</a></p>
+                <div class="footer-line">
+                    <p>Copyrights 2015 - All Rights Reserved- Sport Portal</p>
+                </div>
             </div>
 		</div>
-				<div class="footer-line">
-					<p>2015 - All Rights Reserved- Sport Portal</p>
-				</div>
 			</div>
 		</footer>
 	</div><!--main-end -->
