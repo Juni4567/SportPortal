@@ -58,7 +58,7 @@
                             <div class="teams">
                                 <h3><?php echo $team1_name; ?></h3>
 
-                                <h2>VS</h2>
+                                <h2>V/S</h2>
 
                                 <h3><?php echo $team2_name; ?></h3>
                             </div>
