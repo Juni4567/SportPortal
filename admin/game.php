@@ -14,6 +14,13 @@ if (isset($_SESSION['logged_user'])) {
 $g_id   = $_GET['g_id'];
 $query  = "SELECT * FROM teams WHERE g_id = '$g_id'";
 $query_run = mysqli_query($mysqli, $query);
+$query_works = mysqli_num_rows($query_run);
+if(!$query_works){?>
+    <div class="well white">
+    <h2>No teams Found</h2>
+    </div>
+<?php }
+else{
 while ($query_row = mysqli_fetch_assoc($query_run)) {
     ?>
     <div class="col-sm-4">
@@ -24,7 +31,7 @@ while ($query_row = mysqli_fetch_assoc($query_run)) {
         </div>
     </div>
 
-<?php } ?>
+<?php }} ?>
 </div>
 </section>
 
