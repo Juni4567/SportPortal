@@ -134,3 +134,9 @@ i.md.md-36 {
     width: 500px;
     margin:20px auto;
 }
+@media screen and (max-width: 768px){
+    .score-update-table{
+        width: 300px;
+        margin:20px auto;
+    }
+}

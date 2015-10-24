@@ -53,7 +53,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             $se_row = mysqli_fetch_assoc($se_run);
                             echo $se_row['location']; ?></span><br/>
                         Team Innings:
-                        <select>
+                        <select class="text-uppercase">
                             <option value="" name=>Select one</option>
                             <?php
                             require_once 'includes/db_connect.php';
@@ -92,7 +92,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         </div>
                     </form>
                     <form class="text-center">
-                        Winning team:<select>
+                        Winning team:<select class="text-uppercase">
                             <option value="" name="winning team">Select one</option>
                             <?php
                             require_once 'includes/db_connect.php';
@@ -125,7 +125,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             <th>Over</th>
                             <th>Score</th>
                             <th>Wickets</th>
-                            <th>Updated</th>
+                            <th class="hidden-xs">Updated</th>
                             <th class="text-right">Actions</th>
                         </tr>
                         </thead>
@@ -139,7 +139,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                 <td><?php echo $query_row_overs['over']; ?></td>
                                 <td><?php echo $query_row_overs['runs']; ?></td>
                                 <td><?php echo $query_row_overs['wicket']; ?></td>
-                                <td>18-02-2015 8:00PM</td>
+                                <td class="hidden-xs">18-02-2015 8:00PM</td>
                                 <td class="text-right">
                                     <div class="dropdown pull-right">
                                         <button aria-expanded="false" class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple" data-template="assets/tpl/partials/dropdown-navbar.html" data-toggle="dropdown">
