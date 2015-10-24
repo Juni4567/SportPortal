@@ -36,14 +36,18 @@ require('layout/header.php');
             ?>
 
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
+                <figure class="profile">
+                    <!--                    <a class="thumbnail" href="#">-->
                     <img src="uploads/profile/<?php echo $query_row3['images']; ?>">
-                </a>
-                <div class = "caption">
-                    <h3><?php echo $query_row3['fullname']; ?></h3>
-                    <p><?php echo $query_row3['introduction']; ?></p>
-                </div>
+                    <!--                    </a>-->
+                    <figcaption>
+                        <h3><?php echo $query_row3['fullname']; ?></h3>
+                        <p><?php echo $query_row3['introduction']; ?></p>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
             </div>
+
             <?php }}?>
         </div> <!-- row end -->
 	</div>
