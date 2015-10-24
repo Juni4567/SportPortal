@@ -10,22 +10,21 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                 <?php
                 require_once 'includes/db_connect.php';
                 if (isset($_POST['submit'])) {
-                    $match_id = $_GET['match_id'];
-                    $se_ls = "SELECT count(*) AS records from livescores where match_id='$match_id'";
-                    $se_run = mysqli_query($mysqli, $se_ls);
-                    $se_row = mysqli_fetch_assoc($se_run);
-                    if ($se_row['records'] > 0) {
-                        $over = $_POST["over"];
-                        $score = $_POST["score"];
-                        $wickets = $_POST["wicket"];
-                        $query = "UPDATE livescores set over = '$over', runs = '$score', wicket = '$wickets' where match_id = '$match_id'";
-                        $query_run = mysqli_query($mysqli, $query);
+                    $match_id   = $_GET['match_id'];
+                    $over = $_POST["over"];
+                    $score = $_POST["score"];
+                    $wickets = $_POST["wicket"];
+                    //Check if over already exist
+                    $checkif_over_exist = "SELECT * FROM livescores WHERE over = '$over' AND match_id= '$match_id'";
+                    $query_run_check    = mysqli_query($mysqli, $checkif_over_exist);
+                    $query_row_check    = mysqli_num_rows($query_run_check);
+                    if($query_row_check >0){
 
-                    } else {
-                        $query = "INSERT INTO livescores (match_id,over, runs, wicket)
-      VALUES ('" . $_GET['match_id'] . "','" . $_POST["over"] . "','" . $_POST["score"] . "','" . $_POST["wicket"] . "')";
+                    }else{
+                        $query = "INSERT INTO livescores (over, runs, wicket, match_id) VALUES('$over', '$score', '$wickets', '$match_id')";
                         $query_run = mysqli_query($mysqli, $query);
                     }
+
                 }
                 ?>
                 <div class="page-header text-center text-uppercase">
@@ -46,16 +45,13 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         ?>
                     </h2></div>
                 <div class="well white score-update-table text-center">
-
-
                     <div class="well">
                         Date:<input type="date" name="date"><br>
                         Ground Name:<span class="text-uppercase"><?php
                             $se_match = "select * from matches where match_id = '$match_id'";
                             $se_run = mysqli_query($mysqli, $se_match);
                             $se_row = mysqli_fetch_assoc($se_run);
-                            $g_name = $se_row['location'];?>
-                            <?php echo "$g_name"; ?></span><br/>
+                            echo $se_row['location']; ?></span><br/>
                         Team Innings:
                         <select>
                             <option value="" name=>Select one</option>
@@ -109,13 +105,81 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                 <option><?php echo "$team1"; ?></option>
                                 <option><?php echo "$team2"; ?></option>
                             <?php } ?>
-                        </select><br />
+                        </select><br/>
 
                         Comments: <input class="text-center" type="text" name="result" required="required">
-                        <br /><br />
+                        <br/><br/>
                         <button name="End" type="button" class="btn btn-primary">End match</button>
                     </form>
                 </div>
+            </section>
+            <section>
+                <div class="page-header text-center text-uppercase">
+                <h2>Current Match Summery</h2>
+                </div>
+                <div class="table-responsive well no-padding white no-margin">
+
+                    <table class="table table-full m-b-60" id="table-area-1" style="margin-bottom:0;">
+                        <thead>
+                        <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
+                            <th>Over</th>
+                            <th>Score</th>
+                            <th>Wickets</th>
+                            <th>Updated</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="admins">
+                        <?php
+                            $overs = "SELECT * FROM livescores WHERE match_id = '$match_id' ORDER BY over";
+                            $query_run_overs = mysqli_query($mysqli, $overs);
+                        ?>
+                        <?php while($query_row_overs = mysqli_fetch_assoc($query_run_overs)){ ?>
+                            <tr>
+                                <td><?php echo $query_row_overs['over']; ?></td>
+                                <td><?php echo $query_row_overs['runs']; ?></td>
+                                <td><?php echo $query_row_overs['wicket']; ?></td>
+                                <td>18-02-2015 8:00PM</td>
+                                <td class="text-right">
+                                    <div class="dropdown pull-right">
+                                        <button aria-expanded="false" class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple" data-template="assets/tpl/partials/dropdown-navbar.html" data-toggle="dropdown">
+                                            <i class="md md-delete f20"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <div class="p-10">
+                                                <div class="w300">
+                                                    Please confirm if you want to delete this user
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <button type="submit" id="1" class="btn btn-primary delbutton">Confirm
+                                                    </button>
+                                                    <a href="#" class="btn btn-link">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        <?php } ?>
+                            <?php
+                            $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id'";
+                            $query_run_scores = mysqli_query($mysqli, $sum_scores);
+                            $query_row_scores = mysqli_fetch_assoc($query_run_scores);
+//                            var_dump($query_row_scores); exit;
+                            ?>
+                          <tr style="background-color: rgba(41, 31, 33, 0.28); font-weight: 900; font-size: 16px;">
+                                <td><?php echo $query_row_scores['COUNT(over)'];?></td>
+                                <td><?php echo $query_row_scores['SUM(runs)'];?></td>
+                                <td><?php echo $query_row_scores['SUM(wicket)'];?></td>
+                                <td colspan="2" class="text-right">Total</td>
+                            </tr>
+                        </tbody>
+                </table>
+
+
+            </div>
             </section>
         </div>
     </div>
