@@ -130,3 +130,7 @@ i.md.md-36 {
 .dashboard-content h1,.dashboard-content h2,.dashboard-content h3,.dashboard-content h4,.dashboard-content h5 {
     margin-top: 0;
 }
+.score-update-table{
+    width: 500px;
+    margin:20px auto;
+}

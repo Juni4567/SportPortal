@@ -1,4 +1,4 @@
-figure.profile {
+.profile {
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
   float: left;
@@ -14,17 +14,18 @@ figure.profile {
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
-figure.profile * {
+.profile * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
-figure.profile img {
-  max-width: 100%;
+.profile img {
+  width: 100%;
   position: relative;
+  max-height: 235px;
 }
-figure.profile figcaption {
+.profile figcaption {
   position: absolute;
   top: 15%;
   bottom: 15%;
@@ -38,7 +39,7 @@ figure.profile figcaption {
   transform: translateX(20px);
   opacity: 0;
 }
-figure.profile h3 {
+.profile h3 {
   color: #000000;
   margin: 0;
   text-transform: uppercase;
@@ -46,14 +47,14 @@ figure.profile h3 {
   border-bottom: 1px solid #ddd;
   padding: 7px;
 }
-figure.profile h3 span {
+.profile h3 span {
   font-weight: 800;
 }
-figure.profile p {
+.profile p {
   font-size: 0.8em;
   font-weight: 500;
 }
-figure.profile:after {
+.profile:after {
   background: #FFCA12;
   width: 40px;
   height: 100%;
@@ -66,7 +67,7 @@ figure.profile:after {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-figure.profile a {
+.profile a {
   left: 0;
   right: 0;
   top: 0;
@@ -74,47 +75,47 @@ figure.profile a {
   position: absolute;
   z-index: 1;
 }
-figure.profile.blue h3 {
+.profile.blue h3 {
   color: #1b557a;
 }
-figure.profile.blue:after {
+.profile.blue:after {
   background-color: #0a212f;
 }
-figure.profile.red h3 {
+.profile.red h3 {
   color: #81261d;
 }
-figure.profile.red:after {
+.profile.red:after {
   background-color: #36100c;
 }
-figure.profile.yellow h3 {
+.profile.yellow h3 {
   color: #b06f09;
 }
-figure.profile.yellow:after {
+.profile.yellow:after {
   background-color: #583804;
 }
-figure.profile.green h3 {
+.profile.green h3 {
   color: #19703e;
 }
-figure.profile.green:after {
+.profile.green:after {
   background-color: #082514;
 }
-figure.profile.navy h3 {
+.profile.navy h3 {
   color: #19232d;
 }
-figure.profile.navy:after {
+.profile.navy:after {
   background-color: #000000;
 }
-figure.profile:hover img,
-figure.profile.hover img {
+.profile:hover img,
+.profile.hover img {
   -webkit-transform: translateX(20px);
   transform: translateX(20px);
 }
-figure.profile:hover:after,
-figure.profile.hover:after {
+.profile:hover:after,
+.profile.hover:after {
   left: 0;
 }
-figure.profile:hover figcaption,
-figure.profile.hover figcaption {
+.profile:hover figcaption,
+.profile.hover figcaption {
   -webkit-transform: translateX(0px);
   transform: translateX(0px);
   opacity: 1;
