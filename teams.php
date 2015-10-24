@@ -40,8 +40,17 @@ require('layout/header.php');
                                 <a class="thumbnail" href="teaminfo.php?did=<?php echo $se_row['dept_id'];?>&gid=<?php echo $se_row['g_id'];?>">
                                     <img src="uploads/teamlogos/<?php echo $se_row['teamlogo'];?>">
                                 </a>
+                               <?php
+                               $dept_id    = $se_row['dept_id'];
+                               $query_dept = "SELECT * from departments where dept_id = '$dept_id'";
+                                $query_run_dept = mysqli_query($mysqli,$query_dept);
+                                $query_row_dept = mysqli_fetch_assoc($query_run_dept);
+                               ?>
+                                <div class="caption">
+                                    <?php echo $query_row_dept['dept_name']; ?>
+                                </div>
                             </div>
-                        <?php }}?>
+                    <?php }}?>
 
                 </div>
                 <!-- row end -->
