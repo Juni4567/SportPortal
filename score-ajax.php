@@ -47,6 +47,12 @@
                     $runs = $se_row['runs'];
                     $overs = $se_row['over'];
                     $wickets = $se_row['wicket'];
+
+                    // select Sum of scores
+                    $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id'";
+                    $query_run_scores = mysqli_query($mysqli, $sum_scores);
+                    $query_row_scores = mysqli_fetch_assoc($query_run_scores);
+
 //             echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
 
                     ?>
@@ -66,7 +72,7 @@
                             <!--								<h4>Scheduled --><?php //echo $match_date_time; ?><!-- </h4>-->
                             <!--							</div>-->
                             <div class="match-time">
-                                <h4><?php echo $runs.'/'.$wickets. '   Overs: '.$overs; ?> </h4>
+                                <h4><?php echo $query_row_scores['SUM(runs)'].'/'.$query_row_scores['SUM(wicket)']. '   Overs: '.$query_row_scores['COUNT(over)']; ?> </h4>
                             </div>
                         </div>
                     </div>

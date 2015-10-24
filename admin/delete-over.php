@@ -4,7 +4,6 @@ if($_GET['id']){
 
     require_once("includes/db_connect.php");
 
-    $del = "DELETE FROM users WHERE user_id='$id'";
+    $del = "DELETE FROM livescores WHERE id='$id'";
     $result = mysqli_query($mysqli, $del);
 }
-

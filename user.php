@@ -313,7 +313,8 @@ if (isset($_SESSION['logged_user'])) {
         </div>
     </div><!-- general-section end -->
     </div><!-- container end -->
-<?php }
+<?php
+}
 //include footer template
 include('layout/footer.php');
 ?>

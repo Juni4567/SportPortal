@@ -43,15 +43,14 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         $se_row_team2 = mysqli_fetch_assoc($se_run_team2);
                         echo $se_row_team1['team_name'] . ' VS ' . $se_row_team2['team_name'];
                         ?>
-                    </h2></div>
-                <div class="well white score-update-table text-center">
-                    <div class="well">
-                        Date:<input type="date" name="date"><br>
-                        Ground Name:<span class="text-uppercase"><?php
+                        At <span class="text-uppercase"><?php
                             $se_match = "select * from matches where match_id = '$match_id'";
                             $se_run = mysqli_query($mysqli, $se_match);
                             $se_row = mysqli_fetch_assoc($se_run);
                             echo $se_row['location']; ?></span><br/>
+                    </h2></div>
+                <div class="well white score-update-table text-center">
+                    <div class="well">
                         Team Innings:
                         <select class="text-uppercase">
                             <option value="" name=>Select one</option>
@@ -129,7 +128,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             <th class="text-right">Actions</th>
                         </tr>
                         </thead>
-                        <tbody id="admins">
+                        <tbody id="scores">
                         <?php
                             $overs = "SELECT * FROM livescores WHERE match_id = '$match_id' ORDER BY over";
                             $query_run_overs = mysqli_query($mysqli, $overs);
@@ -152,10 +151,10 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <button type="submit" id="1" class="btn btn-primary delbutton">Confirm
-                                                    </button>
-                                                    <a href="#" class="btn btn-link">Cancel</a>
-                                                </div>
+                                                <button type="submit" id="<?php echo $query_row_overs['id']; ?>" class="btn btn-primary delbutton">Confirm
+                                                </button>
+                                                <a href="#" class="btn btn-link">Cancel</a>
+                                            </div>
                                             </div>
                                         </div>
                                     </div>

@@ -47,8 +47,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <button type="submit" id="<?php echo $query_row['user_id']; ?>"
-                                                        class="btn btn-primary delbutton">Confirm
+                                                <button type="submit" id="<?php echo $query_row['user_id']; ?>" class="btn btn-primary delbutton">Confirm
                                                 </button>
                                                 <a href="#" class="btn btn-link">Cancel</a>
                                             </div>
