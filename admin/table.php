@@ -75,14 +75,14 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         <div class="row form-group">
                             <div class="col-xs-4">
 
-                                <input type="integer" name="over" id="over" required="required" placeholder="Over" class="form-control">
+                                <input type="number" autocomplete="off" name="over" id="over" required="required" placeholder="Over" class="form-control">
                             </div>
                             <div class="col-xs-4">
-                                <input type="integer" name="score" id="score" placeholder="Score" required="required" class="form-control">
+                                <input type="number" autocomplete="off" name="score" id="score" placeholder="Score" required="required" class="form-control">
 
                             </div>
                             <div class="col-xs-4">
-                                <input type="integer" name="wicket" id="wicket" placeholder="Wicket" required="required" class="form-control">
+                                <input type="number" autocomplete="off" name="wicket" id="wicket" placeholder="Wickets" required="required" max="6" class="form-control">
 
                             </div>
                         </div>
@@ -121,8 +121,8 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     <table class="table table-full m-b-60" id="table-area-1" style="margin-bottom:0;">
                         <thead>
                         <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
-                            <th>Over</th>
-                            <th>Score</th>
+                            <th>Overs</th>
+                            <th>Scores</th>
                             <th>Wickets</th>
                             <th class="hidden-xs">Updated</th>
                             <th class="text-right">Actions</th>

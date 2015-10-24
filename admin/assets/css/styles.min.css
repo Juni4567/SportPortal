@@ -6525,7 +6525,7 @@ main .main-container .main-content>section {
     margin-bottom: 60px;
 }
 #sidenav-overlay {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: -65px;
     right: 0;

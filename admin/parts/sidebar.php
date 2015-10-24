@@ -17,19 +17,19 @@
             <a href="#" data-toggle="collapse" data-target="#list" aria-expanded="false" aria-controls="list" class="collapsible-header waves-effect"><i class="md md-group"></i>Teams</a>
             <ul id="list" class="collapse">
                 <li name="cricket">
-                    <a href="cricket.php">Cricket</a>
+                    <a href="game.php?g_id=1">Cricket</a>
                 </li>
                 <li name="football">
-                    <a href="football.php">Football</a>
+                    <a href="game.php?g_id=2">Football</a>
                 </li>
                 <li name="hockey">
-                    <a href="hockey.php">Hockey</a>
+                    <a href="game.php?g_id=3">Hockey</a>
                 </li>
                 <li name="tennis">
-                    <a href="tennis.php">Tennis</a>
+                    <a href="game.php?g_id=10">Tennis</a>
                 </li>
                 <li name="vollyball">
-                    <a href="vollyball.php">Volly Ball</a>
+                    <a href="game.php?g_id=5">Volly Ball</a>
                 </li>
             </ul>
         </li>
