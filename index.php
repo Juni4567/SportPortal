@@ -7,12 +7,12 @@ include('layout/header.php');
 	<div class="carousel-inner latest-updates general-section jumbotron text-center">
         <?php
         require_once 'includes/db_connect.php';
-        $query = "SELECT * FROM news";
+        $query = "SELECT * FROM news LIMIT 4";
         $query_run = mysqli_query($mysqli, $query);
-        while($query_row = mysqli_fetch_assoc($query_run)){
-            ?>
+        $i = 1;
 
-        <div class="item">
+        while($query_row = mysqli_fetch_assoc($query_run)){?>
+        <div class="item <?php if($i==1) echo"active"; ?>">
 			<div class="container">
 				<div class="carousel-news">
 					<h1><?php echo $query_row['news_heading']; ?></h1>
@@ -20,23 +20,14 @@ include('layout/header.php');
 				</div>
 			</div>
 		</div>
-        <?php } ?>
-		<div class="item active">
-			<div class="container">
-				<h3>LATEST NEWS first slide Peepaapa djfklj sdalkfj asdlkfj asdklfj sdlakfjg g</h3>
-				<div class="carousel-news">
-					<h1>THE MATCH BETWEEN BS(IT) & BS(PHY) HAS BEEN CANCELED</h1>
-					<p>Due to heavy rain Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui eveniet amet, est hic! Quibusdam officia debitis incidunt velit, quisquam expedita quaerat inventore animi reiciendis modi, libero repellendus sequi! Quasi, recusandae.</p>
-				</div>
-			</div>
-		</div>
+        <?php $i++; } ?>
+
 		<div class="carousel-navigator">
 			<a class="prev" href="#lates-updates" data-slide="prev"></a>
 			<a class="next" href="#lates-updates" data-slide="next"></a>
 		</div>
 	</div>
 </div> <!--  latest updates carousel end -->
-
 
 <div id="score-board" class="general-section">
 	<div class="container">
