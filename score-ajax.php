@@ -41,12 +41,15 @@
                     $location        = $query_row['location'];
                     $matchstatus     = $query_row['matchstatus'];
                     $match_id        = $query_row['match_id'];
-                    $se_ls = "SELECT * from livescores where match_id='$match_id'";
+                //    $query     = "SELECT m.*, t.team_name as `team_name` FROM livescores AS m INNER JOIN teams AS t1 ON (t.team_id = m.teaminnings) WHERE m.teaminnings='$teaminnings'";
+                //    $query_run = mysqli_query( $mysqli, $query );
+                    $se_ls = "SELECT l.*, t.team_name as `teaminnings` FROM livescores AS l INNER JOIN teams AS t ON (t.team_id = l.teaminnings) where match_id='$match_id'";
                     $se_run = mysqli_query($mysqli, $se_ls);
                     $se_row = mysqli_fetch_assoc($se_run);
                     $runs = $se_row['runs'];
                     $overs = $se_row['over'];
                     $wickets = $se_row['wicket'];
+                    $teaminnings = $se_row['teaminnings'];
 
                     // select Sum of scores
                     $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id'";
@@ -72,7 +75,7 @@
                             <!--								<h4>Scheduled --><?php //echo $match_date_time; ?><!-- </h4>-->
                             <!--							</div>-->
                             <div class="match-time">
-                                <h4><?php echo $query_row_scores['SUM(runs)'].'/'.$query_row_scores['SUM(wicket)']. '   Overs: '.$query_row_scores['COUNT(over)']; ?> </h4>
+                                <h4><?php echo $teaminnings;?> <?php echo $query_row_scores['SUM(runs)'].'/'.$query_row_scores['SUM(wicket)']. '   Overs: '.$query_row_scores['COUNT(over)']; ?> </h4>
                             </div>
                         </div>
                     </div>
