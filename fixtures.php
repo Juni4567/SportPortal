@@ -20,7 +20,7 @@ require('layout/header.php');
                     <?php
                     require_once 'includes/db_connect.php';
 //                    $query = "SELECT * FROM matches WHERE matchstatus='scheduled' AND g_id='1' ";
-			$query     = "SELECT m.*, t1.team_name as `team_1_name`, t2.team_name as `team_2_name` FROM matches AS m INNER JOIN teams AS t1 ON (t1.team_id = m.team1_id) INNER JOIN teams AS t2 ON (t2.team_id = m.team2_id) WHERE m.matchstatus='scheduled'";
+			$query     = "SELECT m.*, t1.team_name as `team_1_name`, t2.team_name as `team_2_name` FROM matches AS m INNER JOIN teams AS t1 ON (t1.team_id = m.team1_id) INNER JOIN teams AS t2 ON (t2.team_id = m.team2_id) WHERE m.matchstatus='scheduled' ANd m.g_id='1'";
 
                     $query_run = mysqli_query($mysqli, $query);
                     if(!$query_run->num_rows){
@@ -67,7 +67,7 @@ require('layout/header.php');
                 <div role="tabpanel" class="tab-pane fade in" id="football">
                     <?php
                     require_once 'includes/db_connect.php';
-                    $query = "SELECT * FROM matches WHERE matchstatus='scheduled'  AND g_id='2'";
+                    $query = "SELECT m.*, t1.team_name as `team_1_name`, t2.team_name as `team_2_name` FROM matches AS m INNER JOIN teams AS t1 ON (t1.team_id = m.team1_id) INNER JOIN teams AS t2 ON (t2.team_id = m.team2_id) WHERE m.matchstatus='scheduled' ANd m.g_id='2'";
                     $query_run = mysqli_query($mysqli, $query);
                     if(!$query_run->num_rows){
                         ?> <h4 class="alert alert-danger">No matches are being played for this sport</h4>
@@ -81,8 +81,8 @@ require('layout/header.php');
                         </div>
                         <?php
                         while ($query_row = mysqli_fetch_assoc($query_run)) {
-                            $team1_id = $query_row['team1_id'];
-                            $team2_id = $query_row['team2_id'];
+                            $team1_id = $query_row['team_1_name'];
+                            $team2_id = $query_row['team_2_name'];
                             $match_date_time = $query_row['match_date_time'];
                             $location = $query_row['location'];
                             $matchstatus = $query_row['matchstatus'];

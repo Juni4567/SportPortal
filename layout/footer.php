@@ -14,11 +14,12 @@
 			<div class="col-sm-4">
 				<h3>Quick Links</h3>
 				<ul>
-					<li><a href="#home">Home</a></li>
-					<li><a href="#livescore">Live scores</a></li>
-					<li><a href="#depart">Departments</a></li>
-					<li><a href="#Fixtures">Fixtures</a></li>
-					<li><a href="#news">News</a></li>
+					<li><a href="index.php">Home</a></li>
+					<li><a href="scores.php">Live scores</a></li>
+					<li><a href="fixtures.php">Fixtures</a></li>
+					<li><a href="teams.php">Teams</a></li>
+					<li><a href="results.php">Results</a></li>
+					<li><a href="news.php">News</a></li>
 				</ul>
 			</div>
             <div class="col-sm-4">

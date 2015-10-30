@@ -11,7 +11,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
             $query = "SELECT m.*, t1.team_name as `team_1_name`, t2.team_name as `team_2_name`FROM matches AS m INNER JOIN teams AS t1 ON (t1.team_id = m.team1_id) INNER JOIN teams AS t2 ON (t2.team_id = m.team2_id) WHERE m.matchstatus='live' AND m.g_id=1";
             $query_run = mysqli_query($mysqli, $query);
             if (!$query_run->num_rows) {
-                ?> <h4 class="alert alert-danger">No matches are completed for this game right now</h4>
+                ?> <h4 class="alert alert-danger">No matches are live for this game right now</h4>
             <?php
             }
             if ($query_run){
