@@ -62,5 +62,13 @@
         <li><a href="add-new.php">
                 <i class="md md-add"></i>Register an Admin</a>
         </li>
+        <li>
+        <a href="#" data-toggle="collapse" data-target="#list2" aria-expanded="false" aria-controls="list" class="md md-add">News</a>
+            <ul id="list2" class="collapse">
+                <li name="addnews">
+                    <a href="addnews.php">Add news</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </aside>
