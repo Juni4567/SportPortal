@@ -245,13 +245,19 @@ if (isset($_SESSION['logged_user'])) {
                                                        value="<?php echo $user_id; ?>"/><?php echo $i++; ?></td>
                                             <td><?php echo $name; ?></td>
                                             <td><?php echo $email; ?></td>
+                                            <form action="<?php $_SERVER['PHP_SELF']; ?>" method="get">
                                             <td>
-                                                <button type="submit" name="accepted">Accept</button>
+                                                <button type="submit" name="accept" value="yes">Accept</button>
                                             </td>
                                             <td>
-                                                <button type="submit" name="rejected">Reject</button>
+                                                <button type="submit" name="reject">Reject</button>
                                             </td>
-
+                                                </form>
+                                            <?php if($_GET['accept']){
+                                                $query_insert_player = "INSERT INTO players (user_id, dept_id, g_id, st_id) VALUES ('$user_id', '$dept_id', '$game_id', 'accepted')";
+                                                $query_run_insert_player = mysqli_query($mysqli, $query_insert_player);
+                                                $query_row_insert_player = mysqli_fetch_assoc($query_run_insert_player);
+                                            }?>
                                         </tr>
                                     <?php
                                     }
