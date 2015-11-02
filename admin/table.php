@@ -90,9 +90,13 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             <button type="submit" name="submit" class="btn btn-info">Submit over</button>
                         </div>
                     </form>
-                    <form class="text-center">
-                        Winning team:<select class="text-uppercase">
-                            <option value="" name="winning team">Select one</option>
+                    <form class="text-center" method="post" action="table.php?match_id=<?php if (isset($_GET['match_id'])) {
+                        echo $_GET['match_id'];
+                    } else {
+                        echo $match_id;
+                    } ?>">
+                        Winning team:<select class="text-uppercase" name="winningteam">
+                            <option value="">Select one</option>
                             <?php
                             require_once 'includes/db_connect.php';
                             $qu = "select * from matches where match_id = '$match_id'";
@@ -101,14 +105,55 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                 $team1 = $se_row_team1['team_name'];
                                 $team2 = $se_row_team2['team_name'];
                                 ?>
-                                <option><?php echo "$team1"; ?></option>
-                                <option><?php echo "$team2"; ?></option>
+                                <option value="1"><?php echo "$team1"; ?></option>
+                                <option value="2"><?php echo "$team2"; ?></option>
                             <?php } ?>
                         </select><br/>
+                        Comments: <input class="text-center" type="text" name="Comments" required="required">
+                        <br/>
+                        Status: <select name="Status">
+                            <option>Select one</option>
+                            <option value="completed">completed</option>
+                        </select><br></br>
+                        <button name="End" type="submit" class="btn btn-primary">End match</button>
+                        <?php
+                        require_once 'includes/db_connect.php';
+                        if(isset($_POST['End'])){
+                          $match_id = $_GET['match_id'];
+                          $se_ls = "SELECT count(*) AS records from matches where match_id='$match_id'";
+                          $se_run = mysqli_query($mysqli, $se_ls);
+                          $se_row = mysqli_fetch_assoc($se_run);
+                          if($se_row['records'] > 0)
+                          {
+                            $winningteam = $_POST["winningteam"];
+                            $Comments = $_POST["Comments"];
+                            $Status = $_POST["Status"];
+                            $query ="UPDATE matches set matchstatus = '$Status', winningteam = '$winningteam', comments = '$Comments' where match_id = '$match_id'";
+                            $query_run = mysqli_query($mysqli, $query);
+                                 
+                          }
+                            $query = "SELECT count(*) AS records from matches where matchstatus='completed'";
+                            $query_run = mysqli_query($mysqli,$query);
+                            $query_row = mysqli_fetch_assoc($query_run);
+                            if ($query_row['records'] > 0){
+                            $checkif_match_exist = "SELECT * FROM results WHERE match_id= '$match_id'";
+                            $query_run_check     = mysqli_query($mysqli, $checkif_match_exist);
+                            $query_row_check     = mysqli_num_rows($query_run_check);
+                            }
+                            if($query_row_check >0){
 
-                        Comments: <input class="text-center" type="text" name="result" required="required">
-                        <br/><br/>
-                        <button name="End" type="button" class="btn btn-primary">End match</button>
+                            }
+                            else
+                            {
+                                $query1 = "INSERT INTO results (team_id, match_id, g_id, comments) SELECT winningteam, match_id, g_id, comments from matches where matchstatus= 'completed' AND match_id = '$match_id' ";
+                                $query1_run = mysqli_query($mysqli,$query1);
+                            }
+                            // if ($query1_run) {
+                            //     $query = "DELETE FROM matches WHERE match_id= '$match_id' AND matchstatus= 'completed'";
+                            //     $query_run = mysqli_query($mysqli,$query);
+                            // }
+                      }
+                          ?>
                     </form>
                 </div>
             </section>

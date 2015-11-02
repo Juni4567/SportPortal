@@ -38,22 +38,17 @@ require('layout/header.php');
                             $team1_id = $query_row['team_1_name'];
                             $team2_id = $query_row['team_2_name'];
                             $match_id = $query_row['match_id'];
-                            $query = "SELECT * FROM results WHERE match_id='$match_id' limit 1";
-                            $query_run = mysqli_query($mysqli, $query);
-                            $query_row = mysqli_fetch_assoc($query_run);
-                            $team_id = $query_row['team_id'];
-                            $match_score = $query_row['match_score'];
+                            $team_id = $query_row['winningteam'];
+                            $match_score = $query_row['comments'];
 //                           echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
-
                             ?>
                             <div class="scorecard-container">
                                 <div class="match-card general-section">
-                                    
                                     <div class="teams">
                                         <h3><?php echo $team1_id; ?></h3> <h4> VS </h4> <h3><?php echo $team2_id;?></h3>
                                     </div>
                                     <div class="match-time">
-                                        <h4><?php echo $match_score; ?> </h4>
+                                        <h4><?php echo $team_id; ?></h4> <h4>Wins by</h4> <?php echo $match_score; ?> </h4>
                                     </div>
                                 </div>
                             </div>
