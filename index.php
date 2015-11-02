@@ -7,7 +7,7 @@ include('layout/header.php');
 	<div class="carousel-inner latest-updates general-section jumbotron text-center">
         <?php
         require_once 'includes/db_connect.php';
-        $query = "SELECT * FROM news LIMIT 4";
+        $query = "SELECT * FROM news";
         $query_run = mysqli_query($mysqli, $query);
         $i = 1;
 
