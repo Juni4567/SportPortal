@@ -11,6 +11,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                 require_once 'includes/db_connect.php';
                 if (isset($_POST['submit'])) {
                     $match_id   = $_GET['match_id'];
+                    $teaminnings = $_POST["teaminnings"];
                     $over = $_POST["over"];
                     $score = $_POST["score"];
                     $wickets = $_POST["wicket"];
@@ -21,7 +22,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     if($query_row_check >0){
 
                     }else{
-                        $query = "INSERT INTO livescores (over, runs, wicket, match_id) VALUES('$over', '$score', '$wickets', '$match_id')";
+                        $query = "INSERT INTO livescores (over, runs, wicket, match_id, teaminnings) VALUES('$over', '$score', '$wickets', '$match_id', '$teaminnings')";
                         $query_run = mysqli_query($mysqli, $query);
                     }
 
@@ -50,9 +51,14 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             echo $se_row['location']; ?></span><br/>
                     </h2></div>
                 <div class="well white score-update-table text-center">
+                    <form method="post" action="table.php?match_id=<?php if (isset($_GET['match_id'])) {
+                        echo $_GET['match_id'];
+                    } else {
+                        echo $match_id;
+                    } ?>">
                     <div class="well">
                         Team Innings:
-                        <select class="text-uppercase">
+                        <select name="teaminnings" class="text-uppercase" required="required">
                             <option value="" name=>Select one</option>
                             <?php
                             require_once 'includes/db_connect.php';
@@ -62,16 +68,11 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                 $team1 = $se_row_team1['team_name'];
                                 $team2 = $se_row_team2['team_name'];
                                 ?>
-                                <option><?php echo "$team1"; ?></option>
-                                <option><?php echo "$team2"; ?></option>
+                                <option value="1"><?php echo "$team1"; ?></option>
+                                <option value="2"><?php echo "$team2"; ?></option>
                             <?php } ?>
                         </select>
                     </div>
-                    <form method="post" action="table.php?match_id=<?php if (isset($_GET['match_id'])) {
-                        echo $_GET['match_id'];
-                    } else {
-                        echo $match_id;
-                    } ?>">
                         <div class="row form-group">
                             <div class="col-xs-4">
 
@@ -192,7 +193,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                                             <div class="p-10">
                                                 <div class="w300">
-                                                    Please confirm if you want to delete this user
+                                                    Please confirm if you want to delete this over
                                                 </div>
 
                                                 <div class="form-group">
