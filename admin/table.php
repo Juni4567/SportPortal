@@ -12,11 +12,15 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                 if (isset($_POST['submit'])) {
                     $match_id   = $_GET['match_id'];
                     $teaminnings = $_POST["teaminnings"];
+
+                    //Check whitch team is currently Playing
+                    $_SESSION['team_playing'] = $teaminnings;
+                    $team_playing = $_SESSION['team_playing'];
                     $over = $_POST["over"];
                     $score = $_POST["score"];
                     $wickets = $_POST["wicket"];
                     //Check if over already exist
-                    $checkif_over_exist = "SELECT * FROM livescores WHERE over = '$over' AND match_id= '$match_id'";
+                    $checkif_over_exist = "SELECT * FROM livescores WHERE over = '$over' AND match_id= '$match_id' AND teaminnings = '$teaminnings'";
                     $query_run_check    = mysqli_query($mysqli, $checkif_over_exist);
                     $query_row_check    = mysqli_num_rows($query_run_check);
                     if($query_row_check >0){
@@ -59,18 +63,36 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     <div class="well">
                         Team Innings:
                         <select name="teaminnings" class="text-uppercase" required="required">
-                            <option value="" name=>Select one</option>
+
                             <?php
                             require_once 'includes/db_connect.php';
                             $qu = "select * from matches where match_id = '$match_id'";
                             $run = mysqli_query($mysqli, $qu);
+        if($_SESSION['team_playing'] == 1){
+            $playing_team_name = $se_row_team1['team_name'];
+            ?>
+        <option value="<?php echo $_SESSION['team_playing']; ?>"><?php echo $se_row_team1['team_name']; ?></option>
+    <?php
+    } else if($_SESSION['team_playing'] == 2){
+            $playing_team_name = $se_row_team2['team_name'];
+            ?> <option value="<?php echo $_SESSION['team_playing']; ?>"><?php echo $se_row_team2['team_name']; ?></option>
+            <?php
+                            }
+                            else{
+                                ?>
+
+                                <option value="" name=>Select one</option>
+                           <?php }
+
                             while ($row = mysqli_fetch_array($run)) {
                                 $team1 = $se_row_team1['team_name'];
                                 $team2 = $se_row_team2['team_name'];
                                 ?>
+
                                 <option value="1"><?php echo "$team1"; ?></option>
                                 <option value="2"><?php echo "$team2"; ?></option>
                             <?php } ?>
+
                         </select>
                     </div>
                         <div class="row form-group">
@@ -176,15 +198,15 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         </thead>
                         <tbody id="scores">
                         <?php
-                            $overs = "SELECT * FROM livescores WHERE match_id = '$match_id' ORDER BY over";
+                            $overs = "SELECT * FROM livescores WHERE match_id = '$match_id' ORDER BY over AND teaminnings ='$team_playing'";
                             $query_run_overs = mysqli_query($mysqli, $overs);
                         ?>
                         <?php while($query_row_overs = mysqli_fetch_assoc($query_run_overs)){ ?>
                             <tr>
-                                <td><?php echo $query_row_overs['over']; ?></td>
+                                <td><?php echo $query_row_overs['over']; echo " of Team: " . $query_row_overs['teaminnings']; ?></td>
                                 <td><?php echo $query_row_overs['runs']; ?></td>
                                 <td><?php echo $query_row_overs['wicket']; ?></td>
-                                <td class="hidden-xs">18-02-2015 8:00PM</td>
+                                <td class="hidden-xs"><?php echo $query_row_overs['datetime']; ?></td>
                                 <td class="text-right">
                                     <div class="dropdown pull-right">
                                         <button aria-expanded="false" class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple" data-template="assets/tpl/partials/dropdown-navbar.html" data-toggle="dropdown">
@@ -209,7 +231,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             </tr>
                         <?php } ?>
                             <?php
-                            $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id'";
+                            $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id' AND teaminnings ='$team_playing'";
                             $query_run_scores = mysqli_query($mysqli, $sum_scores);
                             $query_row_scores = mysqli_fetch_assoc($query_run_scores);
 //                            var_dump($query_row_scores); exit;
@@ -218,7 +240,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                 <td><?php echo $query_row_scores['COUNT(over)'];?></td>
                                 <td><?php echo $query_row_scores['SUM(runs)'];?></td>
                                 <td><?php echo $query_row_scores['SUM(wicket)'];?></td>
-                                <td colspan="2" class="text-right">Total</td>
+                                <td colspan="2" class="text-right">Total(<?php echo "<span class='text-uppercase'>" . $playing_team_name . "</span>"; ?>)</td>
                             </tr>
                         </tbody>
                 </table>
