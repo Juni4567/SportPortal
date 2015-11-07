@@ -78,12 +78,6 @@
                             <div class="match-time">
                                 <?php
                                 $team_se_inn = $query_row_scores['teaminnings'];
-                                var_dump($team_se_inn);
-                                if($team_se_inn == 1 )
-                                {
-
-                                }
-                                if()
                                 ?>
                                 <h4><?php echo $teaminnings;?> <?php echo $query_row_scores['SUM(runs)'].'/'.$query_row_scores['SUM(wicket)']. '   Overs: '.$query_row_scores['COUNT(over)']; ?> </h4>
                             </div>
