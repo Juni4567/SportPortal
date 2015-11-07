@@ -31,6 +31,10 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     }
 
                 }
+                else{
+                    $_SESSION['team_playing'] = 0;
+                    $team_playing = $_SESSION['team_playing'];
+                }
                 ?>
                 <div class="page-header text-center text-uppercase">
                     <h2><?php
@@ -68,6 +72,9 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             require_once 'includes/db_connect.php';
                             $qu = "select * from matches where match_id = '$match_id'";
                             $run = mysqli_query($mysqli, $qu);
+        if($_SESSION['team_playing'] == 0){
+            $playing_team_name = null;
+        }
         if($_SESSION['team_playing'] == 1){
             $playing_team_name = $se_row_team1['team_name'];
             ?>
@@ -81,7 +88,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             else{
                                 ?>
 
-                                <option value="" name=>Select one</option>
+                                <option value="0" name=>Select one</option>
                            <?php }
 
                             while ($row = mysqli_fetch_array($run)) {
@@ -231,9 +238,15 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             </tr>
                         <?php } ?>
                             <?php
-                            $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id' AND teaminnings ='$team_playing'";
-                            $query_run_scores = mysqli_query($mysqli, $sum_scores);
-                            $query_row_scores = mysqli_fetch_assoc($query_run_scores);
+                            if($team_playing == 0){
+                                return;
+                            }else{
+                                $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id' AND teaminnings ='$team_playing'";
+                                $query_run_scores = mysqli_query($mysqli, $sum_scores);
+                                $query_row_scores = mysqli_fetch_assoc($query_run_scores);
+                            }
+
+
 //                            var_dump($query_row_scores); exit;
                             ?>
                           <tr style="background-color: rgba(41, 31, 33, 0.28); font-weight: 900; font-size: 16px;">
