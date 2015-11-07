@@ -32,6 +32,55 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 		                ?>
 		        	</form>
 		        </div>
+
+<div class="page-header">
+        <h1><i class="md md-list"></i>News</h1>
+        <p class="lead">List of news</p>
+    </div>
+                <table class="table table-full m-b-60" id="table-area-1" style="margin-bottom:0;">
+                        <thead style="background-color: rgba(41, 31, 33, 0.28); font-weight: 900; font-size: 16px;">
+                        <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
+                            <th>News Heading</th>
+                            <th>Description</th>
+                            <th class="hidden-xs">Updated</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="news">
+                        <?php
+                            $query_news = "SELECT * FROM news";
+                            $query_run_news  = mysqli_query($mysqli, $query_news);
+                            while($query_row_news  = mysqli_fetch_assoc($query_run_news)){
+                        ?>
+                            <tr>
+                                <td><?php echo $query_row_news['news_heading']; ?></td>
+                                <td><?php echo $query_row_news['newsdescription']; ?></td>
+                                <td><?php echo $query_row_news['date']; ?></td>
+                                <td class="text-right">
+                                    <div class="dropdown pull-right">
+                                        <button aria-expanded="false" class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple" data-template="assets/tpl/partials/dropdown-navbar.html" data-toggle="dropdown">
+                                            <i class="md md-delete f20"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <div class="p-10">
+                                                <div class="w300">
+                                                    Please confirm if you want to delete this over
+                                                </div>
+
+                                                <div class="form-group">
+                                                <button type="submit" id="<?php echo $query_row_news['news_id']; ?>" class="btn btn-primary delbutton">Confirm
+                                                </button>
+                                                <a href="#" class="btn btn-link">Cancel</a>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+<?php } ?>
+                        </tbody>
+                </table>
 		    </section>
 		        </div>
 		    </div>
