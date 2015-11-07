@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2015 at 07:05 AM
+-- Generation Time: Nov 07, 2015 at 02:16 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -84,30 +84,31 @@ CREATE TABLE IF NOT EXISTS `livescores` (
 `id` int(255) NOT NULL,
   `match_id` int(22) NOT NULL,
   `teaminnings` int(255) NOT NULL,
+  `is_playing` tinyint(1) NOT NULL,
   `over` int(12) NOT NULL,
   `runs` int(30) NOT NULL,
   `wicket` int(11) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `livescores`
 --
 
-INSERT INTO `livescores` (`id`, `match_id`, `teaminnings`, `over`, `runs`, `wicket`, `datetime`) VALUES
-(1, 5, 1, 1, 12, 1, '2015-11-05 05:54:27'),
-(2, 5, 1, 2, 34, 2, '2015-11-05 05:54:27'),
-(5, 5, 1, 3, 13, 1, '2015-11-05 05:54:27'),
-(7, 5, 1, 4, 11, 0, '2015-11-05 05:54:27'),
-(9, 5, 1, 5, 3, 0, '2015-11-05 05:54:27'),
-(10, 5, 1, 6, 4, 0, '2015-11-05 05:54:27'),
-(11, 5, 1, 7, 4, 1, '2015-11-05 05:54:27'),
-(12, 5, 1, 8, 12, 0, '2015-11-05 05:54:27'),
-(27, 5, 1, 9, 12, 0, '2015-11-05 05:54:27'),
-(28, 5, 1, 10, 12, 0, '2015-11-05 05:54:27'),
-(40, 5, 1, 12, 1, 1, '2015-11-05 05:54:27'),
-(42, 5, 1, 11, 12, 1, '2015-11-05 05:54:27'),
-(43, 4, 1, 1, 120, 0, '2015-11-05 06:01:33');
+INSERT INTO `livescores` (`id`, `match_id`, `teaminnings`, `is_playing`, `over`, `runs`, `wicket`, `datetime`) VALUES
+(1, 5, 1, 0, 1, 12, 1, '2015-11-05 05:54:27'),
+(2, 5, 1, 0, 2, 34, 2, '2015-11-05 05:54:27'),
+(5, 5, 1, 0, 3, 13, 1, '2015-11-05 05:54:27'),
+(7, 5, 1, 0, 4, 11, 0, '2015-11-05 05:54:27'),
+(9, 5, 1, 0, 5, 3, 0, '2015-11-05 05:54:27'),
+(10, 5, 1, 0, 6, 4, 0, '2015-11-05 05:54:27'),
+(11, 5, 1, 0, 7, 4, 1, '2015-11-05 05:54:27'),
+(12, 5, 1, 0, 8, 12, 0, '2015-11-05 05:54:27'),
+(27, 5, 1, 0, 9, 12, 0, '2015-11-05 05:54:27'),
+(28, 5, 1, 0, 10, 12, 0, '2015-11-05 05:54:27'),
+(40, 5, 1, 0, 12, 1, 1, '2015-11-05 05:54:27'),
+(42, 5, 1, 0, 11, 12, 1, '2015-11-05 05:54:27'),
+(48, 4, 2, 0, 1, 11, 1, '2015-11-07 12:54:46');
 
 -- --------------------------------------------------------
 
@@ -166,23 +167,21 @@ CREATE TABLE IF NOT EXISTS `news` (
   `news_heading` varchar(255) NOT NULL,
   `newsdescription` varchar(255) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `featured` tinyint(1) NOT NULL,
   `img` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`news_id`, `news_heading`, `newsdescription`, `date`, `img`) VALUES
-(1, 'Breaking news', 'the captain of ....................', '2015-10-20 19:00:00', ''),
-(2, 'Up coming ', 'match between afridi and tuk tuk', '2015-10-22 19:00:00', ''),
-(3, 'Bad news', 'afridi is not playing in tomorrow match due to serious injury', '2015-10-29 19:00:00', ''),
-(4, 'Shocking news', 'who take more than 4 wickets in a match ives a cash of 100$', '2015-10-28 19:00:00', ''),
-(5, 'kala', 'jfsaja', '2015-11-02 19:00:00', ''),
-(6, 'lala g is injured', 'lala gya', '2015-11-10 19:00:00', ''),
-(7, 'alalaa', 'dfsdfdf', '2015-11-05 05:32:19', ''),
-(8, 'alalaa', 'dfsdfdf', '2015-11-05 05:33:07', ''),
-(9, 'juni har gya', 'han g juni har gya', '2015-11-05 05:33:26', '');
+INSERT INTO `news` (`news_id`, `news_heading`, `newsdescription`, `date`, `featured`, `img`) VALUES
+(1, 'Breaking news', 'the captain of ....................', '2015-10-20 19:00:00', 0, ''),
+(2, 'Up coming ', 'match between afridi and tuk tuk', '2015-10-22 19:00:00', 0, ''),
+(3, 'Bad news', 'afridi is not playing in tomorrow match due to serious injury', '2015-10-29 19:00:00', 0, ''),
+(4, 'Shocking news', 'who take more than 4 wickets in a match ives a cash of 100$', '2015-10-28 19:00:00', 0, ''),
+(6, 'lala g is injured', 'lala gya', '2015-11-10 19:00:00', 0, ''),
+(10, 'Final is on monday', 'mondy........................', '2015-11-07 12:42:14', 0, '');
 
 -- --------------------------------------------------------
 
@@ -361,9 +360,7 @@ INSERT INTO `users` (`user_id`, `username`, `fullname`, `email`, `password`, `ag
 (13, 'Admin', 'Admin mirza', 'admin@sport.com', 'abc', 20, 'male', 2, 'Admin', 1, 1, 'English', '', ''),
 (15, 'kaka', 'kaka don', 'k@k.com', 'asd', 0, NULL, 2, 'Admin', 1, 1, NULL, NULL, NULL),
 (16, 'mano', 'mano', 'm@m.com', 'mano', 23, NULL, NULL, 'Admin', NULL, 1, NULL, NULL, NULL),
-(17, 'mama', 'mama', 'alik@k.com', 'asd', 33, NULL, NULL, 'Admin', NULL, 1, NULL, NULL, NULL),
 (18, 'ali', 'ali raza', 'ali@g.com', 'asd', 23, 'male', 2, '', 1, 1, NULL, NULL, NULL),
-(19, 'Faizan11', 'Faizan Iqbal', 'f@f.com', 'asd', 23, NULL, NULL, 'Admin', NULL, 1, NULL, NULL, NULL),
 (20, 'alu', 'ali ali', 'ali@a.com', 'alualu', 22, 'male', 5, 'Player', 2, 2, 'urdu english', 'i wanna to play fb', NULL),
 (21, 'lgr bgr', 'lgrlu', 'lgr@lgr.com', 'lgrbgr', 22, 'male', 4, 'Player', 2, 2, NULL, NULL, NULL),
 (22, 'mani', 'mani kala', 'mani@m.com', 'mani', 22, 'male', 10, 'Player', 4, 2, NULL, NULL, NULL),
@@ -477,7 +474,7 @@ MODIFY `g_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- AUTO_INCREMENT for table `livescores`
 --
 ALTER TABLE `livescores`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `matches`
 --
@@ -492,7 +489,7 @@ MODIFY `ms_id` int(255) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-MODIFY `news_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `news_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `player`
 --
