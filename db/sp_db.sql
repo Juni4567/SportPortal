@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2015 at 02:16 PM
+-- Generation Time: Nov 07, 2015 at 03:04 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `featured` tinyint(1) NOT NULL,
   `img` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `news`
@@ -181,7 +181,10 @@ INSERT INTO `news` (`news_id`, `news_heading`, `newsdescription`, `date`, `featu
 (3, 'Bad news', 'afridi is not playing in tomorrow match due to serious injury', '2015-10-29 19:00:00', 0, ''),
 (4, 'Shocking news', 'who take more than 4 wickets in a match ives a cash of 100$', '2015-10-28 19:00:00', 0, ''),
 (6, 'lala g is injured', 'lala gya', '2015-11-10 19:00:00', 0, ''),
-(10, 'Final is on monday', 'mondy........................', '2015-11-07 12:42:14', 0, '');
+(10, 'Final is on monday', 'mondy........................', '2015-11-07 12:42:14', 0, ''),
+(11, 'kal match ni', 'ssffdh', '2015-11-07 13:32:37', 0, ''),
+(13, 'MEHMAN', 'KHUSUSI', '2015-11-07 13:52:17', 1, ''),
+(14, 'BARISH KA IMKAN H', 'KAL REHMAT BARAS SAKTI H', '2015-11-07 13:52:43', 1, '');
 
 -- --------------------------------------------------------
 
@@ -489,7 +492,7 @@ MODIFY `ms_id` int(255) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-MODIFY `news_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `news_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `player`
 --
