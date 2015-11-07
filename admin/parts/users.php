@@ -43,7 +43,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" role="menu">
                                         <div class="p-10">
                                             <div class="w300">
-                                                Please confirm if you want to delete this user
+                                                Please confirm if you want to delete this Admin
                                             </div>
 
                                             <div class="form-group">

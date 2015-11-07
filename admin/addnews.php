@@ -64,7 +64,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                                             <div class="p-10">
                                                 <div class="w300">
-                                                    Please confirm if you want to delete this over
+                                                    Please confirm if you want to delete this news
                                                 </div>
 
                                                 <div class="form-group">
