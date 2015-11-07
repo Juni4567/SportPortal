@@ -16,6 +16,11 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 		                    <div class="col-xs-12">
 		                        <input type="num-text" autocomplete="off" name="newsdes" id="newsdes" placeholder="NEWS DESCRIPTION" required="required" class="form-control text-center">
 		                    </div><br></br>
+                            News type: <select name="newstype">
+                            <option>Select one</option>
+                            <option value="0">featured</option>
+                            <option value="1">normal</option>
+                        </select>
 		                </div>
 				        <div>
 		                    <button type="submit" name="addnews" class="btn btn-info">Add news</button>
@@ -25,8 +30,9 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 		                if (isset($_POST['addnews'])) {
 		                    $newsheading = $_POST["newsheading"];
 		                    $newsdescription = $_POST["newsdes"];
+                            $type = $_POST["newstype"];
 		               //     $date = $_POST["date"];
-		                    $query_insert = "INSERT INTO news (news_heading, newsdescription, date) VALUES('$newsheading', '$newsdescription', now())";
+		                    $query_insert = "INSERT INTO news (news_heading, newsdescription, date, featured) VALUES('$newsheading', '$newsdescription', now() , '$type')";
 		                    $query_run_insert = mysqli_query($mysqli, $query_insert);
 		                }
 		                ?>

@@ -7,7 +7,7 @@ include('layout/header.php');
 	<div class="carousel-inner latest-updates general-section jumbotron text-center">
         <?php
         require_once 'includes/db_connect.php';
-        $query = "SELECT * FROM news";
+        $query = "SELECT * FROM news where featured= '0'";
         $query_run = mysqli_query($mysqli, $query);
         $i = 1;
 
@@ -156,45 +156,25 @@ include('layout/header.php');
 					</div>
 				</div> <!-- tabbable	-->
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4">	
 				<div class="all-sport-container">
-				<a class="all-sports">ALL SPORTS <span class="icon-all-sports">span-icon-allsports</span></a>
-				<div class="media">
-					<a class="media-left" href="#">
-						<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
+				<a class="all-sports">ALL SPORTS AND OTHER NEWS<span class="icon-all-sports"></span></a>
+					<?php		
+		        require_once 'includes/db_connect.php';
+		        $query = "SELECT * FROM news where featured= '1'";
+		        $query_run = mysqli_query($mysqli, $query);
+        		$i = 1;
+        		while($query_row = mysqli_fetch_assoc($query_run)){?>
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading"><?php echo $query_row['news_heading']; ?></h4>
+							<p><?php echo $query_row['newsdescription']; ?></p>
+						</div>
 					</div>
-				</div>
-				<div class="media">
-					<a class="media-left" href="#">
-						<img src="assets/images/team-2.jpg" class="thumbnail" alt="Test">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
-					</div>
-				</div>
-				<div class="media">
-					<a class="media-left" href="#">
-						<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
-					</div>
-				</div>
-				<div class="media">
-					<a class="media-left" href="#">
-						<img src="assets/images/team-2.jpg" class="thumbnail" alt="Test">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading">Football Match<span>/ 02 May 2015</span></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint deserunt in cupiditate, quia placeat velit officia molestias ex, autem aspernatur est vitae sequi impedit facilis temporibus eligendi expedita at obcaecati.</p>
-					</div>
-				</div>
+					<?php $i++; } ?>
 				</div>
 			</div> <!-- sidebar col end -->
 		</div>
