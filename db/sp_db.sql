@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2015 at 03:04 PM
+-- Generation Time: Nov 09, 2015 at 08:22 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `livescores` (
   `runs` int(30) NOT NULL,
   `wicket` int(11) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `livescores`
@@ -245,19 +245,19 @@ INSERT INTO `results` (`result_id`, `team_id`, `match_id`, `g_id`, `comments`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sub-coordinator`
+-- Table structure for table `sub_coordinator`
 --
 
-CREATE TABLE IF NOT EXISTS `sub-coordinator` (
+CREATE TABLE IF NOT EXISTS `sub_coordinator` (
 `sc_id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `sub-coordinator`
+-- Dumping data for table `sub_coordinator`
 --
 
-INSERT INTO `sub-coordinator` (`sc_id`, `user_id`) VALUES
+INSERT INTO `sub_coordinator` (`sc_id`, `user_id`) VALUES
 (1, 3),
 (2, 4),
 (3, 27),
@@ -430,9 +430,9 @@ ALTER TABLE `results`
  ADD PRIMARY KEY (`result_id`), ADD KEY `team_id` (`team_id`), ADD KEY `match_id` (`match_id`), ADD KEY `g_id` (`g_id`);
 
 --
--- Indexes for table `sub-coordinator`
+-- Indexes for table `sub_coordinator`
 --
-ALTER TABLE `sub-coordinator`
+ALTER TABLE `sub_coordinator`
  ADD PRIMARY KEY (`sc_id`), ADD KEY `user_id` (`user_id`);
 
 --
@@ -477,7 +477,7 @@ MODIFY `g_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- AUTO_INCREMENT for table `livescores`
 --
 ALTER TABLE `livescores`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `matches`
 --
@@ -509,9 +509,9 @@ MODIFY `r_id` int(255) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `results`
 MODIFY `result_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `sub-coordinator`
+-- AUTO_INCREMENT for table `sub_coordinator`
 --
-ALTER TABLE `sub-coordinator`
+ALTER TABLE `sub_coordinator`
 MODIFY `sc_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `team record`
@@ -574,7 +574,7 @@ ADD CONSTRAINT `player_ibfk_5` FOREIGN KEY (`st_id`) REFERENCES `user-status` (`
 -- Constraints for table `reminder`
 --
 ALTER TABLE `reminder`
-ADD CONSTRAINT `reminder_ibfk_1` FOREIGN KEY (`sc_id`) REFERENCES `sub-coordinator` (`sc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `reminder_ibfk_1` FOREIGN KEY (`sc_id`) REFERENCES `sub_coordinator` (`sc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `results`
@@ -585,10 +585,10 @@ ADD CONSTRAINT `results_ibfk_2` FOREIGN KEY (`match_id`) REFERENCES `matches` (`
 ADD CONSTRAINT `results_ibfk_3` FOREIGN KEY (`g_id`) REFERENCES `games` (`g_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sub-coordinator`
+-- Constraints for table `sub_coordinator`
 --
-ALTER TABLE `sub-coordinator`
-ADD CONSTRAINT `sub-coordinator_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sub_coordinator`
+ADD CONSTRAINT `sub_coordinator_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `team record`
@@ -601,7 +601,7 @@ ADD CONSTRAINT `team record_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `teams` (
 --
 ALTER TABLE `teams`
 ADD CONSTRAINT `teams_ibfk_1` FOREIGN KEY (`g_id`) REFERENCES `games` (`g_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `teams_ibfk_2` FOREIGN KEY (`sc_id`) REFERENCES `sub-coordinator` (`sc_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `teams_ibfk_2` FOREIGN KEY (`sc_id`) REFERENCES `sub_coordinator` (`sc_id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `teams_ibfk_3` FOREIGN KEY (`dept_id`) REFERENCES `departments` (`dept_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
