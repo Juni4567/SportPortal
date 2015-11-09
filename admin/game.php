@@ -22,12 +22,20 @@ if(!$query_works){?>
 <?php }
 else{
 while ($query_row = mysqli_fetch_assoc($query_run)) {
+    $did = $query_row['dept_id'];
+    $query1 = "SELECT * FROM departments where dept_id = '$did'";
+    $query1_run = mysqli_query($mysqli, $query1);
+    $query1_row = mysqli_fetch_assoc($query1_run);
+    $sc_name = $query_row['sc_id'];
+    $query2 = "SELECT users.fullname FROM sub_coordinator inner join users on users.user_id = sub_coordinator.user_id where sub_coordinator.sc_id = '$sc_name'";
+    $query2_run = mysqli_query($mysqli, $query2);
+    $query2_row = mysqli_fetch_assoc($query2_run);
     ?>
     <div class="col-sm-4">
         <div class="well white" style="background: url('../assets/images/logo/1.jpg') no-repeat top right; background-size: contain; padding-right: 115px;">
 				<h2 class="text-uppercase"><?php echo $query_row['team_name']; ?></h2>
-            Supervised by Mr. <?php echo $query_row['sc_id']; ?>
-            Department: <?php echo $query_row['dept_id']; ?>
+            Supervised by Mr. <?php echo $query2_row['fullname']; ?>
+            Department: <?php echo $query1_row['dept_name']; ?>
         </div>
     </div>
 
