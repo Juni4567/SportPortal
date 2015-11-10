@@ -158,7 +158,7 @@ include('layout/header.php');
 			</div>
 			<div class="col-sm-4">	
 				<div class="all-sport-container">
-				<a class="all-sports">ALL SPORTS AND OTHER NEWS<span class="icon-all-sports"></span></a>
+				<a class="all-sports">OTHER NEWS<span class="icon-all-sports"></span></a>
 					<?php		
 		        require_once 'includes/db_connect.php';
 		        $query = "SELECT * FROM news where featured= '1'";
