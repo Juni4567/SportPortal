@@ -44,8 +44,8 @@ while ($query_row = mysqli_fetch_assoc($query_run)) {
     <div class="col-sm-4">
         <div class="well white" style="background: url('../assets/images/logo/<?php echo $query_row['teamlogo']; ?>') no-repeat top right; background-size: contain; padding-right: 115px;">
 				<h2 class="text-uppercase"><?php echo $query_row['team_name'];?></h2>
-            Supervised by Mr. <?php echo $query2_row['fullname']; ?>
-            Department: <?php echo $query1_row['dept_name']; ?>
+            Supervised by <strong> Mr. <?php echo $query2_row['fullname']; ?></strong>
+            Department: <strong><?php echo $query1_row['dept_name']; ?></strong>
         </div>
     </div>
 
