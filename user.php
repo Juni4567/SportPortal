@@ -322,7 +322,8 @@ if (isset($_SESSION['logged_user'])) {
                                         <input type="submit" value="Upload Image" name="submit"
                                                class="btn btn-default" style="margin: 5px 0;">
                                     </div>
-                                
+                                                    </form>
+
                             <form method="post" action="user.php?">
                         <div class="row form-group">
                             <div class="col-xs-12">
@@ -413,7 +414,6 @@ if (isset($_SESSION['logged_user'])) {
                             }
                         }
                         ?>
-                    </form>
                     </form>
                         </div>
 <?php }?>
