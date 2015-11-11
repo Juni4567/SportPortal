@@ -69,6 +69,8 @@ if (isset($_SESSION['logged_user'])) {
                             <?php if ($query_row['user_role'] == 'Sub-coordinator') { ?>
                                 <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab"
                                                            data-toggle="tab">Player Requests</a></li>
+                                <li role="presentation"><a href="#createteam" aria-controls="createteam" role="tab"
+                                                           data-toggle="tab">Create team</a></li>
                             <?php } ?>
                             <?php if ($query_row['user_role'] == 'Coordinator') { ?>
                                 <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab"
@@ -310,6 +312,98 @@ if (isset($_SESSION['logged_user'])) {
                                 </table>
                             </div>
                         <?php } ?>
+
+                        <?php if ($query_row['user_role'] == 'Sub-coordinator') { ?>
+                        <div role="tabpanel" class="tab-pane fade" id="createteam">
+                            <form method="post" action="user.php?">
+                        <div class="row form-group">
+                            <div class="col-xs-6 text-center">
+                                <input type="text" autocomplete="off" name="teamname" id="teamname" required="required" class="form-control text-center" placeholder="Team Name" class="form-control">
+                            </div><br></br>
+                            <div class="col-xs-6">
+                                <label class="control-label" for="Department">Department</label>
+                                            <div class="controls">
+                                                <select id="Department" name="department" placeholder="select" class="form-control">
+                                                    <?php
+                                                        require_once 'includes/db_connect.php';
+                                                        $query = "SELECT * FROM departments";
+                                                        $query_run = mysqli_query($mysqli, $query);
+                                                        while ($query_row = mysqli_fetch_assoc($query_run))
+                                                            {
+                                                    ?>
+                                                    <option value="<?php echo $query_row['dept_id']; ?>">
+                                                        <?php echo $query_row['dept_name']; ?>
+                                                    </option>
+                                                    <?php }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                            <div class="col-xs-6">
+                                <label class="control-label" for="Game">Game</label>
+                                            <div class="controls">
+                                                <select id="Game" name="game" class="form-control">
+                                                    <?php
+                                                    require_once 'includes/db_connect.php';
+                                                    $query = "SELECT * FROM games";
+                                                    $query_run = mysqli_query($mysqli, $query);
+                                                    while ($query_row = mysqli_fetch_assoc($query_run))
+                                                    {
+                                                        ?>
+                                                        <option value="<?php echo $query_row['g_id']; ?>">
+                                                            <?php echo $query_row['g_name']; ?>
+                                                        </option>
+                                                    <?php }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                            <div class="col-xs-6">
+                                <label class="control-label" for="Sub-coordinator">Sub-coordinator</label>
+                                            <div class="controls">
+                                                <select id="Sub-coordinator" name="subcoordinator" class="form-control">
+                                                    <?php
+
+                                                    $query2 = "SELECT * FROM users WHERE user_role = 'Sub-coordinator'";
+                                                    $query2_run = mysqli_query($mysqli, $query2);
+                                                    while ($query2_row = mysqli_fetch_assoc($query2_run)) {
+                                                    ?>
+                                                    <option value="<?php echo $query2_row['fullname']; ?>">
+                                                            <?php echo $query2_row['fullname']; ?>
+                                                        </option>
+                                                    <?php }
+                                                    ?>
+                                                </select>
+                                            </div>
+                            </div>
+
+                            <form action="uploadteamlogo.php" method="post" enctype="multipart/form-data">
+                                    <label class="control-label" for="fileToUpload">Select Team Logo</label>
+                                    <div class="controls">
+                                        <input type="file" name="fileToUpload" id="fileToUpload">
+                                        <input type="submit" value="Upload Image" name="submit"
+                                               class="btn btn-default" style="margin: 5px 0;">
+                                    </div>
+                                </form>
+                        <div>
+                            <button type="submit" name="addteam" class="cbtn btn-info text-center">Add Team</button>
+                        </div>
+                    </div>
+                </div>
+                        <?php
+                        require_once 'includes/db_connect.php';
+                        if (isset($_POST['addteam'])) {
+                            $teamname = $_POST["teamname"];
+                            $dept = $_POST["department"];
+                            $game = $_POST["game"];
+                            $sc = $_POST['subcoordinator'];
+                            $query_insert = "INSERT INTO teams (team_name, dept_id, g_id, sc_id) VALUES('$teamname', '$dept', '$game' , '$sc')";
+                            $query_run_insert = mysqli_query($mysqli, $query_insert);
+                        }
+                        ?>
+                    </form>
+                        </div>
+<?php }?>
                     </div><!-- Profile-inner end -->
                 </div>
             </div><!-- row end -->
