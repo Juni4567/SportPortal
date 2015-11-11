@@ -368,7 +368,7 @@ if (isset($_SESSION['logged_user'])) {
                                                     $query2_run = mysqli_query($mysqli, $query2);
                                                     while ($query2_row = mysqli_fetch_assoc($query2_run)) {
                                                     ?>
-                                                    <option value="<?php echo $query2_row['fullname']; ?>">
+                                                    <option value="<?php echo $query2_row['user_id']; ?>">
                                                             <?php echo $query2_row['fullname']; ?>
                                                         </option>
                                                     <?php }
@@ -391,7 +391,6 @@ if (isset($_SESSION['logged_user'])) {
                     </div>
                 </div>
                         <?php
-                        require_once 'includes/db_connect.php';
                         if (isset($_POST['addteam'])) {
                             $teamname = $_POST["teamname"];
                             $dept = $_POST["department"];
@@ -399,6 +398,12 @@ if (isset($_SESSION['logged_user'])) {
                             $sc = $_POST['subcoordinator'];
                             $query_insert = "INSERT INTO teams (team_name, dept_id, g_id, sc_id) VALUES('$teamname', '$dept', '$game' , '$sc')";
                             $query_run_insert = mysqli_query($mysqli, $query_insert);
+                            if($query_run_insert){
+                                echo "success";
+                            }
+                            else{
+                                echo"failed";
+                            }
                         }
                         ?>
                     </form>

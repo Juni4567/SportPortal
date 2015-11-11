@@ -75,6 +75,9 @@
                     <div class="well white">
                         <h3>Members Activity</h3>
                         <ul>
+                            //select upcomming matches
+                            $upcomingmatches            = "SELECT * FROM user WHERE matchstatus = 'scheduled' LIMIT 3";
+                            $query_run_upcomingmatches  = mysqli_query($mysqli, $upcomingmatches);
                             <li><h5>Junaid Anwar</h5> Has Joined Portal as <span class="role">Player</span></li>
                             <li><h5>Usman Bilal</h5> Has Joined Portal as <span class="role">Coordinator</span></li>
                             <li><h5>Fazeel Fiaz</h5> Has Joined Portal as <span class="role">Sub-Coordinator</span></li>
