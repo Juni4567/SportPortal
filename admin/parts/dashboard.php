@@ -77,7 +77,7 @@
                         <ul>
                            <?php
                            //select User tha has recently signed up
-                           $query_recent_registration = "SELECT * FROM users ORDER BY user_id DESC LIMIT 3";
+                           $query_recent_registration = "SELECT * FROM users where user_role != 'Admin' ORDER BY user_id DESC LIMIT 3";
                            $query_run_recent_registration = mysqli_query($mysqli, $query_recent_registration);
                            while ($query_row_recent_registration = mysqli_fetch_assoc($query_run_recent_registration)) {
                                ?>
@@ -85,7 +85,7 @@
                            <?php } ?>
                         </ul>
                         <div class="readmore text-right">
-                            <a href="#">See More...</a>
+                            <a href="members-activity.php">See More...</a>
                         </div>
                     </div>
                 </div>
