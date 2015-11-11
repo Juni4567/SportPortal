@@ -8,10 +8,20 @@ if (isset($_SESSION['logged_user'])) {
         <div class="main-content">
 
   <section class="forms-advanced">
+      <?php require_once 'includes/db_connect.php';
+      $g_id                 = $_GET['g_id'];
+      $query_game_name      = "SELECT g_name FROM games WHERE g_id = '$g_id'";
+      $query_run_game_name  = mysqli_query($mysqli, $query_game_name);
+      $query_row_game_name  = mysqli_fetch_assoc($query_run_game_name);
+      ?>
+      <div class="page-header">
+        <h1><i class="md md-security"></i> <?php echo $query_row_game_name['g_name']; ?></h1>
+        <p class="lead">Teams of <?php echo $query_row_game_name['g_name']; ?></p>
+    </div>
        <div class="row dashboard-content">
 
-<?php require_once 'includes/db_connect.php';
-$g_id   = $_GET['g_id'];
+<?php
+
 $query  = "SELECT * FROM teams WHERE g_id = '$g_id'";
 $query_run = mysqli_query($mysqli, $query);
 $query_works = mysqli_num_rows($query_run);
@@ -32,8 +42,8 @@ while ($query_row = mysqli_fetch_assoc($query_run)) {
     $query2_row = mysqli_fetch_assoc($query2_run);
     ?>
     <div class="col-sm-4">
-        <div class="well white" style="background: url('../assets/images/logo/1.jpg') no-repeat top right; background-size: contain; padding-right: 115px;">
-				<h2 class="text-uppercase"><?php echo $query_row['team_name']; ?></h2>
+        <div class="well white" style="background: url('../assets/images/logo/<?php echo $query_row['teamlogo']; ?>') no-repeat top right; background-size: contain; padding-right: 115px;">
+				<h2 class="text-uppercase"><?php echo $query_row['team_name'];?></h2>
             Supervised by Mr. <?php echo $query2_row['fullname']; ?>
             Department: <?php echo $query1_row['dept_name']; ?>
         </div>
