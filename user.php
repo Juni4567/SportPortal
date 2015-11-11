@@ -315,6 +315,14 @@ if (isset($_SESSION['logged_user'])) {
 
                         <?php if ($query_row['user_role'] == 'Sub-coordinator') { ?>
                         <div role="tabpanel" class="tab-pane fade" id="createteam">
+                             <form action="uploadteamlogo.php" method="post" enctype="multipart/form-data">
+                                    <label class="control-label" for="fileToUpload">Select Team Logo</label>
+                                    <div class="controls">
+                                        <input type="file" name="fileToUpload" id="fileToUpload">
+                                        <input type="submit" value="Upload Image" name="submit"
+                                               class="btn btn-default" style="margin: 5px 0;">
+                                    </div>
+                                </form>
                             <form method="post" action="user.php?">
                         <div class="row form-group">
                             <div class="col-xs-6 text-center">
@@ -367,24 +375,21 @@ if (isset($_SESSION['logged_user'])) {
                                                     $query2 = "SELECT * FROM users WHERE user_role = 'Sub-coordinator'";
                                                     $query2_run = mysqli_query($mysqli, $query2);
                                                     while ($query2_row = mysqli_fetch_assoc($query2_run)) {
+                                                        $user_id = $query2_row['user_id'];
+                                                        // Select from subcoordinator table to find the sc_id of the user
+                                                        $query_find_sc_id = "SELECT * FROM sub_coordinator WHERE user_id = '$user_id'";
+                                                        $query_run_find_sc_id = mysqli_query($mysqli, $query_find_sc_id);
+                                                        $query_row_sc_id = mysqli_fetch_assoc($query_run_find_sc_id);
                                                     ?>
-                                                    <option value="<?php echo $query2_row['user_id']; ?>">
+                                                    <option value="<?php echo $query_row_sc_id['sc_id']; ?>">
                                                             <?php echo $query2_row['fullname']; ?>
-                                                        </option>
+                                                    </option>
                                                     <?php }
                                                     ?>
                                                 </select>
                                             </div>
                             </div>
 
-                            <form action="uploadteamlogo.php" method="post" enctype="multipart/form-data">
-                                    <label class="control-label" for="fileToUpload">Select Team Logo</label>
-                                    <div class="controls">
-                                        <input type="file" name="fileToUpload" id="fileToUpload">
-                                        <input type="submit" value="Upload Image" name="submit"
-                                               class="btn btn-default" style="margin: 5px 0;">
-                                    </div>
-                                </form>
                         <div>
                             <button type="submit" name="addteam" class="cbtn btn-info text-center">Add Team</button>
                         </div>
