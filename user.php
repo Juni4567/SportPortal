@@ -322,13 +322,13 @@ if (isset($_SESSION['logged_user'])) {
                                         <input type="submit" value="Upload Image" name="submit"
                                                class="btn btn-default" style="margin: 5px 0;">
                                     </div>
-                                </form>
+                                
                             <form method="post" action="user.php?">
                         <div class="row form-group">
-                            <div class="col-xs-6 text-center">
-                                <input type="text" autocomplete="off" name="teamname" id="teamname" required="required" class="form-control text-center" placeholder="Team Name" class="form-control">
+                            <div class="col-xs-12">
+                                <input type="text" autocomplete="off" name="teamname" id="teamname" required="required" class="text-center form-control" placeholder="Enter Team Name" class="form-control">
                             </div><br></br>
-                            <div class="col-xs-6">
+                            <div class="col-xs-4">
                                 <label class="control-label" for="Department">Department</label>
                                             <div class="controls">
                                                 <select id="Department" name="department" placeholder="select" class="form-control">
@@ -347,7 +347,7 @@ if (isset($_SESSION['logged_user'])) {
                                                 </select>
                                             </div>
                                         </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-4">
                                 <label class="control-label" for="Game">Game</label>
                                             <div class="controls">
                                                 <select id="Game" name="game" class="form-control">
@@ -366,7 +366,7 @@ if (isset($_SESSION['logged_user'])) {
                                                 </select>
                                             </div>
                                         </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-4">
                                 <label class="control-label" for="Sub-coordinator">Sub-coordinator</label>
                                             <div class="controls">
                                                 <select id="Sub-coordinator" name="subcoordinator" class="form-control">
@@ -389,9 +389,11 @@ if (isset($_SESSION['logged_user'])) {
                                                 </select>
                                             </div>
                             </div>
-
-                        <div>
-                            <button type="submit" name="addteam" class="cbtn btn-info text-center">Add Team</button>
+                            <div class="col-xs-4 text-center" >
+                            </div>
+                        <div class="col-xs-4 text-center" >
+                            <label class="control-label" for=""></label>
+                                <button type="submit" name="addteam" class="btn btn-info form-control">Add Team</button>
                         </div>
                     </div>
                 </div>
@@ -411,6 +413,7 @@ if (isset($_SESSION['logged_user'])) {
                             }
                         }
                         ?>
+                    </form>
                     </form>
                         </div>
 <?php }?>
