@@ -14,7 +14,7 @@ require('layout/header.php');
                 <div class="scorecard-container">
                     <div class="news-card general-section">
                         <a href="news_page.php?n_id=<?php echo $query_row['news_id'];?>" class="h2"><?php echo $query_row['news_heading']; ?></a>
-                        <p><?php echo $query_row['newsdescription']; ?></p>
+                        <p><?php echo $query_row['excerpt']; ?></p>
                         <a class="btn btn-primary sp-cta" href="news_page.php?n_id=<?php echo $query_row['news_id'];?>">Readmore...</a>
                     </div>
                 </div>

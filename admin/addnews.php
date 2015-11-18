@@ -11,10 +11,12 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 		        	<form method="POST" action="addnews.php" name="myform" novalidate>
 		                <div class="row form-group">
 		                    <div class="col-xs-12">
-		                        <input type="text" autocomplete="off" name="newsheading" id="newsheading" required="required" class="text-center" placeholder="NEWS HEADING" class="form-control">
+		                        <input type="text" autocomplete="off" name="newsheading" id="newsheading" required="required" class="form-control full-width" placeholder="NEWS HEADING">
 		                    </div><br></br>
-		                    <div class="col-xs-12">
+		                    <div class="col-xs-12 text-left">
 		                        <textarea name="newsdes" id="newsdes" required="required" class="form-control text-center"></textarea>
+                                <h3>Add post Excerpt</h3>
+                                <textarea name="excerpt" style="height:50px; min-height: 50px;" placeholder="Pleae add a news excerpt so you see it on news cards" id="excerpt" class="full-width"></textarea>
 		                    </div><br></br>
                             News type: <select name="newstype">
                             <option>Select one</option>
@@ -22,17 +24,18 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             <option value="1">normal</option>
                         </select>
 		                </div>
-				        <div>
-		                    <input type="submit" name="addnews" class="btn btn-info">
+				        <div class="text-right">
+		                    <input type="submit" name="addnews" class="btn btn-lg btn-info">
 		                </div>
 		                <?php
 		                require_once 'includes/db_connect.php';
 		                if (isset($_POST['addnews'])) {
-		                    $newsheading = $_POST["newsheading"];
-		                    $newsdescription = $_POST["newsdes"];
-                            $type = $_POST["newstype"];
+		                    $newsheading        = $_POST["newsheading"];
+		                    $newsexcerpt        = $_POST["excerpt"];
+                            $newsdescription    = $_POST["newsdes"];
+                            $type               = $_POST["newstype"];
 		               //     $date = $_POST["date"];
-		                    $query_insert = "INSERT INTO news (news_heading, newsdescription, date, featured) VALUES('$newsheading', '$newsdescription', now() , '$type')";
+		                    $query_insert = "INSERT INTO news (news_heading, newsdescription, excerpt, date, featured) VALUES('$newsheading', '$newsdescription','$newsexcerpt', now() , '$type')";
 		                    $query_run_insert = mysqli_query($mysqli, $query_insert);
 		                }
 		                ?>

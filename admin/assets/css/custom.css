@@ -137,6 +137,9 @@ i.md.md-36 {
 .menu-links>li>a {
     padding-right: 20px !important;
 }
+.full-width{
+    width:100%;
+}
 @media screen and (max-width: 768px){
     .score-update-table{
         width: 300px;

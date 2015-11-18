@@ -16,7 +16,7 @@ include('layout/header.php');
 			<div class="container">
 				<div class="carousel-news">
 					<h1><?php echo $query_row['news_heading']; ?></h1>
-					<p><?php echo $query_row['newsdescription']; ?></p>
+					<p><?php echo $query_row['excerpt']; ?></p>
 				</div>
 			</div>
 		</div>
