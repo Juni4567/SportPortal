@@ -7,7 +7,7 @@ require('layout/header.php');
 		<div>
             <?php
             require_once 'includes/db_connect.php';
-            $query = "SELECT * FROM news";
+            $query = "SELECT * FROM news ORDER BY news_id DESC";
             $query_run = mysqli_query($mysqli, $query);
                 while ($query_row = mysqli_fetch_assoc($query_run))
                 { ?>

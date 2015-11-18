@@ -57,7 +57,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         </thead>
                         <tbody id="news">
                         <?php
-                            $query_news = "SELECT * FROM news";
+                            $query_news = "SELECT * FROM news ORDER BY news_id DESC";
                             $query_run_news  = mysqli_query($mysqli, $query_news);
                             while($query_row_news  = mysqli_fetch_assoc($query_run_news)){
                         ?>
