@@ -10,3 +10,12 @@
     max-height: 180px;
     overflow: hidden;
 }
+.profile-header{
+    background-color: #FFCA12;
+}
+.profile-header .profile-status{
+    color:#fff;
+}
+.tab-content>.tab-pane{
+    padding:30px;
+}

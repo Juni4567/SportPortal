@@ -272,7 +272,7 @@ if (isset($_SESSION['logged_user'])) {
                                     <th class="text-center">Email</th>
                                     <th colspan="2" class="text-center">Status</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="coordinators">
                                     <?php
                                     require_once 'includes/db_connect.php';
                                     $i = 1;

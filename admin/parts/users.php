@@ -8,7 +8,7 @@
             <div>
                 <div class="table-responsive well no-padding white no-margin">
 
-                    <table class="table table-full m-b-60" id="table-area-1" fsm-big-data="data of data take 30">
+                    <table class="table table-full" id="table-area-1" fsm-big-data="data of data take 30">
                         <thead>
                         <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
                             <th>ID</th>

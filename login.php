@@ -12,17 +12,17 @@ if ( isset( $_POST['submit'] ) ) {
     $findme   = '@';
 
     if(strpos($username, $findme)){
-    $sql    = "SELECT * from users WHERE email = '$username' AND password = '$password' LIMIT 1";
+    $sql    = "SELECT * from users WHERE email = '$username' AND password = '$password' status_id = '1' LIMIT 1";
     $result = $mysqli->query( $sql );
     $row    = $result->fetch_assoc();
     }
     else{
-	$sql    = "SELECT * from users WHERE username = '$username' AND password = '$password' LIMIT 1";
+	$sql    = "SELECT * from users WHERE username = '$username' AND password = '$password' AND status_id = '1' LIMIT 1";
     $result = $mysqli->query( $sql );
 	$row    = $result->fetch_assoc();
     }
 	if ( $result->num_rows == 0 ) {
-		echo "<div class='alert alert-danger'>Invalid username/password combination try again</div>";
+		echo "<div class='alert alert-danger'>Invalid username/password combination or your account is not activated yet. Try again</div>";
         include_once('index.php');
 	} else {
 		$_SESSION['logged_user'] = $row['username'];

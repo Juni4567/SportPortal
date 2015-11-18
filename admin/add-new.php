@@ -23,8 +23,8 @@ if(isset($_POST['adminsignup'])){
     }
     else {
         // insert data into mysql database
-        $sql = "INSERT INTO users (`user_id`, `username`, `fullname`, `email`, `password`, `age`, `gender`, `dept_id`, `user_role`, `g_id`)
-      VALUES                      ('$', '$username', '$fullname', '$email', '$password', $age , null , null , 'Admin' , null)";
+        $sql = "INSERT INTO users (`user_id`, `username`, `fullname`, `email`, `password`, `age`, `gender`, `dept_id`, `user_role`, `g_id`, status_id)
+      VALUES                      ('$', '$username', '$fullname', '$email', '$password', $age , null , null , 'Admin' , null, '1')";
         //$sql = "INSERT  INTO `users` (`user_id`, `username`, 'fullname', `email`, `password`, `age`, `gender`)
         //VALUES (26, '{$username}', '{$fullname}', '{$email}', '{$password}', '{$age}', '{$gender}')";
         if ($mysqli->query($sql)) {
