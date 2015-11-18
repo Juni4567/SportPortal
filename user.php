@@ -265,7 +265,7 @@ if (isset($_SESSION['logged_user'])) {
                         <?php } ?>
                         <?php if ($query_row['user_role'] == 'Coordinator') { ?>
                             <div role="tabpanel" class="tab-pane fade" id="playerrequest">
-                                <table id="players-list" class="table table-bordered">
+                                <table id="sc-list" class="table table-bordered">
                                     <thead>
                                     <th class="text-center">s.no</th>
                                     <th class="text-center">Name</th>
@@ -293,10 +293,12 @@ if (isset($_SESSION['logged_user'])) {
                                             <td><?php echo $name; ?></td>
                                             <td><?php echo $email; ?></td>
                                             <td>
-                                                <button type="submit" name="accepted" id="<?php echo $user_id; ?>" class="accept-btn">Accept</button>
+                                               <input type="hidden" class="deptId" value="<?php echo $dept_id ?>" />
+                                                <input type="hidden" class="gameId" value="<?php echo $game_id ?>" />
+                                                <button type="submit" name="accept" class="accept-btn" value="<?php echo $user_id; ?>">Accept</button>
                                             </td>
                                             <td>
-                                                <button type="submit" name="rejected" id="<?php echo $user_id; ?>" class="reject-btn">Reject</button>
+                                                <button type="submit" name="reject" class="reject-btn" value="<?php echo $user_id; ?>">Reject</button>
                                             </td>
 
                                         </tr>

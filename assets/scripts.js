@@ -19,7 +19,7 @@ $(document).ready(function() {
         if (confirm("Are you sure you want to Accept this player")) {
             $.ajax({
                 type: "GET",
-                url: "accept-reject.php",
+                url: "accept-reject-player.php",
                 data: 'id='+obj_id+'&g_id='+game_id+'&dept_id='+dept_id,
                 success: function () {
                     element.closest('tr').fadeOut();
@@ -35,10 +35,10 @@ $(document).ready(function() {
         var obj_id  = element.val();
         console.log(obj_id);
 
-        if (confirm("Are you sure you want to Reject this player!!!!!!")) {
+        if (confirm("Are you sure you want to Reject this Sub-coordinator!!!!!!")) {
             $.ajax({
                 type: "GET",
-                url: "accept-reject.php",
+                url: "accept-reject-player.php",
                 data: 'reject='+obj_id,
                 success: function () {
                     element.closest('tr').fadeOut();
@@ -50,17 +50,17 @@ $(document).ready(function() {
     });
 
     //*********************************Coordinator's panel to accept or reject sub-coordinator****************************
-    $("#players-list").on('click', '.accept-btn', function () {
+    $("#sc-list").on('click', '.accept-btn', function () {
         var element = $(this);
         var obj_id  = element.val();
         var game_id = element.siblings(".gameId").val();
         var dept_id = element.siblings(".deptId").val();
         console.log(obj_id + game_id + dept_id);
 
-        if (confirm("Are you sure you want to Accept this player")) {
+        if (confirm("Are you sure you want to Accept this Sub-coordinator")) {
             $.ajax({
                 type: "GET",
-                url: "accept-reject.php",
+                url: "accept-reject-sc.php",
                 data: 'id='+obj_id+'&g_id='+game_id+'&dept_id='+dept_id,
                 success: function () {
                     element.closest('tr').fadeOut();
@@ -71,19 +71,19 @@ $(document).ready(function() {
         return false;
     });
     // Coorinator's panel to reject sub-coordinator
-    $("#players-list").on('click', '.reject-btn', function () {
+    $("#sc-list").on('click', '.reject-btn', function () {
         var element = $(this);
         var obj_id  = element.val();
         console.log(obj_id);
 
-        if (confirm("Are you sure you want to Reject this player!!!!!!")) {
+        if (confirm("Are you sure you want to Reject this Sub-coordinator!!!!!! Remember this will remove this person's account as well")) {
             $.ajax({
                 type: "GET",
-                url: "accept-reject.php",
+                url: "accept-reject-sc.php",
                 data: 'reject='+obj_id,
                 success: function () {
                     element.closest('tr').fadeOut();
-                    console.log("player removed");
+                    console.log("Sub-coordinator removed");
                 }
             });
         }
