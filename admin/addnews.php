@@ -8,13 +8,13 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
         <div class="main-content">
             <section class="forms-advanced">
 		        <div class="well white addnews-table text-center">
-		        	<form method="post" action="addnews.php">
+		        	<form method="POST" action="addnews.php" name="myform" novalidate>
 		                <div class="row form-group">
 		                    <div class="col-xs-12">
 		                        <input type="text" autocomplete="off" name="newsheading" id="newsheading" required="required" class="text-center" placeholder="NEWS HEADING" class="form-control">
 		                    </div><br></br>
 		                    <div class="col-xs-12">
-		                        <input type="num-text" autocomplete="off" name="newsdes" id="newsdes" placeholder="NEWS DESCRIPTION" required="required" class="form-control text-center">
+		                        <textarea name="newsdes" id="newsdes" required="required" class="form-control text-center"></textarea>
 		                    </div><br></br>
                             News type: <select name="newstype">
                             <option>Select one</option>
@@ -23,7 +23,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         </select>
 		                </div>
 				        <div>
-		                    <button type="submit" name="addnews" class="btn btn-info">Add news</button>
+		                    <input type="submit" name="addnews" class="btn btn-info">
 		                </div>
 		                <?php
 		                require_once 'includes/db_connect.php';
