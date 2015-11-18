@@ -20,8 +20,8 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 		                    </div><br></br>
                             News type: <select name="newstype">
                             <option>Select one</option>
-                            <option value="0">featured</option>
-                            <option value="1">normal</option>
+                            <option value="1">featured</option>
+                            <option value="0">normal</option>
                         </select>
 		                </div>
 				        <div class="text-right">
@@ -33,9 +33,9 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 		                    $newsheading        = $_POST["newsheading"];
 		                    $newsexcerpt        = $_POST["excerpt"];
                             $newsdescription    = $_POST["newsdes"];
-                            $type               = $_POST["newstype"];
-		               //     $date = $_POST["date"];
-		                    $query_insert = "INSERT INTO news (news_heading, newsdescription, excerpt, date, featured) VALUES('$newsheading', '$newsdescription','$newsexcerpt', now() , '$type')";
+                            $newstype           = $_POST["newstype"];
+                            //     $date = $_POST["date"];
+		                    $query_insert = "INSERT INTO news (news_heading, newsdescription, excerpt, featured, date) VALUES('$newsheading', '$newsdescription','$newsexcerpt', '$newstype', CURRENT_TIMESTAMP)";
 		                    $query_run_insert = mysqli_query($mysqli, $query_insert);
 		                }
 		                ?>
