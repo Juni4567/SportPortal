@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2015 at 05:31 PM
+-- Generation Time: Nov 18, 2015 at 05:37 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -29,8 +29,10 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `coordinator` (
   `c_id` int(255) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
+  `dept_id` int(255) NOT NULL,
   PRIMARY KEY (`c_id`),
-  KEY `user_id` (`user_id`)
+  KEY `user_id` (`user_id`),
+  KEY `dept_id` (`dept_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -330,6 +332,7 @@ INSERT INTO `users` (`user_id`, `username`, `fullname`, `email`, `password`, `ag
 -- Constraints for table `coordinator`
 --
 ALTER TABLE `coordinator`
+  ADD CONSTRAINT `coordinator_ibfk_2` FOREIGN KEY (`dept_id`) REFERENCES `departments` (`dept_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `coordinator_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

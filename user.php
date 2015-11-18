@@ -302,9 +302,7 @@ if (isset($_SESSION['logged_user'])) {
                                             </td>
 
                                         </tr>
-                                    <?php
-                                    }
-                                    ?>
+                                    <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -50,7 +50,7 @@ $(document).ready(function() {
     });
 
     //*********************************Coordinator's panel to accept or reject sub-coordinator****************************
-    $("#sc-list").on('click', '.accept-btn', function () {
+    $("#coordinators").on('click', '.accept-btn', function () {
         var element = $(this);
         var obj_id  = element.val();
         var game_id = element.siblings(".gameId").val();
@@ -71,7 +71,7 @@ $(document).ready(function() {
         return false;
     });
     // Coorinator's panel to reject sub-coordinator
-    $("#sc-list").on('click', '.reject-btn', function () {
+    $("#coordinators").on('click', '.reject-btn', function () {
         var element = $(this);
         var obj_id  = element.val();
         console.log(obj_id);

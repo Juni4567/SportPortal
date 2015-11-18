@@ -57,7 +57,13 @@
             </ul>
         </li>
         <li><a href="messages.php">
-                <i class="md md-chat"></i>Notifications</a>
+                <?php
+                require_once 'includes/db_connect.php';
+                $query_coo = "SELECT * FROM users WHERE user_role= 'Coordinator' AND status_id='0'";
+
+                $query_run_coo = mysqli_query($mysqli, $query_coo);
+                ?>
+                <i class="md md-chat"></i><span></span>Notifications <span id="todosCount" class="pull-right badge z-depth-0"><?php echo $query_run_coo->num_rows; ?></span></span></a>
         </li>
         <li><a href="add-new.php">
                 <i class="md md-add"></i>Register an Admin</a>
