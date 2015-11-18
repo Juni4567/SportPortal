@@ -25,7 +25,7 @@ if (isset($_SESSION['logged_user'])) {
 $query  = "SELECT * FROM teams WHERE g_id = '$g_id'";
 $query_run = mysqli_query($mysqli, $query);
 $query_works = mysqli_num_rows($query_run);
-if(!$query_works){?>
+if(!$query_works){ ?>
     <div class="well white">
     <h2>No teams Found</h2>
     </div>

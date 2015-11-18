@@ -220,7 +220,7 @@ if (isset($_SESSION['logged_user'])) {
                         </div> <!-- tab-content -->
                         <?php if ($query_row['user_role'] == 'Sub-coordinator') { ?>
                             <div role="tabpanel" class="tab-pane fade" id="playerrequest">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="players-list">
                                     <thead>
                                     <th class="text-center">s.no</th>
                                     <th class="text-center">Name</th>
@@ -235,7 +235,7 @@ if (isset($_SESSION['logged_user'])) {
                                     $dept_id = $query_row['dept_id'];
                                     $user_id = $query_row['user_id'];
 
-                                    $query1 = "SELECT * FROM users WHERE g_id='$game_id' and dept_id = '$dept_id' and user_role= 'Player' and user_id!='$user_id'";
+                                    $query1 = "SELECT * FROM users WHERE g_id='$game_id' AND dept_id = '$dept_id' AND user_role= 'Player' AND user_id!='$user_id' AND status_id= 0 ";
                                     $query1_run = mysqli_query($mysqli, $query1);
                                     while ($query1_row = mysqli_fetch_assoc($query1_run)) {
                                         $user_id = $query1_row['user_id'];
@@ -243,23 +243,18 @@ if (isset($_SESSION['logged_user'])) {
                                         $email = $query1_row['email'];
                                         $status = $query1_row['status_id'];?>
                                         <tr>
-                                            <td><input type="hidden" name="id"
-                                                       value="<?php echo $user_id; ?>"/><?php echo $i++; ?></td>
+                                            <!-- Ths is for Sub-coordinator for displaying players list -->
+                                            <td><input type="hidden" name="id" value="" /><?php echo $i++; ?></td>
                                             <td><?php echo $name; ?></td>
                                             <td><?php echo $email; ?></td>
-                                            <form action="<?php $_SERVER['PHP_SELF']; ?>" method="get">
                                             <td>
-                                                <button type="submit" name="accept" value="yes">Accept</button>
+                                                <input type="hidden" class="deptId" value="<?php echo $dept_id ?>" />
+                                                <input type="hidden" class="gameId" value="<?php echo $game_id ?>" />
+                                                <button type="submit" name="accept" class="accept-btn" value="<?php echo $user_id; ?>">Accept</button>
                                             </td>
                                             <td>
-                                                <button type="submit" name="reject">Reject</button>
+                                                <button type="submit" name="reject" class="reject-btn" value="<?php echo $user_id; ?>">Reject</button>
                                             </td>
-                                                </form>
-                                            <?php if($_GET['accept']){
-                                                $query_insert_player = "INSERT INTO players (user_id, dept_id, g_id, st_id) VALUES ('$user_id', '$dept_id', '$game_id', 'accepted')";
-                                                $query_run_insert_player = mysqli_query($mysqli, $query_insert_player);
-                                                $query_row_insert_player = mysqli_fetch_assoc($query_run_insert_player);
-                                            }?>
                                         </tr>
                                     <?php
                                     }
@@ -270,7 +265,7 @@ if (isset($_SESSION['logged_user'])) {
                         <?php } ?>
                         <?php if ($query_row['user_role'] == 'Coordinator') { ?>
                             <div role="tabpanel" class="tab-pane fade" id="playerrequest">
-                                <table class="table table-bordered">
+                                <table id="players-list" class="table table-bordered">
                                     <thead>
                                     <th class="text-center">s.no</th>
                                     <th class="text-center">Name</th>
@@ -285,7 +280,7 @@ if (isset($_SESSION['logged_user'])) {
                                     $dept_id = $query_row['dept_id'];
                                     $user_id = $query_row['user_id'];
 
-                                    $query1 = "SELECT * FROM users WHERE dept_id = '$dept_id' and user_role= 'Sub-coordinator' and user_id!='$user_id'";
+                                    $query1 = "SELECT * FROM users WHERE dept_id = '$dept_id' AND user_role= 'Sub-coordinator' AND user_id!='$user_id' AND status_id='0'";
                                     $query1_run = mysqli_query($mysqli, $query1);
                                     while ($query1_row = mysqli_fetch_assoc($query1_run)) {
                                         $user_id = $query1_row['user_id'];
@@ -293,15 +288,15 @@ if (isset($_SESSION['logged_user'])) {
                                         $email = $query1_row['email'];
                                         $status = $query1_row['status_id'];?>
                                         <tr>
-                                            <td><input type="hidden" name="id"
-                                                       value="<?php echo $user_id; ?>"/><?php echo $i++; ?></td>
+                                            <!--   This is for Coordinator to see the list of sub-coordinators-->
+                                            <td><input type="hidden" name="id" value=""/><?php echo $i++; ?></td>
                                             <td><?php echo $name; ?></td>
                                             <td><?php echo $email; ?></td>
                                             <td>
-                                                <button type="submit" name="accepted">Accept</button>
+                                                <button type="submit" name="accepted" id="<?php echo $user_id; ?>" class="accept-btn">Accept</button>
                                             </td>
                                             <td>
-                                                <button type="submit" name="rejected">Reject</button>
+                                                <button type="submit" name="rejected" id="<?php echo $user_id; ?>" class="reject-btn">Reject</button>
                                             </td>
 
                                         </tr>
