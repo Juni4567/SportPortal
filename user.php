@@ -10,6 +10,11 @@ if (isset($_SESSION['logged_user'])) {
     $game_id = $query_row['g_id'];
     $dept_id = $query_row['dept_id'];
     $user_id = $query_row['user_id'];
+
+    //Get department name from department table with it's id
+    $query_dept_name = "SELECT * FROM departments WHERE dept_id = '$dept_id'";
+    $query_dept_name_run = mysqli_query($mysqli, $query_dept_name);
+    $query_dept_name_row = mysqli_fetch_assoc($query_dept_name_run);
     ?>
     <div class="container">
     <div class="general-section">
@@ -51,8 +56,7 @@ if (isset($_SESSION['logged_user'])) {
                                     </span>
                             </h2>
 
-                            <div class="user-bio"><span class="teamname glyphicon glyphicon-globe"><?php echo $query_row['dept_id']; ?> </span>
-                                <span class="languages glyphicon glyphicon-comment"><?php echo $query_row['languages']; ?></span>
+                            <div class="user-bio"><span class="teamname glyphicon glyphicon-globe"> <?php echo $query_dept_name_row['dept_name']; ?> </span>
                             </div>
                         </div>
                     </div>
@@ -302,7 +306,7 @@ if (isset($_SESSION['logged_user'])) {
                         $sc_id             = $query_row_sc_id['sc_id'];
 //                                                        echo "sc_id ";
 //                                                        var_dump($query_row_sc_id);
-                        $query_list_teams       = "SELECT * FROM teams WHERE dept_id = '$dept_id' AND g_id='$game_id' AND sc_id='$sc_id'";
+                        $query_list_teams       = "SELECT * FROM teams WHERE dept_id = '$dept_id' AND g_id='$game_id'";
                         $query_run_list_teams   = mysqli_query($mysqli, $query_list_teams); ?>
 
                         <div role="tabpanel" class="tab-pane fade" id="createteam">
