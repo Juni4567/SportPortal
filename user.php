@@ -309,109 +309,86 @@ if (isset($_SESSION['logged_user'])) {
                         <?php } ?>
 
                         <?php if ($query_row['user_role'] == 'Sub-coordinator') { ?>
+                        <?php
+                        $query_sc_id       = "SELECT * FROM sub_coordinator WHERE user_id='$user_id' AND dept_id = '$dept_id' AND g_id='$game_id'";
+                        $query_run_sc_id   = mysqli_query($mysqli, $query_sc_id);
+                        $query_row_sc_id   = mysqli_fetch_assoc($query_run_sc_id);
+                        $sc_id             = $query_row_sc_id['sc_id'];
+                        //                                echo "sc_id ";
+                        //                                var_dump($query_row_sc_id);
+                        $query_list_teams       = "SELECT * FROM teams WHERE dept_id = '$dept_id' AND g_id='$game_id' AND sc_id='$sc_id'";
+                        $query_run_list_teams   = mysqli_query($mysqli, $query_list_teams); ?>
+
                         <div role="tabpanel" class="tab-pane fade" id="createteam">
-                             <form action="uploadteamlogo.php" method="post" enctype="multipart/form-data">
-                                    <label class="control-label" for="fileToUpload">Select Team Logo</label>
-                                    <div class="controls">
-                                        <input type="file" name="fileToUpload" id="fileToUpload">
-                                        <input type="submit" value="Upload Image" name="submit"
-                                               class="btn btn-default" style="margin: 5px 0;">
-                                    </div>
-                                                    </form>
-
-                            <form method="post" action="user.php?">
+                        <!-- Team Logo -->
+                         <form action="uploadteamlogo.php?sc_id=<?php echo $sc_id; ?>&dept_id=<?php echo $dept_id; ?>" method="post" enctype="multipart/form-data">
+                            <label class="control-label" for="fileToUpload">Select Team Logo</label>
+                            <div class="controls">
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                            </div>
                         <div class="row form-group">
-                            <div class="col-xs-12">
+                            <div class="col-xs-8">
                                 <input type="text" autocomplete="off" name="teamname" id="teamname" required="required" class="text-center form-control" placeholder="Enter Team Name" class="form-control">
-                            </div><br></br>
-                            <div class="col-xs-4">
-                                <label class="control-label" for="Department">Department</label>
-                                            <div class="controls">
-                                                <select id="Department" name="department" placeholder="select" class="form-control">
-                                                    <?php
-                                                        require_once 'includes/db_connect.php';
-                                                        $query = "SELECT * FROM departments";
-                                                        $query_run = mysqli_query($mysqli, $query);
-                                                        while ($query_row = mysqli_fetch_assoc($query_run))
-                                                            {
-                                                    ?>
-                                                    <option value="<?php echo $query_row['dept_id']; ?>">
-                                                        <?php echo $query_row['dept_name']; ?>
-                                                    </option>
-                                                    <?php }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                            <div class="col-xs-4">
-                                <label class="control-label" for="Game">Game</label>
-                                            <div class="controls">
-                                                <select id="Game" name="game" class="form-control">
-                                                    <?php
-                                                    require_once 'includes/db_connect.php';
-                                                    $query = "SELECT * FROM games";
-                                                    $query_run = mysqli_query($mysqli, $query);
-                                                    while ($query_row = mysqli_fetch_assoc($query_run))
-                                                    {
-                                                        ?>
-                                                        <option value="<?php echo $query_row['g_id']; ?>">
-                                                            <?php echo $query_row['g_name']; ?>
-                                                        </option>
-                                                    <?php }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                            <div class="col-xs-4">
-                                <label class="control-label" for="Sub-coordinator">Sub-coordinator</label>
-                                            <div class="controls">
-                                                <select id="Sub-coordinator" name="subcoordinator" class="form-control">
-                                                    <?php
-
-                                                    $query2 = "SELECT * FROM users WHERE user_role = 'Sub-coordinator'";
-                                                    $query2_run = mysqli_query($mysqli, $query2);
-                                                    while ($query2_row = mysqli_fetch_assoc($query2_run)) {
-                                                        $user_id = $query2_row['user_id'];
-                                                        // Select from subcoordinator table to find the sc_id of the user
-                                                        $query_find_sc_id = "SELECT * FROM sub_coordinator WHERE user_id = '$user_id'";
-                                                        $query_run_find_sc_id = mysqli_query($mysqli, $query_find_sc_id);
-                                                        $query_row_sc_id = mysqli_fetch_assoc($query_run_find_sc_id);
-                                                    ?>
-                                                    <option value="<?php echo $query_row_sc_id['sc_id']; ?>">
-                                                            <?php echo $query2_row['fullname']; ?>
-                                                    </option>
-                                                    <?php }
-                                                    ?>
-                                                </select>
-                                            </div>
                             </div>
-                            <div class="col-xs-4 text-center" >
+                            <div class="col-xs-4">
+                                <div class="controls">
+                                    <select id="Game" name="game" class="form-control">
+                                        <option value="NULL">Select Game</option>
+                                        <?php
+                                        require_once 'includes/db_connect.php';
+                                        $query_games                = "SELECT * FROM games";
+                                        $query_run_games            = mysqli_query($mysqli, $query_games);
+                                        while ($query_row_games     = mysqli_fetch_assoc($query_run_games))
+                                        { ?>
+                                            <option value="<?php echo $query_row_games['g_id']; ?>">
+                                                <?php echo $query_row_games['g_name']; ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
-                        <div class="col-xs-4 text-center" >
-                            <label class="control-label" for=""></label>
+                        </div>
+                        <!-- row end -->
+                        <div class="text-center" >
                                 <button type="submit" name="addteam" class="btn btn-info form-control">Add Team</button>
                         </div>
-                    </div>
-                </div>
-                        <?php
-                        if (isset($_POST['addteam'])) {
-                            $teamname = $_POST["teamname"];
-                            $dept = $_POST["department"];
-                            $game = $_POST["game"];
-                            $sc = $_POST['subcoordinator'];
-                            $query_insert = "INSERT INTO teams (team_name, dept_id, g_id, sc_id) VALUES('$teamname', '$dept', '$game' , '$sc')";
-                            $query_run_insert = mysqli_query($mysqli, $query_insert);
-                            if($query_run_insert){
-                                echo "success";
-                            }
-                            else{
-                                echo"failed";
-                            }
-                        }
-                        ?>
-                    </form>
+                        </form>
+                            <!-- display List of teams that belongs to this sub-coordinator -->
+                        <div class="list-of-teams">
+
+                                <table class="table table-bordered" id="players-list">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center">Dept Id</th>
+                                            <th class="text-center">Game ID</th>
+                                            <th class="text-center">SC ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    while($query_row_list_teams   = mysqli_fetch_assoc($query_run_list_teams)){ ?>
+                                    <tr>
+                                      <td><?php echo $query_row_list_teams['team_id'] ?></td>
+                                      <td><?php echo $query_row_list_teams['team_name'] ?></td>
+                                      <td><?php echo $query_row_list_teams['dept_id'] ?></td>
+                                      <td><?php echo $query_row_list_teams['g_id'] ?></td>
+                                      <td><?php echo $query_row_list_teams['sc_id'] ?></td>
+                                    </tr>
+                                    <?php }
+                                    //      echo"list teams";
+                                    //      var_dump($query_row_list_teams);
+                                    ?>
+
+                                    </tbody>
+                                </table>
+
+                            </div> <!-- list-of-teams -->
                         </div>
-<?php }?>
+                        </div>
+                    </div>
+                <?php }?>
                     </div><!-- Profile-inner end -->
                 </div>
             </div><!-- row end -->

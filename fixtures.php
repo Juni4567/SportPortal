@@ -158,7 +158,7 @@ require('layout/header.php');
     </div>
 </div><!--score board end-->
 <?php
-//include header template
+//include footer template
 require('layout/footer.php');
 ?>
 <script>
