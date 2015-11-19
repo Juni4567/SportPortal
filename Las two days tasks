@@ -1,0 +1,25 @@
+1. Accept and reject (done)
+	press accept -> change status from 0 to 1
+		-> insert the user into players table
+			get user_id, dept_id, g_id
+	Coordinator will accept the sub-cordinator in the system (done)
+	and sub-coordinator will accept the player in the system(done)
+
+2. Admin will accept Coordinators in the system (done)
+	
+3. add <span id="todosCount" class="pull-right badge z-depth-0">2</span> for notification in admin panel
+	 get the count of coordinators who has pending status
+
+4. News should be dynamic and has excerpt(done)
+5. News should be longer then a text area(find a plugin) (done)
+6. Slider and news tab(cards) should show heading and excerpt (done)
+
+
+
+8. Any team that belongs to current (sub-coordinator) should be listed 
+
+
+
+
+7. Is playing should be an incremental number so if the score updates the last highest value will be considered
+
