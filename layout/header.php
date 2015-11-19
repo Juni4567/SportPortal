@@ -329,7 +329,7 @@ if (!isset($_SESSION)) session_start();
                                                 <label class="control-label" for="User role">User Role</label>
                                                 <div class="controls">
                                                     <select id="User role" name="role" class="form-control">
-                                                        <option value="Co-ordinator">Coordinator</option>
+                                                        <option value="Coordinator">Coordinator</option>
                                                         <option value="Sub-coordinator">Sub-coordinator</option>
                                                         <option value="Player">Player</option>
                                                     </select>

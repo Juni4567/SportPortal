@@ -9,17 +9,17 @@ if (isset($_POST['addteam'])) {
     $dept_id    = $_GET["dept_id"];
     $sc_id      = $_GET['sc_id'];
     //check if the team already exists
-    $query_check_team       =  "SELECT * FROM teams WHERE team_name='$teamname'";
+    $query_check_team       = "SELECT * FROM teams WHERE team_name='$teamname'";
     $query_run_check_team   = mysqli_query($mysqli, $query_check_team);
     if(!mysqli_num_rows($query_run_check_team)){
-        echo" ". $teamname ." Team Inserted Successfully";
         $query_insert = "INSERT INTO teams (team_name, dept_id, g_id, sc_id) VALUES('$teamname', '$dept_id', '$game_id' , '$sc_id')";
+        var_dump($query_insert);
         $query_run_insert = mysqli_query($mysqli, $query_insert);
         if($query_run_insert){
-            echo "success";
+            echo" ". $teamname ." Team Inserted Successfully";
         }
         else{
-            echo"failed";
+            echo"Insertion failed";
         }
     }
     else{

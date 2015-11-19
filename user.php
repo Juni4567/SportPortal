@@ -7,6 +7,9 @@ if (isset($_SESSION['logged_user'])) {
     $query = "SELECT * FROM users WHERE username = '$logged_user'";
     $query_run = mysqli_query($mysqli, $query);
     $query_row = mysqli_fetch_assoc($query_run);
+    $game_id = $query_row['g_id'];
+    $dept_id = $query_row['dept_id'];
+    $user_id = $query_row['user_id'];
     ?>
     <div class="container">
     <div class="general-section">
@@ -66,15 +69,16 @@ if (isset($_SESSION['logged_user'])) {
                                                                       data-toggle="tab">Profile</a></li>
                             <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
                             </li>
-                            <?php if ($query_row['user_role'] == 'Sub-coordinator') { ?>
-                                <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab"
-                                                           data-toggle="tab">Player Requests</a></li>
-                                <li role="presentation"><a href="#createteam" aria-controls="createteam" role="tab"
-                                                           data-toggle="tab">Create team</a></li>
+                            <?php if ($query_row['user_role'] == 'Sub-coordinator') {
+                                $query_player_num = "SELECT * FROM users WHERE g_id='$game_id' AND dept_id = '$dept_id' AND user_role= 'Player' AND user_id!='$user_id' AND status_id= 0 ";
+                                $query_player_num_run = mysqli_query($mysqli, $query_player_num);
+                                $query_player_num_row = mysqli_num_rows($query_player_num_run);
+                                ?>
+                                <li role="presentation"><a href="#createteam" aria-controls="createteam" role="tab" data-toggle="tab">Create team</a></li>
+                                <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab" data-toggle="tab">Player Requests <?php if($query_player_num_row){?><span class="notification-number"><?php echo $query_player_num_row;?></span><?php } ?></a></li>
                             <?php } ?>
                             <?php if ($query_row['user_role'] == 'Coordinator') { ?>
-                                <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab"
-                                                           data-toggle="tab">Sub-Coordinators Request</a></li>
+                                <li role="presentation"><a href="#playerrequest" aria-controls="playerrequest" role="tab" data-toggle="tab">Sub-Coordinators Request</a></li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -84,26 +88,8 @@ if (isset($_SESSION['logged_user'])) {
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade in active" id="profile">
-                                <h2>Tagline</h2>
-                                <p><?php echo $query_row['introduction']; ?></p>
-                                <h2>Sports History</h2>
-                                <p>Please describe your sports history here. What sports did you played in the
-                                    past and what are the most interesting sports that you want to play. why did
-                                    you register for this sport?</p>
+                                <?php echo $query_row['introduction']; ?>
 
-                                <h2>Life Events</h2>
-
-                                <p>Any life events that you want to share. Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit. Aliquid consequuntur exercitationem hic itaque
-                                    quasi quia similique sunt voluptate! Architecto esse et inventore magnam
-                                    porro quae? Ad delectus enim hic voluptatum?</p>
-
-                                <h2>Awards</h2>
-
-                                <p>Any awards you have received. Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Aliquid consequuntur exercitationem hic itaque quasi quia
-                                    similique sunt voluptate! Architecto esse et inventore magnam porro quae? Ad
-                                    delectus enim hic voluptatum?</p>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="settings">
                                 <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -231,17 +217,15 @@ if (isset($_SESSION['logged_user'])) {
                                     <?php
                                     require_once 'includes/db_connect.php';
                                     $i = 1;
-                                    $game_id = $query_row['g_id'];
-                                    $dept_id = $query_row['dept_id'];
-                                    $user_id = $query_row['user_id'];
 
-                                    $query1 = "SELECT * FROM users WHERE g_id='$game_id' AND dept_id = '$dept_id' AND user_role= 'Player' AND user_id!='$user_id' AND status_id= 0 ";
-                                    $query1_run = mysqli_query($mysqli, $query1);
-                                    while ($query1_row = mysqli_fetch_assoc($query1_run)) {
-                                        $user_id = $query1_row['user_id'];
-                                        $name = $query1_row['username'];
-                                        $email = $query1_row['email'];
-                                        $status = $query1_row['status_id'];?>
+
+                                    $query_player = "SELECT * FROM users WHERE g_id='$game_id' AND dept_id = '$dept_id' AND user_role= 'Player' AND user_id!='$user_id' AND status_id= 0 ";
+                                    $query_player_run = mysqli_query($mysqli, $query_player);
+                                    while ($query_player_row = mysqli_fetch_assoc($query_player_run)) {
+                                        $user_id = $query_player_row['user_id'];
+                                        $name = $query_player_row['username'];
+                                        $email = $query_player_row['email'];
+                                        $status = $query_player_row['status_id'];?>
                                         <tr>
                                             <!-- Ths is for Sub-coordinator for displaying players list -->
                                             <td><input type="hidden" name="id" value="" /><?php echo $i++; ?></td>
@@ -311,11 +295,13 @@ if (isset($_SESSION['logged_user'])) {
                         <?php if ($query_row['user_role'] == 'Sub-coordinator') { ?>
                         <?php
                         $query_sc_id       = "SELECT * FROM sub_coordinator WHERE user_id='$user_id' AND dept_id = '$dept_id' AND g_id='$game_id'";
+//                        var_dump($query_sc_id);
                         $query_run_sc_id   = mysqli_query($mysqli, $query_sc_id);
                         $query_row_sc_id   = mysqli_fetch_assoc($query_run_sc_id);
+//                        var_dump($query_row_sc_id);
                         $sc_id             = $query_row_sc_id['sc_id'];
-                        //                                echo "sc_id ";
-                        //                                var_dump($query_row_sc_id);
+//                                                        echo "sc_id ";
+//                                                        var_dump($query_row_sc_id);
                         $query_list_teams       = "SELECT * FROM teams WHERE dept_id = '$dept_id' AND g_id='$game_id' AND sc_id='$sc_id'";
                         $query_run_list_teams   = mysqli_query($mysqli, $query_list_teams); ?>
 

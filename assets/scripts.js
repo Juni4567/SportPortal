@@ -55,7 +55,7 @@ $(document).ready(function() {
         var obj_id  = element.val();
         var game_id = element.siblings(".gameId").val();
         var dept_id = element.siblings(".deptId").val();
-        console.log(obj_id + game_id + dept_id);
+        console.log(obj_id+ ' ' + game_id + ' ' + dept_id);
 
         if (confirm("Are you sure you want to Accept this Sub-coordinator")) {
             $.ajax({

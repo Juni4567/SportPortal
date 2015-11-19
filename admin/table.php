@@ -27,12 +27,13 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 
                     }else{
                         $query      = "INSERT INTO `livescores` (`id`, `match_id`, `teaminnings`, `over`, `runs`, `wicket`, `datetime`) VALUES (NULL, '$match_id', '$teaminnings', '$over', '$score', '$wickets', CURRENT_TIMESTAMP)";
-                        var_dump($query);
                         $query_run  = mysqli_query($mysqli, $query);
-                        var_dump($query_run);
                         if($query_run)
                         {
-                            echo"score updated";
+                            echo"Score updated";
+                        }
+                        else{
+                            echo "Update failed";
                         }
                     }
 
