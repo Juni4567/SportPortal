@@ -26,13 +26,13 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     if($query_row_check >0){
 
                     }else{
-                        $query_insert_score      = "INSERT INTO livescores (over, runs, wicket, match_id, teaminnings) VALUES('$over', '$score', '$wickets', '$match_id', '$teaminnings')";
-                        $query_run_insert_score  = mysqli_query($mysqli, $query_insert_score);
-                        if(mysqli_num_rows($query_insert_score)){
-                            echo "data Inserted";
-                        }
-                        else{
-                            echo" failed to insert data";
+                        $query      = "INSERT INTO `livescores` (`id`, `match_id`, `teaminnings`, `over`, `runs`, `wicket`, `datetime`) VALUES (NULL, '$match_id', '$teaminnings', '$over', '$score', '$wickets', CURRENT_TIMESTAMP)";
+                        var_dump($query);
+                        $query_run  = mysqli_query($mysqli, $query);
+                        var_dump($query_run);
+                        if($query_run)
+                        {
+                            echo"score updated";
                         }
                     }
 
@@ -78,32 +78,27 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             require_once 'includes/db_connect.php';
                             $qu = "select * from matches where match_id = '$match_id'";
                             $run = mysqli_query($mysqli, $qu);
-        if($_SESSION['team_playing'] == 0){
-            $playing_team_name = null;
-        }
-        if($_SESSION['team_playing'] == 1){
-            $playing_team_name = $se_row_team1['team_name'];
-            ?>
-        <option value="<?php echo $_SESSION['team_playing']; ?>"><?php echo $se_row_team1['team_name']; ?></option>
-    <?php
-    } else if($_SESSION['team_playing'] == 2){
-            $playing_team_name = $se_row_team2['team_name'];
-            ?> <option value="<?php echo $_SESSION['team_playing']; ?>"><?php echo $se_row_team2['team_name']; ?></option>
-            <?php
+                            if($_SESSION['team_playing'] == 0){
+                                $playing_team_name = null;
                             }
-                            else{
-                                ?>
-
-                                <option value="0" name=>Select one</option>
-                           <?php }
+                            if($_SESSION['team_playing'] == $se_row_team1['team_id']){ $playing_team_name = $se_row_team1['team_name']; ?>
+                                <option value="<?php echo $_SESSION['team_playing']; ?>">
+                                    <?php echo $se_row_team1['team_name']; ?>
+                                </option>
+                            <?php } else if($_SESSION['team_playing'] == $se_row_team2['team_id']){
+                                $playing_team_name = $se_row_team2['team_name']; ?>
+                                    <option value="<?php echo $_SESSION['team_playing']; ?>"><?php echo $se_row_team2['team_name']; ?></option>
+                                <?php } else{ ?>
+                                    <option value="0" name=>Select one</option>
+                                <?php }
 
                             while ($row = mysqli_fetch_array($run)) {
-                                $team1 = $se_row_team1['team_name'];
-                                $team2 = $se_row_team2['team_name'];
-                                ?>
+                                    $team1 = $se_row_team1['team_name'];
+                                    $team2 = $se_row_team2['team_name'];
+                                    ?>
 
-                                <option value="1"><?php echo "$team1"; ?></option>
-                                <option value="2"><?php echo "$team2"; ?></option>
+                                <option value="<?php echo $se_row_team1['team_id']; ?>"><?php echo "$team1"; ?></option>
+                                <option value="<?php echo $se_row_team2['team_id']; ?>"><?php echo "$team2"; ?></option>
                             <?php } ?>
 
                         </select>
@@ -150,7 +145,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         Status: <select name="Status">
                             <option>Select one</option>
                             <option value="completed">completed</option>
-                        </select><br></br>
+                        </select><br><br />
                         <button name="End" type="submit" class="btn btn-primary">End match</button>
                         <?php
                         require_once 'includes/db_connect.php';
@@ -166,7 +161,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             $Status = $_POST["Status"];
                             $query ="UPDATE matches set matchstatus = '$Status', winningteam = '$winningteam', comments = '$Comments' where match_id = '$match_id'";
                             $query_run = mysqli_query($mysqli, $query);
-                                 
+
                           }
                             $query = "SELECT count(*) AS records from matches where matchstatus='completed'";
                             $query_run = mysqli_query($mysqli,$query);
