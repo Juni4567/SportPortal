@@ -56,12 +56,12 @@
 
                     // select Sum of scores
                     $sum_scores1         = "SELECT SUM(runs), COUNT(over), SUM(wicket) , teaminnings FROM livescores where match_id='$match_id' AND teaminnings='$team1_id'";
-                    $query_run_scores1   = mysqli_query($mysqli, $sum_scores);
-                    $query_row_scores1   = mysqli_fetch_assoc($query_run_scores);
+                    $query_run_scores1   = mysqli_query($mysqli, $sum_scores1);
+                    $query_row_scores1   = mysqli_fetch_assoc($query_run_scores1);
 
                     $sum_scores2         = "SELECT SUM(runs), COUNT(over), SUM(wicket) , teaminnings FROM livescores where match_id='$match_id' AND teaminnings='$team2_id'";
-                    $query_run_scores2   = mysqli_query($mysqli, $sum_scores);
-                    $query_row_scores2   = mysqli_fetch_assoc($query_run_scores);
+                    $query_run_scores2   = mysqli_query($mysqli, $sum_scores2);
+                    $query_row_scores2   = mysqli_fetch_assoc($query_run_scores2);
 
 
 //             echo $team1_id. 'VS'.$team2_id. 'AT'. $match_date_time. 'LIVE FROM'.$location;
@@ -86,13 +86,13 @@
                                 <?php
                                 $team_se_inn = $query_row_scores1['teaminnings'];
                                 ?>
-                                <h4><?php echo $teaminnings;?> <?php echo $query_row_scores1['SUM(runs)'].'/'.$query_row_scores1['SUM(wicket)']. '   Overs: '.$query_row_scores1['COUNT(over)']; ?> </h4>
+                                <h4><?php echo $team1_name;?> <?php echo $query_row_scores1['SUM(runs)'].'/'.$query_row_scores1['SUM(wicket)']. '   Overs: '.$query_row_scores1['COUNT(over)']; ?> </h4>
                             </div>
                             <div class="match-time">
                                 <?php
-                                $team_se_inn = $query_row_scores['teaminnings'];
+                                $team_se_inn = $query_row_scores2['teaminnings'];
                                 ?>
-                                <h4><?php echo $teaminnings;?> <?php echo $query_row_scores2['SUM(runs)'].'/'.$query_row_scores2['SUM(wicket)']. '   Overs: '.$query_row_scores2['COUNT(over)']; ?> </h4>
+                                <h4><?php echo $team2_name;?> <?php echo $query_row_scores2['SUM(runs)'].'/'.$query_row_scores2['SUM(wicket)']. '   Overs: '.$query_row_scores2['COUNT(over)']; ?> </h4>
                             </div>
                         </div>
                     </div>

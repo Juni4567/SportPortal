@@ -26,8 +26,14 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     if($query_row_check >0){
 
                     }else{
-                        $query = "INSERT INTO livescores (over, runs, wicket, match_id, teaminnings) VALUES('$over', '$score', '$wickets', '$match_id', '$teaminnings')";
-                        $query_run = mysqli_query($mysqli, $query);
+                        $query_insert_score      = "INSERT INTO livescores (over, runs, wicket, match_id, teaminnings) VALUES('$over', '$score', '$wickets', '$match_id', '$teaminnings')";
+                        $query_run_insert_score  = mysqli_query($mysqli, $query_insert_score);
+                        if(mysqli_num_rows($query_insert_score)){
+                            echo "data Inserted";
+                        }
+                        else{
+                            echo" failed to insert data";
+                        }
                     }
 
                 }
