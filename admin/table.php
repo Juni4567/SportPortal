@@ -18,17 +18,16 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     $over = $_POST["over"];
                     $score = $_POST["score"];
                     $wickets = $_POST["wicket"];
-                    //Check if over already exist
+                    //Check if over already exist for the currently playing team
                     $checkif_over_exist = "SELECT * FROM livescores WHERE over = '$over' AND match_id= '$match_id' AND teaminnings = '$teaminnings'";
                     $query_run_check    = mysqli_query($mysqli, $checkif_over_exist);
                     $query_row_check    = mysqli_num_rows($query_run_check);
-                    if($query_row_check >0){ } else{
+                    if(!$query_row_check>0){
                         $query      = "INSERT INTO `livescores` (`id`, `match_id`, `teaminnings`, `over`, `runs`, `wicket`, `datetime`) VALUES (NULL, '$match_id', '$teaminnings', '$over', '$score', '$wickets', CURRENT_TIMESTAMP)";
                         $query_run  = mysqli_query($mysqli, $query);
-                        if($query_run){ echo"Score updated"; }
-                        else{ echo "Update failed"; }
+                        echo "Score update";
                     }
-
+                    else{ echo "Update failed"; }
                 }
                 else{
                     $_SESSION['team_playing'] = 0;
@@ -38,8 +37,8 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                 <div class="page-header text-center text-uppercase">
                     <h2><?php
                         $match_id = $_GET['match_id'];
-                        $se_match = "SELECT * from matches where match_id = '$match_id'";
-                        $se_run = mysqli_query($mysqli, $se_match);
+                        $query_match = "SELECT * from matches where match_id = '$match_id'";
+                        $se_run = mysqli_query($mysqli, $query_match);
                         $se_row = mysqli_fetch_assoc($se_run);
                         $team1 = $se_row['team1_id'];
                         $team2 = $se_row['team2_id'];
@@ -53,9 +52,6 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         ?>
                         At <span class="text-uppercase">
                             <?php
-                                $se_match = "select * from matches where match_id = '$match_id'";
-                                $se_run = mysqli_query($mysqli, $se_match);
-                                $se_row = mysqli_fetch_assoc($se_run);
                                 echo $se_row['location'];
                             ?>
                         </span><br/>
@@ -69,7 +65,6 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     <div class="well">
                         Team Innings:
                         <select name="teaminnings" class="text-uppercase" required="required">
-
                             <?php
                             require_once 'includes/db_connect.php';
                             $qu = "select * from matches where match_id = '$match_id'";
@@ -91,25 +86,26 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             while ($row = mysqli_fetch_array($run)) {
                                     $team1 = $se_row_team1['team_name'];
                                     $team2 = $se_row_team2['team_name'];
-                                    ?>
+                            ?>
 
                                 <option value="<?php echo $se_row_team1['team_id']; ?>"><?php echo "$team1"; ?></option>
                                 <option value="<?php echo $se_row_team2['team_id']; ?>"><?php echo "$team2"; ?></option>
                             <?php } ?>
 
                         </select>
+
                     </div>
                         <div class="row form-group">
                             <div class="col-xs-4">
 
-                                <input type="number" autocomplete="off" name="over" id="over" required="required" placeholder="Over" class="form-control">
+                                <input type="number" autocomplete="off" name="over" id="over" required="required" placeholder="Over" min="0" class="form-control">
                             </div>
                             <div class="col-xs-4">
-                                <input type="number" autocomplete="off" name="score" id="score" placeholder="Score" required="required" class="form-control">
+                                <input type="number" autocomplete="off" name="score" id="score" placeholder="Score" required="required" min="0" class="form-control">
 
                             </div>
                             <div class="col-xs-4">
-                                <input type="number" autocomplete="off" name="wicket" id="wicket" placeholder="Wickets" required="required" max="6" class="form-control">
+                                <input type="number" autocomplete="off" name="wicket" id="wicket" placeholder="Wickets" required="required" min="0" max="6" class="form-control">
 
                             </div>
                         </div>
@@ -132,8 +128,8 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                 $team1 = $se_row_team1['team_name'];
                                 $team2 = $se_row_team2['team_name'];
                                 ?>
-                                <option value="1"><?php echo "$team1"; ?></option>
-                                <option value="2"><?php echo "$team2"; ?></option>
+                                <option value="<?php echo $se_row_team1['team_id']; ?>"><?php echo "$team1"; ?></option>
+                                <option value="<?php echo $se_row_team2['team_id']; ?>"><?php echo "$team2"; ?></option>
                             <?php } ?>
                         </select><br/>
                         Comments: <input class="text-center" type="text" name="Comments" required="required">
@@ -154,10 +150,34 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                           {
                             $winningteam = $_POST["winningteam"];
                             $Comments = $_POST["Comments"];
-                            $Status = $_POST["Status"];
-                            $query ="UPDATE matches set matchstatus = '$Status', winningteam = '$winningteam', comments = '$Comments' where match_id = '$match_id'";
+                            $status = $_POST["Status"];
+                            $query ="UPDATE matches SET matchstatus = '$status', winningteam = '$winningteam', comments= '$Comments' WHERE match_id = '$match_id'";
+                            // var_dump($query);
                             $query_run = mysqli_query($mysqli, $query);
+                              // Add winnig team the next match
+                                $query_empty_team_slot  	= "select * from matches where team1_id='67' or team2_id= '67' LIMIT 1";
+                                $query_run_empty_team_slot	= mysqli_query($mysqli, $query_empty_team_slot);
+                                $query_row_empty_team_slot  = mysqli_fetch_assoc($query_run_empty_team_slot);
+                                if($query_row_empty_team_slot['team1_id']==67){
+                                    echo "putting winning team_id in team_1_slot";
+                                    $match_id_of_empty_slot     = $query_row_empty_team_slot['match_id'];
+                                    $query_update_winning_team1 ="UPDATE matches SET team1_id = '$winningteam' WHERE match_id = '$match_id_of_empty_slot'";
+                                    // var_dump($query_update_winning_team1);
+                                    $query_run_update_winning_team1 = mysqli_query($mysqli, $query_update_winning_team1);
+                                    ?>
+                                    <script>window.location.assign("thankyou.php");</script>
+                                    <?php
 
+                                }
+                                else if($query_row_empty_team_slot['team2_id']==67){
+                                    echo "putting winning team_id in team_2_slot";
+                                    $match_id_of_empty_slot = $query_row_empty_team_slot['match_id'];
+                                    $query_update_winning_team2 ="UPDATE matches SET team2_id = '$winningteam' WHERE match_id = '$match_id_of_empty_slot'";
+                                    // var_dump($query);
+                                    $query_run_update_winning_team2 = mysqli_query($mysqli, $query_update_winning_team2);
+                                    ?>
+                                    <script>window.location.assign("thankyou.php");</script>
+                                <?php }
                           }
                             $query = "SELECT count(*) AS records from matches where matchstatus='completed'";
                             $query_run = mysqli_query($mysqli,$query);
@@ -167,14 +187,11 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             $query_run_check     = mysqli_query($mysqli, $checkif_match_exist);
                             $query_row_check     = mysqli_num_rows($query_run_check);
                             }
-                            if($query_row_check >0){
 
-                            }
-                            else
-                            {
+
                                 $query1 = "INSERT INTO results (team_id, match_id, g_id, comments) SELECT winningteam, match_id, g_id, comments from matches where matchstatus= 'completed' AND match_id = '$match_id' ";
                                 $query1_run = mysqli_query($mysqli,$query1);
-                            }
+
                             // if ($query1_run) {
                             //     $query = "DELETE FROM matches WHERE match_id= '$match_id' AND matchstatus= 'completed'";
                             //     $query_run = mysqli_query($mysqli,$query);
