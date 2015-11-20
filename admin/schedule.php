@@ -49,6 +49,7 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
             $grounds = array("Rawalpindi Stadium", "COMSATS Main Ground", "Nawaz Sharif Park", "Airport Ground");
             //add g_id=1 => for cricket
             $i=0;
+                var_dump($groups);
             foreach( $groups as $team ) {
                 $team1  = $team[0];
                 $team2  = $team[1];
