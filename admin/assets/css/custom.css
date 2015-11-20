@@ -140,6 +140,16 @@ i.md.md-36 {
 .full-width{
     width:100%;
 }
+.height-fix {
+    max-height: 130px;
+    margin: 20px 0;
+    padding: 0;
+}
+.height-fix .well {
+    padding: 10px !important;
+    background-color: #59BEDA !Important;
+    margin: 0 4px;
+}
 @media screen and (max-width: 768px){
     .score-update-table{
         width: 300px;

@@ -14,6 +14,7 @@
       <![endif]-->
       <link href="assets/css/vendors.min.css" rel="stylesheet" />
       <link href="assets/css/styles.min.css" rel="stylesheet" />
+      <link href="assets/css/datetime.css" rel="stylesheet" />
       <link href="assets/css/custom.css" rel="stylesheet" />
       <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
         <script>tinymce.init({selector:'#newsdes'});</script>

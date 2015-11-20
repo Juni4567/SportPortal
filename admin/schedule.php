@@ -11,18 +11,13 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
                 <p class="lead">Please click on shuffle and insert button to add matches to database</p>
             </div>
               <div class="well white addnews-table text-center">
-                  <div class="footer-buttons">
-    <button class="btn btn-primary btn-round btn-lg" data-title="New User" data-toggle="modal" data-target="#new" title="">
-        <i class="md md-add white-text"></i>
-    <div class="ripple-wrapper"></div></button>
-</div>
             <div class="row">
               <?php
                 $query_teams                = "SELECT * FROM teams";
                 $query_run_teams            = mysqli_query($mysqli, $query_teams);
                 while ($query_row_teams     = mysqli_fetch_assoc($query_run_teams)){ ?>
-                    <div class="col-sm-4">
-                        <div class="well white" style="background: url('../assets/images/logo/<?php echo $query_row_teams['teamlogo']; ?>') no-repeat top right; background-size: contain; padding-right: 115px;">
+                    <div class="col-sm-3 height-fix">
+                        <div class="well white <?php if($query_row_teams['team_name']=='0'){?> hidden <?php };?>">
                             <h2 class="text-uppercase"><?php echo $query_row_teams['team_name'];?></h2>
                               <strong> Mr. <?php echo $query_row_teams['sc_id']; ?></strong>
                         </div>
@@ -49,7 +44,7 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
             $grounds = array("Rawalpindi Stadium", "COMSATS Main Ground", "Nawaz Sharif Park", "Airport Ground");
             //add g_id=1 => for cricket
             $i=0;
-                var_dump($groups);
+//                var_dump($groups);
             foreach( $groups as $team ) {
                 $team1  = $team[0];
                 $team2  = $team[1];
@@ -101,24 +96,17 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
                         <td><?php echo $query_matches_row['winningteam']; ?></td>
                         <td class="text-right">
                             <div class="dropdown pull-right">
-                                <input type="hidden" class="deptId" value="" />
-                                <button aria-expanded="false" class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple" data-toggle="dropdown">
-                                    <i class="md md-more-vert f20"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                    <div class="p-10">
-                                        <div class="w300">
-                                            Change status of Match to
+                                <div class="form-group">
+                                    <?php if($query_matches_row['matchstatus']=='live') {?><button class='btn btn-primary disabled'>Live</button> <?php }
+                                        else if($query_matches_row['matchstatus']=='scheduled' && $query_matches_row['match_date_time'] != '0000-00-00 00:00:00'){ ?>
+                                            <button class='btn btn-primary disabled'>Scheduled at: <?php echo $query_matches_row['match_date_time']; ?></button>
+                                        <?php } else{ ?>
+
+                                            <input type="hidden" class="matchID" value="<?php echo $query_matches_row['match_id']; ?>" />
+                                            <button value="" class="make-live btn btn-primary btn-disabled">Make Live</button>
+                                            <button value="" class="datetimepicker schedule-date-button reject-btn btn btn-secondary delbutton">Schedule</button>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="hidden" class="deptId" value="" />
-                                            <button value="" class="reject-btn btn btn-primary delbutton">Live</button>
-                                            <button value="" class="reject-btn btn btn-secondary delbutton">Schedule</button>
-                                            <button value="" class="reject-btn btn btn-primary delbutton">Teams</button>
-                                            <a href="#" class="btn btn-link">Remove</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <?php } ?>
                             </div>
                         </td>
                     </tr>
