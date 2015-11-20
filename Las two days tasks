@@ -24,7 +24,7 @@
 
 
 
-9. When team is selected as winning it will run a query updating it's winning team as well as (checking team1_id if it's 67 and place it there)
+9. When team is selected as winning it will run a query updating it's winning team as well as (checking team1_id if it's 67(or fix an id for team slot!!!!!!!!) and place it there)
 
 	$query_empty_team_slot  	= "select * from matches where team1_id='67' or team2_id= '67' LIMIT 1";
     $query_run_empty_team_slot	= mysqli_query($mysqli, $query_empty_team_slot)    	   

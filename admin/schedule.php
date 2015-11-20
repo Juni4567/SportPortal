@@ -8,9 +8,9 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
           <section class="dashboard">
             <div class="page-header">
                 <h1><i class="md md-input"></i> Schedules</h1>
-                <p class="lead">Please click on shuffle and insert button to add matches to database</p>
+                <p class="lead">Please click on Generate Schedule button to add matches to database</p>
             </div>
-              <div class="well white addnews-table text-center">
+          <div class="well white addnews-table text-center">
             <div class="row">
               <?php
                 $query_teams                = "SELECT * FROM teams";
@@ -26,47 +26,66 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
                 $teams[] = $query_row_teams['team_id']; ?>
                 <?php
                 }?>
-                </div>
+            </div>
+
                 <?php
-            $schedules         = array();
-            $total_num_teams   = count($teams);
-            // suppose teams are 8
-//            shuffle($teams);
-            $teams_per_group  = $total_num_teams / 2;
 
-            for($i = 0; $i < 4; $i++)
-            {
-                $starting_point = $i * 2; //i*2= 0, 1*2=2, 2*2=4, 3*2=6,
-                $groups[$i] = array_slice($teams, $starting_point, 2);
+                    $schedules         = array();
+                    $total_num_teams   = count($teams);
+                        // suppose teams are 8
+                            //take out the last item(the teams_slot)
+                            $last_in_teams = array_pop($teams);
+                        //  shuffle(8 teams)
+                            shuffle($teams);
+                            //Add teams_slot to the shuffled array
+                            array_push($teams, "$last_in_teams");
 
-            }
-            // Add 4 grounds that will be available for matches (an array may be)
-            $grounds = array("Rawalpindi Stadium", "COMSATS Main Ground", "Nawaz Sharif Park", "Airport Ground");
-            //add g_id=1 => for cricket
-            $i=0;
-//                var_dump($groups);
-            foreach( $groups as $team ) {
-                $team1  = $team[0];
-                $team2  = $team[1];
-                $ground  = $grounds[$i];
-                $i++;
-//                $query_matches     = "INSERT INTO matches (team1_id, team2_id, g_id, location, matchstatus) VALUES ('$team1', '$team2', 1, '$ground', 'scheduled')";
-//                $query_run_teams = mysqli_query($mysqli, $query_matches);
-                if($i==3){$i=0;}
-            }
+                            $teams_per_group  = $total_num_teams / 2;
 
-                for($r3=1; $r3<=3; $r3++){
-                    $team1  = 67;
-                    $team2  = 67;
-                    $ground  = $grounds[$i];
-                    $i++;
-//                    $query_matches     = "INSERT INTO matches (team1_id, team2_id, g_id, location, matchstatus) VALUES ('$team1', '$team2', 1, '$ground', 'scheduled')";
-//                    $query_run_teams = mysqli_query($mysqli, $query_matches);
-                    if($i==3){ $i=0; }
+                        for($i = 0; $i < 4; $i++)
+                        {
+                            $starting_point = $i * 2; //i*2= 0, 1*2=2, 2*2=4, 3*2=6,
+                            $groups[$i] = array_slice($teams, $starting_point, 2);
+
+                        }
+                        // Add 4 grounds that will be available for matches (an array may be)
+                        $grounds = array("Rawalpindi Stadium", "COMSATS Main Ground", "Nawaz Sharif Park", "Airport Ground");
+                        //add g_id=1 => for cricket
+                        $i=0;
+            //                var_dump($groups);
+                if(isset($_POST['submit'])){
+                        foreach( $groups as $team ) {
+                            $team1  = $team[0];
+                            $team2  = $team[1];
+                            $ground  = $grounds[$i];
+                            $i++;
+                            $query_matches     = "INSERT INTO matches (team1_id, team2_id, g_id, location, matchstatus) VALUES ('$team1', '$team2', 1, '$ground', 'scheduled')";
+                            $query_run_teams = mysqli_query($mysqli, $query_matches);
+                            if($i==3){$i=0;}
+                        }
+
+                            for($r3=1; $r3<=3; $r3++){
+                                $team1  = 67;
+                                $team2  = 67;
+                                $ground  = $grounds[$i];
+                                $i++;
+                                $query_matches     = "INSERT INTO matches (team1_id, team2_id, g_id, location, matchstatus) VALUES ('$team1', '$team2', 1, '$ground', 'scheduled')";
+                                $query_run_teams = mysqli_query($mysqli, $query_matches);
+                                if($i==3){ $i=0; }
+                            }
+                    ?>
+                    <script>window.location.assign("thankyou.php");</script>
+                    <?php
                 }
 
 
-            ?>
+                        ?>
+              <div class="teams"><?php echo "Total Teams found: " . ($total_num_teams-1); ?></div>
+              <form action="schedule.php" method="post">
+                  <button type="submit" name="submit" id="submit" value="true" class="btn btn-primary">Generate</button>
+                  <p>Please note that schedule should be generate once for a tournament</p>
+              </form>
+
                   </div>
               <table class="table table-full" id="table-area-1">
                 <thead>
@@ -97,13 +116,14 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
                         <td class="text-right">
                             <div class="dropdown pull-right">
                                 <div class="form-group">
+
                                     <?php if($query_matches_row['matchstatus']=='live') {?><button class='btn btn-primary disabled'>Live</button> <?php }
                                         else if($query_matches_row['matchstatus']=='scheduled' && $query_matches_row['match_date_time'] != '0000-00-00 00:00:00'){ ?>
                                             <button class='btn btn-primary disabled'>Scheduled at: <?php echo $query_matches_row['match_date_time']; ?></button>
                                         <?php } else{ ?>
 
                                             <input type="hidden" class="matchID" value="<?php echo $query_matches_row['match_id']; ?>" />
-                                            <button value="" class="make-live btn btn-primary btn-disabled">Make Live</button>
+                                            <button value="" class="make-live btn btn-primary">Make Live</button>
                                             <button value="" class="datetimepicker schedule-date-button reject-btn btn btn-secondary delbutton">Schedule</button>
                                         </div>
                                             <?php } ?>
