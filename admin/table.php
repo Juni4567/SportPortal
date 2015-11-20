@@ -12,7 +12,6 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                 if (isset($_POST['submit'])) {
                     $match_id   = $_GET['match_id'];
                     $teaminnings = $_POST["teaminnings"];
-
                     //Check whitch team is currently Playing
                     $_SESSION['team_playing'] = $teaminnings;
                     $team_playing = $_SESSION['team_playing'];
@@ -23,26 +22,19 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     $checkif_over_exist = "SELECT * FROM livescores WHERE over = '$over' AND match_id= '$match_id' AND teaminnings = '$teaminnings'";
                     $query_run_check    = mysqli_query($mysqli, $checkif_over_exist);
                     $query_row_check    = mysqli_num_rows($query_run_check);
-                    if($query_row_check >0){
-
-                    }else{
+                    if($query_row_check >0){ } else{
                         $query      = "INSERT INTO `livescores` (`id`, `match_id`, `teaminnings`, `over`, `runs`, `wicket`, `datetime`) VALUES (NULL, '$match_id', '$teaminnings', '$over', '$score', '$wickets', CURRENT_TIMESTAMP)";
                         $query_run  = mysqli_query($mysqli, $query);
-                        if($query_run)
-                        {
-                            echo"Score updated";
-                        }
-                        else{
-                            echo "Update failed";
-                        }
+                        if($query_run){ echo"Score updated"; }
+                        else{ echo "Update failed"; }
                     }
 
                 }
                 else{
                     $_SESSION['team_playing'] = 0;
                     $team_playing = $_SESSION['team_playing'];
-                }
-                ?>
+                } ?>
+
                 <div class="page-header text-center text-uppercase">
                     <h2><?php
                         $match_id = $_GET['match_id'];
@@ -59,11 +51,14 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         $se_row_team2 = mysqli_fetch_assoc($se_run_team2);
                         echo $se_row_team1['team_name'] . ' VS ' . $se_row_team2['team_name'];
                         ?>
-                        At <span class="text-uppercase"><?php
-                            $se_match = "select * from matches where match_id = '$match_id'";
-                            $se_run = mysqli_query($mysqli, $se_match);
-                            $se_row = mysqli_fetch_assoc($se_run);
-                            echo $se_row['location']; ?></span><br/>
+                        At <span class="text-uppercase">
+                            <?php
+                                $se_match = "select * from matches where match_id = '$match_id'";
+                                $se_run = mysqli_query($mysqli, $se_match);
+                                $se_row = mysqli_fetch_assoc($se_run);
+                                echo $se_row['location'];
+                            ?>
+                        </span><br/>
                     </h2></div>
                 <div class="well white score-update-table text-center">
                     <form method="post" action="table.php?match_id=<?php if (isset($_GET['match_id'])) {
@@ -227,9 +222,8 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                                     Please confirm if you want to delete this over
                                                 </div>
 
-                                                <div class="form-group">
-                                                <button type="submit" id="<?php echo $query_row_overs['id']; ?>" class="btn btn-primary delbutton">Confirm
-                                                </button>
+                                            <div class="form-group">
+                                                <button type="submit" id="<?php echo $query_row_overs['id']; ?>" class="btn btn-primary delbutton">Confirm </button>
                                                 <a href="#" class="btn btn-link">Cancel</a>
                                             </div>
                                             </div>
@@ -239,19 +233,15 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                 </td>
                             </tr>
                         <?php } ?>
-                            <?php
-                            if($team_playing == 0){
-                                return;
-                            }else{
-                                $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id' AND teaminnings ='$team_playing'";
-                                $query_run_scores = mysqli_query($mysqli, $sum_scores);
-                                $query_row_scores = mysqli_fetch_assoc($query_run_scores);
-                            }
+                        <?php
 
+                            $sum_scores = "SELECT SUM(runs), COUNT(over), SUM(wicket) FROM livescores where match_id='$match_id' AND teaminnings ='$team_playing'";
+                            $query_run_scores = mysqli_query($mysqli, $sum_scores);
+                            $query_row_scores = mysqli_fetch_assoc($query_run_scores);
 
-//                            var_dump($query_row_scores); exit;
-                            ?>
-                          <tr style="background-color: rgba(41, 31, 33, 0.28); font-weight: 900; font-size: 16px;">
+                            // var_dump($query_row_scores); exit;
+                        ?>
+                            <tr style="background-color: rgba(41, 31, 33, 0.28); font-weight: 900; font-size: 16px;">
                                 <td><?php echo $query_row_scores['COUNT(over)'];?></td>
                                 <td><?php echo $query_row_scores['SUM(runs)'];?></td>
                                 <td><?php echo $query_row_scores['SUM(wicket)'];?></td>
@@ -259,12 +249,10 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                             </tr>
                         </tbody>
                 </table>
-
-
             </div>
-            </section>
-        </div>
+        </section>
     </div>
+</div>
     <?php include('parts/footer.php'); ?>
 <?php
 } else {
