@@ -7,7 +7,7 @@ include('layout/header.php');
 	<div class="carousel-inner latest-updates general-section jumbotron text-center">
         <?php
         require_once 'includes/db_connect.php';
-        $query = "SELECT * FROM news where featured= '0'";
+        $query = "SELECT * FROM news where featured= '1'";
         $query_run = mysqli_query($mysqli, $query);
         $i = 1;
 
@@ -15,7 +15,7 @@ include('layout/header.php');
         <div class="item <?php if($i==1) echo"active"; ?>">
 			<div class="container">
 				<div class="carousel-news">
-					<h1><?php echo $query_row['news_heading']; ?></h1>
+					<a href="news_page.php?n_id=<?php echo $query_row['news_id']; ?>"><h1><?php echo $query_row['news_heading']; ?></h1></a>
 					<p><?php echo $query_row['excerpt']; ?></p>
 				</div>
 			</div>
@@ -161,17 +161,17 @@ include('layout/header.php');
 				<a class="all-sports">OTHER NEWS<span class="icon-all-sports"></span></a>
 					<?php		
 		        require_once 'includes/db_connect.php';
-		        $query = "SELECT * FROM news where featured= '1'";
+		        $query = "SELECT * FROM news where featured= '0' ORDER BY news_id DESC";
 		        $query_run = mysqli_query($mysqli, $query);
         		$i = 1;
         		while($query_row = mysqli_fetch_assoc($query_run)){?>
 					<div class="media">
-						<a class="media-left" href="#">
+						<a class="media-left" href="news_page.php?n_id=<?php echo $query_row['news_id']; ?>">
 							<img src="assets/images/team-1.jpg" class="thumbnail" alt="Test">
 						</a>
 						<div class="media-body">
 							<h4 class="media-heading"><?php echo $query_row['news_heading']; ?></h4>
-							<p><?php echo $query_row['newsdescription']; ?></p>
+							<p><?php echo $query_row['excerpt']; ?></p>
 						</div>
 					</div>
 					<?php $i++; } ?>

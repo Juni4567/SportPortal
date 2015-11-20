@@ -5,7 +5,115 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
     <div class="main-container">
         <?php include('parts/navigation.php'); ?>
         <div class="main-content">
-          <h1>Schedule the matches</h1>
+          <section class="dashboard">
+            <div class="page-header">
+                <h1><i class="md md-input"></i> Schedules</h1>
+                <p class="lead">Please click on shuffle and insert button to add matches to database</p>
+            </div>
+              <div class="well white addnews-table text-center">
+                  <div class="footer-buttons">
+    <button class="btn btn-primary btn-round btn-lg" data-title="New User" data-toggle="modal" data-target="#new" title="">
+        <i class="md md-add white-text"></i>
+    <div class="ripple-wrapper"></div></button>
+</div>
+            <div class="row">
+              <?php
+                $query_teams                = "SELECT * FROM teams";
+                $query_run_teams            = mysqli_query($mysqli, $query_teams);
+                while ($query_row_teams     = mysqli_fetch_assoc($query_run_teams)){ ?>
+                    <div class="col-sm-4">
+                        <div class="well white" style="background: url('../assets/images/logo/<?php echo $query_row_teams['teamlogo']; ?>') no-repeat top right; background-size: contain; padding-right: 115px;">
+                            <h2 class="text-uppercase"><?php echo $query_row_teams['team_name'];?></h2>
+                              <strong> Mr. <?php echo $query_row_teams['sc_id']; ?></strong>
+                        </div>
+                    </div>
+                <?php
+                $teams[] = $query_row_teams['team_id']; ?>
+                <?php
+                }?>
+                </div>
+                <?php
+            $schedules         = array();
+            $total_num_teams   = count($teams);
+            // suppose teams are 8
+            shuffle($teams);
+            $teams_per_group  = $total_num_teams / 2;
+
+            for($i = 0; $i < 4; $i++)
+            {
+                $starting_point = $i * 2; //i*2= 0, 1*2=2, 2*2=4, 3*2=6,
+                $groups[$i] = array_slice($teams, $starting_point, 2);
+
+            }
+            // Add 4 grounds that will be available for matches (an array may be)
+            $grounds = array("Rawalpindi Stadium", "COMSATS Main Ground", "Nawaz Sharif Park", "Airport Ground");
+            //add g_id=1 => for cricket
+            $i=0;
+            foreach( $groups as $team ) {
+                $team1  = $team[0];
+                $team2  = $team[1];
+                $ground  = $grounds[$i];
+                $i++;
+//                $query_matches     = "INSERT INTO matches (team1_id, team2_id, g_id, location, matchstatus) VALUES ('$team1', '$team2', 1, '$ground', 'scheduled')";
+//                $query_run_teams = mysqli_query($mysqli, $query_matches);
+                if($i==3){$i=0;}
+            }
+
+
+            ?>
+                  </div>
+              <table class="table table-full" id="table-area-1" fsm-big-data="data of data take 30">
+                <thead>
+                <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
+                    <th>Match ID</th>
+                    <th>Team 1</th>
+                    <th>Team 2</th>
+                    <th>Location</th>
+                    <th class="text-right">Match Status</th>
+                </tr>
+                </thead>
+                <tbody id="schedules">
+
+                        <?php
+                        require_once 'includes/db_connect.php';
+                        $query_matches = "SELECT * FROM matches";
+                        $query_run_matches = mysqli_query($mysqli, $query_matches);
+
+                        while ($query_matches_row = mysqli_fetch_assoc($query_run_matches)) { ?>
+                        <tr>
+                        <td><?php echo $query_matches_row['match_id']; ?></td>
+                        <td><?php echo $query_matches_row['team1_id']; ?></td>
+                        <td><?php echo $query_matches_row['team2_id']; ?></td>
+                        <td><?php echo $query_matches_row['location']; ?></td>
+                        <td class="text-right">
+                            <div class="dropdown pull-right">
+                                <input type="hidden" class="deptId" value="" />
+                                <button value="" class="accept-btn pointer btn btn-round-sm btn-link withoutripple">
+                                    <i class="md md-done f20"></i>
+                                </button>
+                                <button aria-expanded="false" class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple" data-toggle="dropdown">
+                                    <i class="md md-delete f20"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <div class="p-10">
+                                        <div class="w300">
+                                            Please confirm if you want to delete this Admin
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" class="deptId" value="" />
+                                            <button value="" class="reject-btn btn btn-primary delbutton">Confirm
+                                            </button>
+                                            <a href="#" class="btn btn-link">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                        <?php } ?>
+                </tbody>
+            </table>
+        </section>
         </div>
     </div>
     <?php include('parts/footer.php'); ?>
