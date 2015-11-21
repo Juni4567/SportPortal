@@ -64,7 +64,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                     } ?>">
                     <div class="well">
                         Team Innings:
-                        <select name="teaminnings" class="text-uppercase" required="required">
+                        <select name="teaminnings" id="team_playing_id" class="text-uppercase" required="required">
                             <?php
                             require_once 'includes/db_connect.php';
                             $qu = "select * from matches where match_id = '$match_id'";
@@ -110,34 +110,29 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>1</button></td>
-                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>1</button></td>
-                                    <td style="max-width: 65px; overflow: hidden; text-align: left;">Wide Ball</td>
-                                    <td style="max-width: 65px; overflow: hidden; text-align:left;">0</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>1</button></td>
-                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>2</button></td>
-                                    <td style="max-width: 65px; overflow: hidden; text-align: left;">No Ball</td>
-                                    <td style="max-width: 65px; overflow: hidden; text-align:left;">0</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>1</button></td>
-                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>3</button></td>
-                                    <td style="max-width: 65px; overflow: hidden; text-align: left;">6</td>
-                                    <td style="max-width: 65px; overflow: hidden; text-align:left;">0</td>
-                                    <td>0</td>
-                                </tr>
                                 <!-- Adding ball data via the following form -->
 
                                 <tr id="score-addition">
-                                    <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled>1</button></td>
-                                    <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled>4</button></td>
+                                    <!-- Select balls that has been submitted and counted in over -->
+                                  <?php
+                                  $query_count_balls = "SELECT * FROM over_balls WHERE ball_score !='noBall' AND ball_score!='wideBall'";
+//                                    var_dump($query_count_balls);
+                                  $query_run_count_balls = mysqli_query($mysqli, $query_count_balls);
+                                  $balls = mysqli_num_rows($query_run_count_balls);
+
+                                  $query_count_overs = "SELECT over FROM over_balls ORDER BY over DESC LIMIT 1";
+//                                  var_dump($query_count_overs);
+                                  $query_run_count_overs = mysqli_query($mysqli, $query_count_overs);
+                                  $query_run_row_overs = mysqli_fetch_assoc($query_run_count_overs);
+                                  $overs =$query_run_row_overs['over'];
+//                                  var_dump($overs);
+                                  ?>
+                                    <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled><?php if($balls==6){ echo $overs+1; } else{ echo $overs;} ?></button></td>
+                                    <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled> <?php if($balls==6){  echo "1"; } else{ echo $balls+1; } ?></button></td>
                                     <td style="max-width: 65px; overflow: hidden;">
                                         <div class="form-group filled">
+                                            <input type="hidden" name="team_id" id="teamP_id" value="<?php echo $team_playing; ?>"/>
+                                            <input type="hidden" name="match_id" value="<?php echo $match_id; ?>"/>
                                             <input type="text" name="score" id="customTextBox"/>
                                             <select class="form-control" id="selectScore" name="ball_status">
                                               <option value="wideBall">Wide Ball</option>
