@@ -120,7 +120,9 @@ if(isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin'){?>
                                     <?php if($query_matches_row['matchstatus']=='live') {?><button class='btn btn-primary disabled'>Live</button> <?php }
                                         else if($query_matches_row['matchstatus']=='scheduled' && $query_matches_row['match_date_time'] != '0000-00-00 00:00:00'){ ?>
                                             <button class='btn btn-primary disabled'>Scheduled at: <?php echo $query_matches_row['match_date_time']; ?></button>
-                                        <?php } else{ ?>
+                                        <?php } else if($query_matches_row['matchstatus']=='completed') {?>
+                                    <button class='btn btn-primary disabled'>Completed</button><?php
+                                    } else{ ?>
 
                                             <input type="hidden" class="matchID" value="<?php echo $query_matches_row['match_id']; ?>" />
                                             <button value="" class="make-live btn btn-primary">Make Live</button>

@@ -96,23 +96,43 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 
                     </div>
                         <div class="row form-group">
-                            <div class="col-xs-4">
+                            <table class="table table-full over-table">
+                            <thead>
+                                <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
+                                    <th>Over</th>
+                                    <th>Ball</th>
+                                    <th>Score</th>
+                                    <th class="hidden-xs">Wickets</th>
+                                    <th class="text-right">Extra</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
+                                    <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled>1</button></td>
+                                    <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled>1</button></td>
+                                    <td style="max-width: 65px; overflow: hidden;">
+                                        <div class="form-group filled">
+                                            <input type="text" name="score" id="customTextBox"/>
+                                            <select class="form-control" id="selectScore">
+                                              <option value="">Select one</option>
+                                              <option value="custom">Custom</option>
+                                              <option value="wideBall">Wide Ball</option>
+                                              <option value="noBall">No Ball</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td style="max-width: 65px; overflow: hidden;"><input type="number" autocomplete="off" name="wicket" id="wicket" placeholder="Wickets" required="required" min="0" max="6" class="form-control"></td>
+                                    <td><input type="number" autocomplete="off" name="extra" id="extra" placeholder="Extra score if Wide/No" required="required" min="0" max="6" class="form-control"></td>
+                                    <td style="max-width: 65px; overflow: hidden; text-align: right;"><button class="btn btn-primary btn-round btn-xs" data-title="New User" data-toggle="modal" data-target="#new" title=""><i class="md md-add white-text"></i><div class="ripple-wrapper"></div></button></td>
 
-                                <input type="number" autocomplete="off" name="over" id="over" required="required" placeholder="Over" min="0" class="form-control">
-                            </div>
-                            <div class="col-xs-4">
-                                <input type="number" autocomplete="off" name="score" id="score" placeholder="Score" required="required" min="0" class="form-control">
-
-                            </div>
-                            <div class="col-xs-4">
-                                <input type="number" autocomplete="off" name="wicket" id="wicket" placeholder="Wickets" required="required" min="0" max="6" class="form-control">
-
-                            </div>
+                                </tr>
+                            </tbody>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" name="submit" class="btn btn-info">Submit over</button>
-                        </div>
+
                     </form>
+                            </table>
+
                     <form class="text-center" method="post" action="table.php?match_id=<?php if (isset($_GET['match_id'])) {
                         echo $_GET['match_id'];
                     } else {
