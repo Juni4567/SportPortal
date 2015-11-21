@@ -95,44 +95,65 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         </select>
 
                     </div>
+                          </form>
                         <div class="row form-group">
+                        <form action="insert-ball-score.php" method="post">
                             <table class="table table-full over-table">
-                            <thead>
-                                <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
-                                    <th>Over</th>
-                                    <th>Ball</th>
-                                    <th>Score</th>
-                                    <th class="hidden-xs">Wickets</th>
-                                    <th class="text-right">Extra</th>
-                                    <th class="text-right">Action</th>
+                                <thead>
+                                    <tr>
+                                        <th>Over</th>
+                                        <th>Ball</th>
+                                        <th>Score</th>
+                                        <th class="hidden-xs">Wickets</th>
+                                        <th class="text-right">Extra</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>1</button></td>
+                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>1</button></td>
+                                    <td style="max-width: 65px; overflow: hidden; text-align: left;">Wide Ball</td>
+                                    <td style="max-width: 65px; overflow: hidden; text-align:left;">0</td>
+                                    <td>1</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
+                                <tr>
+                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>1</button></td>
+                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>2</button></td>
+                                    <td style="max-width: 65px; overflow: hidden; text-align: left;">No Ball</td>
+                                    <td style="max-width: 65px; overflow: hidden; text-align:left;">0</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>1</button></td>
+                                    <td style="width: 20px;"><button class="btn btn-primary" disabled>3</button></td>
+                                    <td style="max-width: 65px; overflow: hidden; text-align: left;">6</td>
+                                    <td style="max-width: 65px; overflow: hidden; text-align:left;">0</td>
+                                    <td>0</td>
+                                </tr>
+                                <!-- Adding ball data via the following form -->
+
+                                <tr id="score-addition">
                                     <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled>1</button></td>
-                                    <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled>1</button></td>
+                                    <td style="width: 20px;"><button name="over" id="over" class="btn btn-primary" disabled>4</button></td>
                                     <td style="max-width: 65px; overflow: hidden;">
                                         <div class="form-group filled">
                                             <input type="text" name="score" id="customTextBox"/>
-                                            <select class="form-control" id="selectScore">
-                                              <option value="">Select one</option>
-                                              <option value="custom">Custom</option>
+                                            <select class="form-control" id="selectScore" name="ball_status">
                                               <option value="wideBall">Wide Ball</option>
                                               <option value="noBall">No Ball</option>
+                                              <option value="custom">Custom</option>
                                             </select>
                                         </div>
                                     </td>
-                                    <td style="max-width: 65px; overflow: hidden;"><input type="number" autocomplete="off" name="wicket" id="wicket" placeholder="Wickets" required="required" min="0" max="6" class="form-control"></td>
-                                    <td><input type="number" autocomplete="off" name="extra" id="extra" placeholder="Extra score if Wide/No" required="required" min="0" max="6" class="form-control"></td>
-                                    <td style="max-width: 65px; overflow: hidden; text-align: right;"><button class="btn btn-primary btn-round btn-xs" data-title="New User" data-toggle="modal" data-target="#new" title=""><i class="md md-add white-text"></i><div class="ripple-wrapper"></div></button></td>
-
+                                    <td style="max-width: 65px; overflow: hidden;"><input type="number" autocomplete="off" name="wicket" id="wicket" placeholder="Wickets" required="required"></td>
+                                    <td><input type="number" name="extra" id="extra" placeholder="Extra score if Wide/No" required="required" /></td>
+                                    <td style="max-width: 65px; overflow: hidden; text-align: right;"><button type="submit" name="insertball" class="btn btn-primary btn-round btn-xs"><i class="md md-add white-text"></i></button></td>
                                 </tr>
-                            </tbody>
-                        </div>
-
-                    </form>
+                                </tbody>
                             </table>
-
+                        </form>
+                        </div>
                     <form class="text-center" method="post" action="table.php?match_id=<?php if (isset($_GET['match_id'])) {
                         echo $_GET['match_id'];
                     } else {
@@ -162,19 +183,19 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                         <?php
                         require_once 'includes/db_connect.php';
                         if(isset($_POST['End'])){
-                          $match_id = $_GET['match_id'];
-                          $se_ls = "SELECT count(*) AS records from matches where match_id='$match_id'";
-                          $se_run = mysqli_query($mysqli, $se_ls);
-                          $se_row = mysqli_fetch_assoc($se_run);
-                          if($se_row['records'] > 0)
-                          {
-                            $winningteam = $_POST["winningteam"];
-                            $Comments = $_POST["Comments"];
-                            $status = $_POST["Status"];
-                            $query ="UPDATE matches SET matchstatus = '$status', winningteam = '$winningteam', comments= '$Comments' WHERE match_id = '$match_id'";
-                            // var_dump($query);
-                            $query_run = mysqli_query($mysqli, $query);
-                              // Add winnig team the next match
+                            $match_id = $_GET['match_id'];
+                            $se_ls = "SELECT count(*) AS records from matches where match_id='$match_id'";
+                            $se_run = mysqli_query($mysqli, $se_ls);
+                            $se_row = mysqli_fetch_assoc($se_run);
+                            if($se_row['records'] > 0)
+                            {
+                                $winningteam = $_POST["winningteam"];
+                                $Comments = $_POST["Comments"];
+                                $status = $_POST["Status"];
+                                $query ="UPDATE matches SET matchstatus = '$status', winningteam = '$winningteam', comments= '$Comments' WHERE match_id = '$match_id'";
+                                // var_dump($query);
+                                $query_run = mysqli_query($mysqli, $query);
+                                // Add winnig team the next match
                                 $query_empty_team_slot  	= "select * from matches where team1_id='67' or team2_id= '67' LIMIT 1";
                                 $query_run_empty_team_slot	= mysqli_query($mysqli, $query_empty_team_slot);
                                 $query_row_empty_team_slot  = mysqli_fetch_assoc($query_run_empty_team_slot);
@@ -186,41 +207,41 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
                                     $query_run_update_winning_team1 = mysqli_query($mysqli, $query_update_winning_team1);
                                     ?>
                                     <script>window.location.assign("thankyou.php");</script>
-                                    <?php
+                                <?php
 
                                 }
                                 else if($query_row_empty_team_slot['team2_id']==67){
-                                    echo "putting winning team_id in team_2_slot";
-                                    $match_id_of_empty_slot = $query_row_empty_team_slot['match_id'];
-                                    $query_update_winning_team2 ="UPDATE matches SET team2_id = '$winningteam' WHERE match_id = '$match_id_of_empty_slot'";
-                                    // var_dump($query);
-                                    $query_run_update_winning_team2 = mysqli_query($mysqli, $query_update_winning_team2);
-                                    ?>
+                                echo "putting winning team_id in team_2_slot";
+                                $match_id_of_empty_slot = $query_row_empty_team_slot['match_id'];
+                                $query_update_winning_team2 ="UPDATE matches SET team2_id = '$winningteam' WHERE match_id = '$match_id_of_empty_slot'";
+                                // var_dump($query);
+                                $query_run_update_winning_team2 = mysqli_query($mysqli, $query_update_winning_team2);
+                                ?>
                                     <script>window.location.assign("thankyou.php");</script>
                                 <?php }
-                          }
+                            }
                             $query = "SELECT count(*) AS records from matches where matchstatus='completed'";
                             $query_run = mysqli_query($mysqli,$query);
                             $query_row = mysqli_fetch_assoc($query_run);
                             if ($query_row['records'] > 0){
-                            $checkif_match_exist = "SELECT * FROM results WHERE match_id= '$match_id'";
-                            $query_run_check     = mysqli_query($mysqli, $checkif_match_exist);
-                            $query_row_check     = mysqli_num_rows($query_run_check);
+                                $checkif_match_exist = "SELECT * FROM results WHERE match_id= '$match_id'";
+                                $query_run_check     = mysqli_query($mysqli, $checkif_match_exist);
+                                $query_row_check     = mysqli_num_rows($query_run_check);
                             }
 
 
-                                $query1 = "INSERT INTO results (team_id, match_id, g_id, comments) SELECT winningteam, match_id, g_id, comments from matches where matchstatus= 'completed' AND match_id = '$match_id' ";
-                                $query1_run = mysqli_query($mysqli,$query1);
+                            $query1 = "INSERT INTO results (team_id, match_id, g_id, comments) SELECT winningteam, match_id, g_id, comments from matches where matchstatus= 'completed' AND match_id = '$match_id' ";
+                            $query1_run = mysqli_query($mysqli,$query1);
 
                             // if ($query1_run) {
                             //     $query = "DELETE FROM matches WHERE match_id= '$match_id' AND matchstatus= 'completed'";
                             //     $query_run = mysqli_query($mysqli,$query);
                             // }
-                      }
-                          ?>
+                        }
+                        ?>
                     </form>
-                </div>
-            </section>
+            </div>
+        </section>
             <section>
                 <div class="page-header text-center text-uppercase">
                 <h2>Current Match Summery</h2>
@@ -229,7 +250,7 @@ if (isset($_SESSION['logged_user']) && $_SESSION['user_role'] === 'Admin') {
 
                     <table class="table table-full m-b-60" id="table-area-1" style="margin-bottom:0;">
                         <thead>
-                        <tr fsm-sticky-header="" scroll-body="'#table-area-1'" scroll-stop="64">
+                        <tr>
                             <th>Overs</th>
                             <th>Scores</th>
                             <th>Wickets</th>
