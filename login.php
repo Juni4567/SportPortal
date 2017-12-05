@@ -12,7 +12,7 @@ if ( isset( $_POST['submit'] ) ) {
     $findme   = '@';
 
     if(strpos($username, $findme)){
-    $sql    = "SELECT * from users WHERE email = '$username' AND password = '$password' status_id = '1' LIMIT 1";
+    $sql    = "SELECT * from users WHERE email = '$username' AND password = '$password' AND status_id = '1' LIMIT 1";
     $result = $mysqli->query( $sql );
     $row    = $result->fetch_assoc();
     }
