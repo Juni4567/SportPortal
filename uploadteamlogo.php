@@ -20,6 +20,7 @@ if (isset($_POST['addteam'])) {
         }
         else{
             echo"Insertion failed";
+            var_dump($query_run_insert);
         }
     }
     else{

@@ -16,7 +16,7 @@ include('layout/header.php');
 			<div class="container">
 				<div class="carousel-news">
 					<a href="news_page.php?n_id=<?php echo $query_row['news_id']; ?>"><h1><?php echo $query_row['news_heading']; ?></h1></a>
-					<p><?php echo $query_row['excerpt']; ?></p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In blanditiis consequatur nihil dignissimos ut impedit quod facilis eveniet tenetur minima, fugiat aliquid consequuntur quis commodi, labore est odit dolor. Esse.</p>
 				</div>
 			</div>
 		</div>
@@ -45,7 +45,7 @@ include('layout/header.php');
                                 <a class="media-left" href="news_page.php?n_id=<?php echo $query_row['news_id']; ?>">
                                     <div class="media-body">
                                         <h4 class="media-heading"><?php echo $query_row['news_heading']; ?></h4>
-                                        <p><?php echo $query_row['excerpt']; ?></p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate cumque culpa, incidunt ex? Eveniet, beatae alias fugiat nesciunt assumenda, facilis sunt ex, ipsum cupiditate vero sed, in esse ut eius.</p>
                                     </div>
                                 </a>
 

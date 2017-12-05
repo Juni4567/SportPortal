@@ -23,7 +23,7 @@ if (isset($_SESSION['logged_user'])) {
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="sp-userimg">
-                            <img src="<?php echo "uploads/profile/" . $query_row['images']; ?>" alt="<?php echo $query_row['username']; ?>"/>
+                            <img src="<?php echo "uploads/profile/1445275386.jpg" . $query_row['images']; ?>" alt="<?php echo $query_row['username']; ?>"/>
                         </div>
                     </div>
                     <div class="col-sm-9">
